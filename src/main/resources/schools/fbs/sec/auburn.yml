@@ -1,0 +1,14 @@
+---
+id: 'auburn'
+name: 'Auburn University'
+conference: 'sec'
+url: 'http://www.auburn.edu/communications_marketing/styleguide/'
+colors:
+  - id: 'basic'
+    primary: '#003366'
+    secondary: '#ff6633'
+    accent: '#ffffff'
+  - id: 'secondary'
+    primary: '#ff6633'
+    secondary: '#003366'
+    accent: '#ffffff'

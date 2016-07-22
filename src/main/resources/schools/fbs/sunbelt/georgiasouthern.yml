@@ -1,0 +1,14 @@
+---
+id: 'georgiasouthern'
+name: 'Georgia Southern'
+conference: 'sunbelt'
+url: 'http://news.georgiasouthern.edu/marketing/resources/identification-standards/'
+colors:
+  - id: 'basic'
+    primary: '#041e42'
+    secondary: '#a99260'
+    accent: '#ffffff'
+  - id: 'alternate'
+    primary: '#041e42'
+    secondary: '#ffffff'
+    accent: '#a99260'
