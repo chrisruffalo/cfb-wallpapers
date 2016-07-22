@@ -5,7 +5,6 @@ import java.util.List;
 /**
  * <p></p>
  *
- * @author Chris Ruffalo {@literal <cruffalo@redhat.com>}
  */
 public class School {
 

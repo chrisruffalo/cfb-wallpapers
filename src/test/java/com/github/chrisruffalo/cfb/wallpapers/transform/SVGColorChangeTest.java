@@ -8,7 +8,6 @@ import org.junit.Test;
 /**
  * <p></p>
  *
- * @author Chris Ruffalo {@literal <cruffalo@redhat.com>}
  */
 public class SVGColorChangeTest {
 

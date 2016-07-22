@@ -12,7 +12,6 @@ import java.nio.file.Paths;
 /**
  * <p></p>
  *
- * @author Chris Ruffalo {@literal <cruffalo@redhat.com>}
  */
 public class SVGSchoolRasterizerTest {
 

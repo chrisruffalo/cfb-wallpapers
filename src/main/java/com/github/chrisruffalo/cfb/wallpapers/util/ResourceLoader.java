@@ -25,7 +25,6 @@ import java.util.jar.JarFile;
 /**
  * <p></p>
  *
- * @author Chris Ruffalo {@literal <cruffalo@redhat.com>}
  */
 public class ResourceLoader {
 

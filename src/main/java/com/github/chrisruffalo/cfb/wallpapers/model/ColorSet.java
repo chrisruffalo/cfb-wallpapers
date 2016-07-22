@@ -3,7 +3,6 @@ package com.github.chrisruffalo.cfb.wallpapers.model;
 /**
  * <p></p>
  *
- * @author Chris Ruffalo {@literal <cruffalo@redhat.com>}
  */
 public class ColorSet {
 

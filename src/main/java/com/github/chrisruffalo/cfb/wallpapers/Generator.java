@@ -20,7 +20,6 @@ import java.util.Set;
 /**
  * <p></p>
  *
- * @author Chris Ruffalo {@literal <cruffalo@redhat.com>}
  */
 public class Generator {
 

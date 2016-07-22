@@ -12,7 +12,6 @@ import java.util.Map;
 /**
  * <p></p>
  *
- * @author Chris Ruffalo {@literal <cruffalo@redhat.com>}
  */
 public class SchoolYamlLoader {
 

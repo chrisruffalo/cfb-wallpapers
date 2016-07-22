@@ -7,7 +7,6 @@ import java.util.Properties;
 /**
  * <p></p>
  *
- * @author Chris Ruffalo {@literal <cruffalo@redhat.com>}
  */
 public enum CfbWallpapersConfig {
     // singleton
