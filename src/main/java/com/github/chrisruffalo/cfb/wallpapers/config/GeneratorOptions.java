@@ -36,6 +36,9 @@ public class GeneratorOptions {
     @Parameter(names = {"--help", "-h", "-?"}, description = "Display the help message")
     private boolean help;
 
+    @Parameter(names = {"--list-schools"}, description = "Instead of doing anything else, list each school.")
+    private boolean list;
+
     public String getOutputPath() {
         return outputPath;
     }
@@ -98,5 +101,13 @@ public class GeneratorOptions {
 
     public void setHelp(boolean help) {
         this.help = help;
+    }
+
+    public boolean isList() {
+        return list;
+    }
+
+    public void setList(boolean list) {
+        this.list = list;
     }
 }

@@ -78,6 +78,11 @@ public class Generator {
             // load yaml
             final School school = loader.load(stream);
 
+            if(options.isList()) {
+                System.out.printf("- %s (id='%s', conference='%s')\n", school.getName(), school.getId(), school.getConference());
+                continue;
+            }
+
             // if schools were given and school is not in the list of given schools then skip it
             if(!schoolIdsFromArguments.isEmpty() && !schoolIdsFromArguments.contains(school.getId())) {
                 continue;

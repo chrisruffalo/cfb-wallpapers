@@ -16,6 +16,10 @@ a single school (or multiple schools) are desired you can execute that with the 
 ```
 java -jar target/cfb-wallpapers-1.0-SNAPSHOT.jar -s thecitadel -s vmi -s auburn
 ```
+To find your school(s)
+```
+java -jar target/cfb-wallpapers-1.0-SNAPSHOT.jar --list-schools
+```
 For more advanced try usage, `java -jar target/cfb-wallpapers-1.0-SNAPSHOT.jar --help`.
 
 ## How to add a School
@@ -55,4 +59,5 @@ follow certain conventions:
 * The secondary color should be the hex color code `#b1b1b1`.
 * The accent color should be the hex color code `#6f6f6f`.
 
-It is important to note that these colors must match exactly and that other colors, if introduced, will not be modified in any way.
+It is important to note that these colors must match exactly and that other colors, if introduced, will not be modified in any way. Templates will be scaled to the 
+size of the output. It is recommended that templates be 4096x2160.
