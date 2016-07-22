@@ -24,7 +24,7 @@ For more advanced try usage, `java -jar target/cfb-wallpapers-1.0-SNAPSHOT.jar -
 
 ## How to add a School
 Schools are in `src/main/resources/schools` under FCS or FBS and then the conference. The Citadel, for example, is an FCS school in the Southern Conference so 
-it is located in `src/main/resources/schools/fcs/socon`. 
+it is located in `src/main/resources/schools/fcs/socon`. The `id` of the school and the file name for the YAML (`{id}.yml`) should be identical.
 
 Each YAML file looks like this:
 ```
