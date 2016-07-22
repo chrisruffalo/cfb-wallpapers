@@ -1,3 +1,4 @@
+# maven stuff
 target/
 pom.xml.tag
 pom.xml.releaseBackup
@@ -7,3 +8,11 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
+
+#intellij
+*.iml
+.idea
+
+# don't check in wallpapers from test runs
+wallpaper
+wallpapers

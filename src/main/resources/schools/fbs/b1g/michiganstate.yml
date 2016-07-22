@@ -1,0 +1,10 @@
+---
+id: 'michiganstate'
+name: 'Michigan State'
+conference: 'b1g'
+url: 'http://brand.msu.edu/design-visual/#color'
+colors:
+  - id: 'basic'
+    primary: '#18543B'
+    secondary: '#97A2A2'
+    accent: '#ffffff'

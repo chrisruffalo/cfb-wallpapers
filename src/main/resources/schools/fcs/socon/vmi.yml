@@ -1,0 +1,14 @@
+---
+id: 'vmi'
+name: 'VMI'
+conference: 'socon'
+url: 'http://www.vmi.edu/media/content-assets/documents/communications-and-marketing/VMIIdentityStandards2016.pdf'
+colors:
+  - id: 'basic'
+    primary: '#ae122a'
+    secondary: '#ffd619'
+    accent: '#000000'
+  - id: 'alternate'
+    primary: '#ae122a'
+    secondary: '#000000'
+    accent: '#ffd619'

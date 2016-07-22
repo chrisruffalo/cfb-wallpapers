@@ -1,0 +1,14 @@
+---
+id: 'thecitadel'
+name: 'The Citadel'
+conference: 'socon'
+url: 'http://www.citadel.edu/root/brandtoolbox-colors'
+colors:
+  - id: 'basic'
+    primary: '#4d90cd'
+    secondary: '#003263'
+    accent: '#ffffff'
+  - id: 'inverse'
+    primary: '#003263'
+    secondary: '#4d90cd'
+    accent: '#ffffff'

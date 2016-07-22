@@ -1,0 +1,14 @@
+---
+id: 'usc'
+name: 'University of South Carolina'
+conference: 'sec'
+url: 'https://www.sc.edu/toolbox/officialColors.php'
+colors:
+  - id: 'basic'
+    primary: '#73000A'
+    secondary: '#000000'
+    accent: '#ffffff'
+  - id: 'pluff-mud'
+    primary: '#73000A'
+    secondary: '#000000'
+    accent: '#5f574f'
