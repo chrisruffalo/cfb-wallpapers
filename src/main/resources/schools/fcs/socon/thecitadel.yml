@@ -12,3 +12,7 @@ colors:
     primary: '#003263'
     secondary: '#4d90cd'
     accent: '#ffffff'
+  - id: 'accent'
+    primary: '#4d90cd'
+    secondary: '#ffffff'
+    accent: '#003263'
