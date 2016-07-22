@@ -8,7 +8,7 @@ colors:
     primary: '#4d90cd'
     secondary: '#003263'
     accent: '#ffffff'
-  - id: 'inverse'
+  - id: 'alternate'
     primary: '#003263'
     secondary: '#4d90cd'
     accent: '#ffffff'
