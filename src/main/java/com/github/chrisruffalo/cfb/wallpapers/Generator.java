@@ -34,16 +34,33 @@ public class Generator {
         // info here: https://en.wikipedia.org/wiki/List_of_NCAA_conferences
 
         //fbs
-        CONFERENCE_MAP.put("aac", "American Athletic");
-        CONFERENCE_MAP.put("acc", "Atlantic Coast");
-        CONFERENCE_MAP.put("b1g", "Big Ten");
-        CONFERENCE_MAP.put("big12", "Big 12");
+        CONFERENCE_MAP.put("aac", "American Athletic Conference");
+        CONFERENCE_MAP.put("acc", "Atlantic Coast Conference");
+        CONFERENCE_MAP.put("b1g", "Big Ten Conference");
+        CONFERENCE_MAP.put("big12", "Big 12 Conference");
+        CONFERENCE_MAP.put("cusa", "Conference USA");
         CONFERENCE_MAP.put("independent", "Independent");
-        CONFERENCE_MAP.put("sec", "Southeastern");
-        CONFERENCE_MAP.put("sunbelt", "Sun Belt");
+        CONFERENCE_MAP.put("mac", "Mid-American Conference");
+        CONFERENCE_MAP.put("mw", "Mountain West Conference");
+        CONFERENCE_MAP.put("pac", "Pac-12 Conference");
+        CONFERENCE_MAP.put("sec", "Southeastern Conference");
+        CONFERENCE_MAP.put("sunbelt", "Sun Belt Conference");
 
         //fcs
+        CONFERENCE_MAP.put("sky", "Big Sky Conference");
+        CONFERENCE_MAP.put("south", "Big South Conference");
+        CONFERENCE_MAP.put("caa", "Colonial Athletic Association");
+        // todo: fcs independents goes here
+        CONFERENCE_MAP.put("ivy", "Ivy League");
+        CONFERENCE_MAP.put("meac", "Mid-Eastern Athletic Conference");
+        CONFERENCE_MAP.put("mvfc", "Missouri Valley Football Conference");
+        CONFERENCE_MAP.put("nec", "Northeast Conference");
+        CONFERENCE_MAP.put("ovc", "Ohio Valley Conference");
+        CONFERENCE_MAP.put("patriot", "Patriot League");
+        CONFERENCE_MAP.put("pfl", "Pioneer Football League");
         CONFERENCE_MAP.put("socon", "Southern Conference");
+        CONFERENCE_MAP.put("southland", "Southland Conference");
+        CONFERENCE_MAP.put("swac", "Southwestern Athletic Conference");
     }
 
     public static void main(String[] args) {
@@ -126,8 +143,6 @@ public class Generator {
             return;
         }
 
-        final String prefix = options.isList() ? "" : "Conference :: ";
-
         for(final Map.Entry<String, List<School>> conferenceEntry : conferenceMap.entrySet()) {
             final String conference = conferenceEntry.getKey();
 
@@ -137,7 +152,7 @@ public class Generator {
             }
 
             // todo: map to map conference names to big names
-            System.out.printf("%s%s (id='%s')\n", prefix, CONFERENCE_MAP.get(conference), conference);
+            System.out.printf("::: %s (id='%s')\n", CONFERENCE_MAP.get(conference), conference);
 
             // get schools
             final List<School> schools = conferenceEntry.getValue();
