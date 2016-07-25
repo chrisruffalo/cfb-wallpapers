@@ -3,7 +3,9 @@ id: 'tulane'
 name: 'Tulane University'
 conference: 'aac'
 wiki: 'https://en.wikipedia.org/wiki/Tulane_University'
-# couldn't find any official color combinations for Tulane, Tulane site was down
-url: ''
-
+url: 'https://www2.tulane.edu/tulane/news/style/logos/logo-restrictions.cfm'
+  - id: 'basic'
+    primary: '#003300'
+    secondary: '#003300'
+    accent: '#000000'
 
