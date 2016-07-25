@@ -1,0 +1,13 @@
+---
+id: 'uc'
+name: 'University of Cincinnati'
+conference: 'aac'
+wiki: 'https://en.wikipedia.org/wiki/University_of_Cincinnati'
+url: 'https://www.uc.edu/content/dam/uc/ucomm/docs/UCBrandingStandards.pdf'
+colors:
+  - id: 'basic'
+    primary: '#e00122'
+    secondary: '#000000'
+    accent: '#ffffff'
+
+

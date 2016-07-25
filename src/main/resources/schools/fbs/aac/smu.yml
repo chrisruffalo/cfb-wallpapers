@@ -1,0 +1,13 @@
+---
+id: 'smu'
+name: 'Southern Methodist University'
+conference: 'aac'
+wiki: 'https://en.wikipedia.org/wiki/Southern_Methodist_University'
+url: 'http://www.smu.edu/DevelopmentExternalAffairs/PublicAffairs/IntegratedMarketing/Branding/Colors'
+colors:
+  - id: 'basic'
+    primary: '#cc0000'
+    secondary: '#cc0000'
+    accent: '#354CA1'
+
+

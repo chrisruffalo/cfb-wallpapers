@@ -1,0 +1,17 @@
+---
+id: 'uconn'
+name: 'University of Connecticut'
+conference: 'aac'
+wiki: 'https://en.wikipedia.org/wiki/University_of_Connecticut'
+url: 'http://brand.uconn.edu/standards/color-palette/'
+colors:
+  - id: 'basic'
+    primary: '#000e2f'
+    secondary: '#ffffff'
+    accent: '#7c878e'
+  - id: 'alternate'
+    primary: '#000e2f'
+    secondary: '#7c878e'
+    accent: '#ffffff'
+
+

@@ -1,0 +1,16 @@
+---
+id: 'ucf'
+name: 'University of Central Florida'
+conference: 'aac'
+wiki: 'https://en.wikipedia.org/wiki/University_of_Central_Florida'
+url: 'https://brand.ucf.edu/design/'
+colors:
+  - id: 'basic'
+    primary: '#000000'
+    secondary: '#ffc904'
+    accent: '#000000'
+  - id: 'metalic'
+    primary: '#000000'
+    secondary: '#cc9900'
+    accent: '#000000'
+

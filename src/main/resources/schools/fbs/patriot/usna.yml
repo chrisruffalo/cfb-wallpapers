@@ -1,0 +1,19 @@
+---
+id: 'usna'
+name: 'Annapolis'
+conference: 'patriot'
+wiki: 'https://en.wikipedia.org/wiki/United_States_Naval_Academy'
+# Navy ones are not easy to find, used official USN brand standards
+url: 'http://www.navy.mil/local/onr/docs/USNavyBrandGuidelinesNEW.pdf'
+colors:
+  - id: 'basic'
+    primary: '#0a3782'
+    secondary: '#0a3782'
+    accent: '#f6b40e'
+  - id: 'accent'
+    primary: '#0a3782'
+    secondary: '#f6b40e'
+    accent: '#ffffff'
+
+
+
