@@ -1,0 +1,10 @@
+---
+id: 'indiana'
+name: 'Indiana University'
+conference: 'b1g'
+url: 'http://brand.iu.edu/apply/color.shtml'
+colors:
+  - id: 'basic'
+    primary: '#7d110c'
+    secondary: '#e1d8b7'
+    accent: '#ffffff'

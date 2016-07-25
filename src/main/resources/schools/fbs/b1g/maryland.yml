@@ -1,0 +1,10 @@
+---
+id: 'maryland'
+name: 'University of Maryland'
+conference: 'b1g'
+url: 'http://brand.umd.edu/athleticidentity.cfm'
+colors:
+  - id: 'basic'
+    primary: '#e03a3e'
+    secondary: '#ffd520'
+    accent: '#000000'

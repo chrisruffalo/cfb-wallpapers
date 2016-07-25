@@ -1,0 +1,14 @@
+---
+id: 'uofi'
+name: 'University of Illinois'
+conference: 'b1g'
+url: 'http://identitystandards.illinois.edu/graphicstandardsmanual/generalguidelines/colors.html'
+colors:
+  - id: 'basic'
+    primary: '#002058'
+    secondary: '#002058'
+    accent: '#e87722'
+  - id: 'professional'
+    primary: '#606eb2'
+    secondary: '#606eb2'
+    accent: '#d45d00'

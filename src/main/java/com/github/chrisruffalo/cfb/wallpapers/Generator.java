@@ -13,8 +13,12 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -23,7 +27,23 @@ import java.util.Set;
  */
 public class Generator {
 
+    private static final Map<String, String> CONFERENCE_MAP = new HashMap<>();
+
+    // just init the map
+    private static void loadConferenceMap() {
+        //fbs
+        CONFERENCE_MAP.put("b1g", "Big 10");
+        CONFERENCE_MAP.put("independent", "Independent");
+        CONFERENCE_MAP.put("sec", "Southeastern Conference");
+        CONFERENCE_MAP.put("sunbelt", "Sunbelt");
+
+        //fcs
+        CONFERENCE_MAP.put("socon", "Southern Conference");
+    }
+
     public static void main(String[] args) {
+        // load conference map
+        loadConferenceMap();
 
         // parse arguments
         final GeneratorOptions options = new GeneratorOptions();
@@ -33,12 +53,6 @@ public class Generator {
         if(options.isHelp()) {
             commander.usage();
             return;
-        }
-
-        // convert schools to hash set for easy lookup
-        final Set<String> schoolIdsFromArguments = new HashSet<>();
-        if(!options.getSchools().isEmpty()) {
-            schoolIdsFromArguments.addAll(options.getSchools());
         }
 
         // continue, load all schools
@@ -66,6 +80,10 @@ public class Generator {
         // yaml loader
         final SchoolYamlLoader loader = new SchoolYamlLoader();
 
+        // save schools into map by conference / bowl status
+        final Map<String, List<School>> fbsSchoolsByConference = new HashMap<>();
+        final Map<String, List<School>> fcsSchoolsByConference = new HashMap<>();
+
         // do loop
         for(final String resource : schoolResources) {
             // get resource
@@ -75,23 +93,72 @@ public class Generator {
             }
 
             // load yaml
-            final School school = loader.load(stream);
-
-            if(options.isList()) {
-                System.out.printf("- %s (id='%s', conference='%s')\n", school.getName(), school.getId(), school.getConference());
+            final School school = loader.load(resource, stream);
+            if(school == null || school.getId() == null || school.getId().isEmpty()) {
                 continue;
             }
 
-            // if schools were given and school is not in the list of given schools then skip it
-            if(!schoolIdsFromArguments.isEmpty() && !schoolIdsFromArguments.contains(school.getId())) {
+            // sort into bowl status -> conference -> school
+            Map<String, List<School>> byConf = school.isFbs() ? fbsSchoolsByConference : fcsSchoolsByConference;
+            final String conference = school.getConference();
+            List<School> schools = byConf.get(conference);
+            if(schools == null) {
+                schools = new ArrayList<>(10);
+                byConf.put(conference, schools);
+            }
+            schools.add(school);
+        }
+
+        // fbs schools
+        handleSchoolMap(fbsSchoolsByConference, options, outputPath);
+        if(!options.isFbsOnly()) {
+            handleSchoolMap(fcsSchoolsByConference, options, outputPath);
+        }
+    }
+
+    private static void handleSchoolMap(Map<String, List<School>> conferenceMap, GeneratorOptions options, Path outputPath) {
+        if(conferenceMap.isEmpty()) {
+            return;
+        }
+
+        final String prefix = options.isList() ? "" : "Conference :: ";
+
+        for(final Map.Entry<String, List<School>> conferenceEntry : conferenceMap.entrySet()) {
+            final String conference = conferenceEntry.getKey();
+
+            // skip conference if it is not in the specified set of conferences
+            if(!options.getConferences().isEmpty() && !options.getConferences().contains(conference)) {
                 continue;
             }
 
-            // rasterize the school
-            System.out.printf("Generating wallpapers for %s... ", school.display());
-            final SVGSchoolRasterizer rasterizer = new SVGSchoolRasterizer(school, outputPath);
-            rasterizer.raster();
-            System.out.printf("[DONE]\n");
+            // todo: map to map conference names to big names
+            System.out.printf("%s%s (id='%s')\n", prefix, CONFERENCE_MAP.get(conference), conference);
+
+            // get schools
+            final List<School> schools = conferenceEntry.getValue();
+
+            // sort list of schools by name
+            Collections.sort(schools);
+
+            // handle each school
+            for(final School school : schools) {
+
+                // if schools were given and school is not in the list of given schools then skip it
+                if(!options.getSchools().isEmpty() && !options.getSchools().contains(school.getId())) {
+                    continue;
+                }
+
+                if(options.isList()) {
+                    System.out.printf("- %s (id='%s')\n", school.getName(), school.getId(), school.getConference());
+                    continue;
+                }
+
+                // rasterize the school
+                System.out.printf("Generating wallpapers for %s... ", school.display());
+                final SVGSchoolRasterizer rasterizer = new SVGSchoolRasterizer(school, outputPath);
+                rasterizer.raster();
+                System.out.printf("[DONE]\n");
+            }
         }
     }
 }

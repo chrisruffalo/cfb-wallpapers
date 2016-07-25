@@ -1,0 +1,14 @@
+---
+id: 'osu'
+name: 'The Ohio State University'
+conference: 'b1g'
+url: 'https://brand.osu.edu/color/'
+colors:
+  - id: 'basic'
+    primary: '#bb0000'
+    secondary: '#666666'
+    accent: '#ffffff'
+  - id: 'black-accent'
+    primary: '#bb0000'
+    secondary: '#666666'
+    accent: '#000000'

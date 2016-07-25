@@ -3,7 +3,9 @@ package com.github.chrisruffalo.cfb.wallpapers.config;
 import com.beust.jcommander.Parameter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * <p></p>
@@ -15,7 +17,13 @@ public class GeneratorOptions {
     private String outputPath = "wallpaper";
 
     @Parameter(names = {"--school", "-s"}, description = "A school id to be included in the output. By default all schools are executed.")
-    private List<String> schools = new ArrayList<>(0);
+    private Set<String> schools = new HashSet<>(0);
+
+    @Parameter(names = {"--conference", "-c"}, description = "A conference id to be included in the output. Will output all schools in that conference (unless schools are specified otherwise).")
+    private Set<String> conferences = new HashSet<>(0);
+
+    @Parameter(names = {"--fbs-only", "-b"}, description = "Only output FBS teams. (Default: false.)")
+    private boolean fbsOnly = false;
 
     @Parameter(names = {"--size", "-x"}, description = "An output format in the form WxH. Ex: `-x 1280x1024` adds an output mode that is 1280 pixels wide and 1024 pixels tall.")
     private List<String> outputSizes = new ArrayList<>(0);
@@ -46,12 +54,28 @@ public class GeneratorOptions {
         this.outputPath = outputPath;
     }
 
-    public List<String> getSchools() {
+    public Set<String> getSchools() {
         return schools;
     }
 
-    public void setSchools(List<String> schools) {
+    public void setSchools(Set<String> schools) {
         this.schools = schools;
+    }
+
+    public Set<String> getConferences() {
+        return conferences;
+    }
+
+    public void setConferences(Set<String> conferences) {
+        this.conferences = conferences;
+    }
+
+    public boolean isFbsOnly() {
+        return fbsOnly;
+    }
+
+    public void setFbsOnly(boolean fbsOnly) {
+        this.fbsOnly = fbsOnly;
     }
 
     public List<String> getOutputSizes() {

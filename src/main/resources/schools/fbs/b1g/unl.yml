@@ -1,0 +1,14 @@
+---
+id: 'unl'
+name: 'University of Nebraska'
+conference: 'b1g'
+url: 'http://ucomm.unl.edu/toolbox/colors'
+colors:
+  - id: 'basic'
+    primary: '#d00000'
+    secondary: '#f5f1e7'
+    accent: '#c7c8ca'
+  - id: 'alternate'
+    primary: '#f5f1e7'
+    secondary: '#d00000'
+    accent: '#c7c8ca'

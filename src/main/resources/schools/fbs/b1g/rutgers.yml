@@ -1,0 +1,10 @@
+---
+id: 'rutgers'
+name: 'Rutgers University'
+conference: 'b1g'
+url: 'http://identity.rutgers.edu/elements-system/colors'
+colors:
+  - id: 'basic'
+    primary: '#cc0033'
+    secondary: '#5f6a72'
+    accent: '#000000'

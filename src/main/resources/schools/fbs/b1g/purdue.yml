@@ -1,0 +1,10 @@
+---
+id: 'purdue'
+name: 'Purdue University'
+conference: 'b1g'
+url: 'https://www.purdue.edu/brand/visual/colors.html'
+colors:
+  - id: 'basic'
+    primary: '#000000'
+    secondary: '#b1810b'
+    accent: '#ffffff'

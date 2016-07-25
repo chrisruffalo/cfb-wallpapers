@@ -1,0 +1,14 @@
+---
+id: 'psu'
+name: 'Penn State'
+conference: 'b1g'
+url: 'http://www.personal.psu.edu/staff/d/r/drs18/2000/blue/'
+colors:
+  - id: 'basic'
+    primary: '#001769'
+    secondary: '#5f74e2'
+    accent: '#ffffff'
+  - id: 'alternate'
+    primary: '#5f74e2'
+    secondary: '#001769'
+    accent: '#ffffff'

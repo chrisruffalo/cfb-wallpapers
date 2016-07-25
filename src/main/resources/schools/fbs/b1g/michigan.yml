@@ -1,0 +1,18 @@
+---
+id: 'michigan'
+name: 'University of Michigan'
+conference: 'b1g'
+url: 'http://vpcomm.umich.edu/brand/style-guide/design-principles/colors'
+colors:
+  - id: 'basic'
+    primary: '#ffcb05'
+    secondary: '#ffcb05'
+    accent: '#00274c'
+  - id: 'alternate'
+    primary: '#00274c'
+    secondary: '#00274c'
+    accent: '#ffcb05'
+  - id: 'accent'
+    primary: '#00274c'
+    secondary: '#989c97'
+    accent: '#ffcb05'

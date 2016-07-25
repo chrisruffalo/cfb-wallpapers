@@ -1,0 +1,10 @@
+---
+id: 'uw'
+name: 'University of Wisconsin-Madison'
+conference: 'b1g'
+url: 'https://umark.wisc.edu/brand/web/colors.php'
+colors:
+  - id: 'basic'
+    primary: '#b70101'
+    secondary: '#e7d9c1'
+    accent: '#000000'

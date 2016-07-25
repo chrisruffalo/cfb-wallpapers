@@ -6,11 +6,13 @@ import java.util.List;
  * <p></p>
  *
  */
-public class School {
+public class School implements Comparable<School> {
 
     private String id;
     private String name;
     private String conference;
+
+    private boolean fbs = true;
 
     private List<ColorSet> colors;
 
@@ -38,6 +40,14 @@ public class School {
         this.conference = conference;
     }
 
+    public boolean isFbs() {
+        return fbs;
+    }
+
+    public void setFbs(boolean fbs) {
+        this.fbs = fbs;
+    }
+
     public List<ColorSet> getColors() {
         return colors;
     }
@@ -48,5 +58,10 @@ public class School {
 
     public String display() {
         return this.name == null || this.name.trim().isEmpty() ? this.id : this.name;
+    }
+
+    @Override
+    public int compareTo(School school) {
+        return this.getName().compareTo(school.getName());
     }
 }
