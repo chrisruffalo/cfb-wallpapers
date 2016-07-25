@@ -19,6 +19,7 @@ public class SchoolYamlLoader {
     private static final String KEY_NAME = "name";
     private static final String KEY_COLORS = "colors";
     private static final String KEY_CONFERENCE = "conference";
+    private static final String KEY_BOWL_STATUS = "fbs";
 
     private static final String KEY_PRIMARY = "primary";
     private static final String KEY_SECONDARY = "secondary";
@@ -37,7 +38,14 @@ public class SchoolYamlLoader {
         school.setId((String)document.get(KEY_ID));
         school.setName((String)document.get(KEY_NAME));
         school.setConference((String)document.get(KEY_CONFERENCE));
-        school.setFbs(pathToYamlResource.toLowerCase().contains("fbs"));
+
+        // determine bowl status
+        if(document.containsKey(KEY_BOWL_STATUS)) {
+            school.setFbs(Boolean.parseBoolean((String)document.get(KEY_BOWL_STATUS)));
+        } else {
+            // fbs vs fcs found in path
+            school.setFbs(pathToYamlResource.toLowerCase().contains("fbs"));
+        }
 
         // look for colors
         final Object colorCandidate = document.get(KEY_COLORS);
