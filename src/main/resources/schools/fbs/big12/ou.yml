@@ -1,0 +1,13 @@
+---
+id: 'ou'
+name: 'University of Oklahoma'
+conference: 'big12'
+wiki: 'https://en.wikipedia.org/wiki/University_of_Oklahoma'
+url: 'https://www.ou.edu/content/brand/colors.html'
+colors:
+  - id: 'basic'
+    primary: '#841617'
+    secondary: '#841617'
+    accent: '#fdf9d8'
+
+
