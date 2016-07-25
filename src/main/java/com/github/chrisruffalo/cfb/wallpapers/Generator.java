@@ -132,8 +132,12 @@ public class Generator {
         }
 
         // fbs schools
+        if(!options.isFbsOnly()) {
+            System.out.println("===== FBS =====");
+        }
         handleSchoolMap(fbsSchoolsByConference, options, outputPath);
         if(!options.isFbsOnly()) {
+            System.out.println("===== FCS =====");
             handleSchoolMap(fcsSchoolsByConference, options, outputPath);
         }
     }
@@ -143,8 +147,12 @@ public class Generator {
             return;
         }
 
-        for(final Map.Entry<String, List<School>> conferenceEntry : conferenceMap.entrySet()) {
-            final String conference = conferenceEntry.getKey();
+        // get list of conferences and sort them
+        final List<String> conferences = new ArrayList<>(conferenceMap.keySet());
+        Collections.sort(conferences);
+
+        // for each conference get the list of schools and then handle them
+        for(final String conference : conferences) {
 
             // skip conference if it is not in the specified set of conferences
             if(!options.getConferences().isEmpty() && !options.getConferences().contains(conference)) {
@@ -155,7 +163,10 @@ public class Generator {
             System.out.printf("::: %s (id='%s')\n", CONFERENCE_MAP.get(conference), conference);
 
             // get schools
-            final List<School> schools = conferenceEntry.getValue();
+            final List<School> schools = conferenceMap.get(conference);
+            if(schools == null | schools.isEmpty()) {
+                continue;
+            }
 
             // sort list of schools by name
             Collections.sort(schools);
@@ -169,15 +180,19 @@ public class Generator {
                 }
 
                 if(options.isList()) {
-                    System.out.printf("- %s (id='%s')\n", school.getName(), school.getId(), school.getConference());
+                    System.out.printf("\t%s (id='%s')\n", school.getName(), school.getId(), school.getConference());
                     continue;
                 }
 
                 // rasterize the school
-                System.out.printf("Generating wallpapers for %s... ", school.display());
-                final SVGSchoolRasterizer rasterizer = new SVGSchoolRasterizer(school, outputPath);
-                rasterizer.raster();
-                System.out.printf("[DONE]\n");
+                System.out.printf("\t%s... ", school.display());
+                if(school.getColors() == null || school.getColors().isEmpty()) {
+                    System.out.printf("[ERROR] (School has 0 color combinations)\n");
+                } else {
+                    final SVGSchoolRasterizer rasterizer = new SVGSchoolRasterizer(school, outputPath);
+                    rasterizer.raster();
+                    System.out.printf("[DONE]\n");
+                }
             }
         }
     }
