@@ -1,0 +1,10 @@
+---
+id: 'uk'
+name: 'University of Kentucky'
+conference: 'sec'
+url: 'http://webgov.uky.edu/standards/'
+colors:
+  - id: 'basic'
+    primary: '#0033a0'
+    secondary: '#ffffff'
+    accent: '#2c2a29'

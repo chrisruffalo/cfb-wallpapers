@@ -1,0 +1,10 @@
+---
+id: 'tamu'
+name: 'Texas A&M'
+conference: 'sec'
+url: 'http://brandguide.tamu.edu/colors.html'
+colors:
+  - id: 'basic'
+    primary: '#500000'
+    secondary: '#332c2c'
+    accent: '#ffffff'

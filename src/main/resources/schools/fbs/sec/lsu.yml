@@ -1,0 +1,11 @@
+---
+id: 'lsu'
+name: 'Louisiana State University'
+conference: 'sec'
+url: 'http://www.lsu.edu/stratcomm/online-brand-guide/lsu-colors.php'
+colors:
+  - id: 'basic'
+    primary: '#461d7c'
+    secondary: '#fdd023'
+    accent: '#ffffff'
+

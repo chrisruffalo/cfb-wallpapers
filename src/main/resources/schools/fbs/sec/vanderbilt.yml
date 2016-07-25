@@ -1,0 +1,14 @@
+---
+id: 'vanderbilt'
+name: 'Vanderbilt University'
+conference: 'sec'
+url: 'https://www4.vanderbilt.edu/graphicstandards/colors/primary.php'
+colors:
+  - id: 'basic'
+    primary: '#000000'
+    secondary: '#000000'
+    accent: '#997f3d'
+  - id: 'inverse'
+    primary: '#997f3d'
+    secondary: '#997f3d'
+    accent: '#000000'

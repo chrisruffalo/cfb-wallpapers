@@ -1,0 +1,14 @@
+---
+id: 'uf'
+name: 'University of Florida'
+conference: 'sec'
+url: 'http://identity.ufl.edu/color/'
+colors:
+  - id: 'basic'
+    primary: '#fA4616'
+    secondary: '#fA4616'
+    accent: '#0021a5'
+  - id: 'muted'
+    primary: '#6c9ac3'
+    secondary: '#6c9ac3'
+    accent: '#e28f41'

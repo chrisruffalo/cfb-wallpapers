@@ -1,0 +1,10 @@
+---
+id: 'alabama'
+name: 'University of Alabama'
+conference: 'sec'
+url: 'https://strategiccommunications.ua.edu/img/BRANDINGSTANDARDS_Aug17_Updated102115.pdf'
+colors:
+  - id: 'basic'
+    primary: '#9e1b32'
+    secondary: '#828a8f'
+    accent: '#ffffff'

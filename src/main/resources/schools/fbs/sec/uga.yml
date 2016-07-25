@@ -1,0 +1,14 @@
+---
+id: 'uga'
+name: 'University of Georgia'
+conference: 'sec'
+url: 'http://grfx.cstv.com/photos/schools/geo/genrel/auto_pdf/2012-13/misc_non_event/athletic-brand-manual.pdf'
+colors:
+  - id: 'basic'
+    primary: '#da291c'
+    secondary: '#2c2a29'
+    accent: '#ffffff'
+  - id: 'inverse'
+    primary: '#ffffff'
+    secondary: '#da291c'
+    accent: '#2c2a29'

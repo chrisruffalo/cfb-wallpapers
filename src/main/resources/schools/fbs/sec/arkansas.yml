@@ -1,0 +1,10 @@
+---
+id: 'arkansas'
+name: 'University of Arkansas'
+conference: 'sec'
+url: 'http://logo.uark.edu/web/colors.php'
+colors:
+  - id: 'basic'
+    primary: '#9d2235'
+    secondary: '#424242'
+    accent: '#000000'
