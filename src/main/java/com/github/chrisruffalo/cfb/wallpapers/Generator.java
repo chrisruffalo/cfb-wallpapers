@@ -31,11 +31,16 @@ public class Generator {
 
     // just init the map
     private static void loadConferenceMap() {
+        // info here: https://en.wikipedia.org/wiki/List_of_NCAA_conferences
+
         //fbs
-        CONFERENCE_MAP.put("b1g", "Big 10");
+        CONFERENCE_MAP.put("aac", "American Athletic");
+        CONFERENCE_MAP.put("acc", "Atlantic Coast");
+        CONFERENCE_MAP.put("b1g", "Big Ten");
+        CONFERENCE_MAP.put("big12", "Big 12");
         CONFERENCE_MAP.put("independent", "Independent");
-        CONFERENCE_MAP.put("sec", "Southeastern Conference");
-        CONFERENCE_MAP.put("sunbelt", "Sunbelt");
+        CONFERENCE_MAP.put("sec", "Southeastern");
+        CONFERENCE_MAP.put("sunbelt", "Sun Belt");
 
         //fcs
         CONFERENCE_MAP.put("socon", "Southern Conference");
