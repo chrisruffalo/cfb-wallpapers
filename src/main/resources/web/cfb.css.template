@@ -1,21 +1,36 @@
+/* ============= HTML ============= */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* ============= Core Styling ============= */
+
+
 <#list schools as school>
-    // ============= ${school.display()} - ${school.id} =============
+/* ============= ${school.display()} - id:'${school.id}' ============= */
     <#list school.colors as color>
-        .${school.id}-${color.id}-primary {
-            color: "${color.primaryTextColor}";
-            background-color: "${color.primaryColor}";
-        }
+/* === id: '${color.id}' === */
+.${school.id}-${color.id}-primary {
+    color: ${color.primaryTextColor};
+    background-color: ${color.primaryColor};
+}
 
-        .${school.id}-${color.id}-secondary {
-            color: "${color.secondaryTextColor}";
-            background-color: "${color.secondaryColor}";
-        }
+.${school.id}-${color.id}-secondary {
+    color: ${color.secondaryTextColor};
+    background-color: ${color.secondaryColor};
+}
+<#if color.accentColor??>
+.${school.id}-${color.id}-accent {
+    color: ${color.accentTextColor}"
+    background-color: ${color.accentColor};
+}
 
-        <#if color.accentColor??>
-        .${school.id}-${color.id}-accent {
-            color: "${color.accentTextColor}"
-            background-color: "${color.accentColor}";
-        }
         </#if>
     </#list>
 </#list>

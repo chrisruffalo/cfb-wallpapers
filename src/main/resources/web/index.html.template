@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- title and other info -->
+        <title>Minimal College Football Wallpapers</title>
+
+        <!-- meta info -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- cfb colors -->
+        <link rel="stylesheet" href="resources/css/cfb.css"/>
+
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+        <!-- Font-Awesome -->
+        <link rel="stylesheet" href="resources/css/font-awesome.min.css"/>
+
+        <!-- google icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <!-- header -->
+        <header>
+            <!-- navigation -->
+            <nav>
+                <div class="nav-wrapper">
+                    &nbsp;<a href="#" class="brand-logo">CFB Minimal Wallpapers</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- main segment -->
+        <main>
+            <div class="container">
+                <!-- search -->
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col offset-m8 m4 s12 valign-wrapper">
+                                <i class="material-icons prefix valign">search</i>
+                                <input id="icon_prefix" type="text" class="valign">
+                                <label for="icon_prefix"></label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- fbs title -->
+                <div class="row">
+                    <div class="col s12">
+                        <h3>FBS</h3>
+                    </div>
+                </div>
+
+                <#list fbsConferences as confKey>
+                <#assign conferenceSchools = fbs[confKey]>
+                <!-- conference -->
+                <div class="row">
+                    <div class="col s12">
+                        <h4>${CONFERENCE_MAP[confKey]}</h4>
+                    </div>
+                </div>
+
+                <!-- fbs -->
+                <div class="row">
+                    <#list conferenceSchools as school>
+                    <#if school.colors[0]??>
+                    <!-- team card -->
+                    <div class="col s12 m4">
+                        <div class="card small">
+                            <div class="card-content">
+                                <span class="card-title grey-text text-darken-4">${school.display()}</span>
+                                <div class="row">
+                                    <div class="col s6 ${school.id}-basic-primary">
+                                        ${school.colors[0].primaryColor}
+                                    </div>
+                                    <div class="col s6 ${school.id}-basic-secondary">
+                                        ${school.colors[0].secondaryColor}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </#if>
+                    </#list>
+                </div>
+                </#list>
+            </div>
+        </main>
+
+        <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <p class="grey-text text-lighten-4">Enjoy!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2016 Christopher Ruffalo
+                    <a class="grey-text text-lighten-4 right" href="https://github.com/chrisruffalo/cfb-wallpapers"><i class="fa fa-github" aria-hidden="true"></i> On Github</a>
+                </div>
+            </div>
+        </footer>
+
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    </body>
+
+</html>

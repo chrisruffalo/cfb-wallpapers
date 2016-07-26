@@ -30,7 +30,7 @@ import java.util.Set;
  */
 public class Generator {
 
-    private static final Map<String, String> CONFERENCE_MAP = new HashMap<>();
+    public static final Map<String, String> CONFERENCE_MAP = new HashMap<>();
 
     // just init the map
     private static void loadConferenceMap() {
@@ -124,6 +124,21 @@ public class Generator {
                 continue;
             }
 
+            // skip non-fbs schools if fbs only
+            if(options.isFbsOnly() && !school.isFbs()) {
+                continue;
+            }
+
+            // skip conference if it is not in the specified set of conferences
+            if(!options.getConferences().isEmpty() && !options.getConferences().contains(school.getConference())) {
+                continue;
+            }
+
+            // if schools were given and school is not in the list of given schools then skip it
+            if(!options.getSchools().isEmpty() && !options.getSchools().contains(school.getId())) {
+                continue;
+            }
+
             // sort into bowl status -> conference -> school
             Map<String, List<School>> byConf = school.isFbs() ? fbsSchoolsByConference : fcsSchoolsByConference;
             final String conference = school.getConference();
@@ -141,15 +156,16 @@ public class Generator {
             System.out.println("===== FBS =====");
         }
         handleSchoolMap(fbsSchoolsByConference, options, outputPath);
-        if(!options.isFbsOnly()) {
+        if(!fcsSchoolsByConference.isEmpty()) {
             System.out.println("===== FCS =====");
             handleSchoolMap(fcsSchoolsByConference, options, outputPath);
         }
 
         // if web, tie together with static web content
         if(options.isGenerateWeb()) {
+            System.out.println("===== Web =====");
             System.out.printf("Generating web resources... ");
-            StaticResourceGenerator.generateCss(outputPath, allSchools);
+            StaticResourceGenerator.generateStaticResources(outputPath, allSchools, fbsSchoolsByConference, fcsSchoolsByConference, options);
             System.out.printf("[DONE]");
         }
     }
@@ -166,17 +182,12 @@ public class Generator {
         // for each conference get the list of schools and then handle them
         for(final String conference : conferences) {
 
-            // skip conference if it is not in the specified set of conferences
-            if(!options.getConferences().isEmpty() && !options.getConferences().contains(conference)) {
-                continue;
-            }
-
-            // todo: map to map conference names to big names
+            // conference names to readable names
             System.out.printf("::: %s (id='%s')\n", CONFERENCE_MAP.get(conference), conference);
 
             // get schools
             final List<School> schools = conferenceMap.get(conference);
-            if(schools == null | schools.isEmpty()) {
+            if(schools == null || schools.isEmpty()) {
                 continue;
             }
 
@@ -186,13 +197,8 @@ public class Generator {
             // handle each school
             for(final School school : schools) {
 
-                // if schools were given and school is not in the list of given schools then skip it
-                if(!options.getSchools().isEmpty() && !options.getSchools().contains(school.getId())) {
-                    continue;
-                }
-
                 if(options.isList()) {
-                    System.out.printf("\t%s (id='%s')\n", school.getName(), school.getId(), school.getConference());
+                    System.out.printf("\t%s (id='%s')\n", school.getName(), school.getId());
                     continue;
                 }
 
