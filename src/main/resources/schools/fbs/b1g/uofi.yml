@@ -6,9 +6,9 @@ url: 'http://identitystandards.illinois.edu/graphicstandardsmanual/generalguidel
 colors:
   - id: 'basic'
     primary: '#002058'
-    secondary: '#002058'
-    accent: '#e87722'
+    secondary: '#e87722'
+    accent: null
   - id: 'professional'
     primary: '#606eb2'
-    secondary: '#606eb2'
-    accent: '#d45d00'
+    secondary: '#d45d00'
+    accent: null

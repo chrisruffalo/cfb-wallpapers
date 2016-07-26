@@ -9,9 +9,4 @@ colors:
     primary: '#000e2f'
     secondary: '#ffffff'
     accent: '#7c878e'
-  - id: 'alternate'
-    primary: '#000e2f'
-    secondary: '#7c878e'
-    accent: '#ffffff'
-
 

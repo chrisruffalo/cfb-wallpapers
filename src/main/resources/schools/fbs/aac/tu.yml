@@ -6,8 +6,8 @@ wiki: 'https://en.wikipedia.org/wiki/University_of_Tulsa'
 url: 'http://utulsa.edu/wp-content/uploads/2015/01/tu-graphic-style-guidelines-aug2014.pdf'
 colors:
   - id: 'basic'
-    primary: '#003dCC'
-    secondary: '#003dCC'
-    accent: '#ffe659'
+    primary: '#003dcc'
+    secondary: '#ffe659'
+    accent: null
 
 

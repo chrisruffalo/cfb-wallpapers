@@ -8,7 +8,7 @@ colors:
     primary: '#bb0000'
     secondary: '#666666'
     accent: '#ffffff'
-  - id: 'black-accent'
+  - id: 'accent'
     primary: '#bb0000'
     secondary: '#666666'
     accent: '#000000'

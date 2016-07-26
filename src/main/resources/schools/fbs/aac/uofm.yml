@@ -7,7 +7,7 @@ url: 'http://www.memphis.edu/logo/web-guidelines/'
 colors:
   - id: 'basic'
     primary: '#0d3182'
-    secondary: '#0d3182'
-    accent: '#888C8F'
+    secondary: '#888c8f'
+    accent: null
 
 

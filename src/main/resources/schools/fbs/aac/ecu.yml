@@ -7,8 +7,8 @@ url: 'http://www.ecu.edu/cs-admin/licensing/ecu-colors.cfm'
 colors:
   - id: 'basic'
     primary: '#592a8a'
-    secondary: '#592a8a'
-    accent: '#ffc702'
+    secondary: '#ffc702'
+    accent: null
   - id: 'accent'
     primary: '#592a8a'
     secondary: '#ffc702'

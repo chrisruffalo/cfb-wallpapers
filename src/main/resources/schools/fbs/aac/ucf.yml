@@ -8,9 +8,9 @@ colors:
   - id: 'basic'
     primary: '#000000'
     secondary: '#ffc904'
-    accent: '#000000'
+    accent: null
   - id: 'metalic'
     primary: '#000000'
     secondary: '#cc9900'
-    accent: '#000000'
+    accent: null
 

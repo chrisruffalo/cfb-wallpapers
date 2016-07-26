@@ -12,7 +12,3 @@ colors:
     primary: '#73000A'
     secondary: '#ffffff'
     accent: '#000000'
-  - id: 'pluff-mud'
-    primary: '#73000A'
-    secondary: '#000000'
-    accent: '#5f574f'

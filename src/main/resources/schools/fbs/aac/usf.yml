@@ -7,6 +7,6 @@ url: 'http://usfweb4.usf.edu/ucm/marketing/colors.aspx'
 colors:
   - id: 'basic'
     primary: '#006747'
-    secondary: '#006747'
-    accent: '#cfc493'
+    secondary: '#cfc493'
+    accent: null
 

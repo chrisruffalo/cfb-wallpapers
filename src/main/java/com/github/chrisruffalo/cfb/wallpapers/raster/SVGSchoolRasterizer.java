@@ -82,6 +82,13 @@ public class SVGSchoolRasterizer {
             }
 
             final String output = CHANGER.transform(template, colorSet);
+
+            // if null or empty output is produced then skip this color set because
+            // the accent color was missing (color sets for schools with no accent)
+            if(output == null || output.isEmpty()) {
+                continue;
+            }
+
             try {
                 Files.write(pathToSvg, output.getBytes());
             } catch (IOException e) {

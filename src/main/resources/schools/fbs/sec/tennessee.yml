@@ -6,5 +6,5 @@ url: 'http://tennessee.edu/static/identity/colors.html'
 colors:
   - id: 'basic'
     primary: '#f77f00'
-    secondary: '#f77f00'
-    accent: '#ffffff'
+    secondary: '#ffffff'
+    accent: null

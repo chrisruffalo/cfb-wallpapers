@@ -11,9 +11,11 @@
             background-color: "${color.secondaryColor}";
         }
 
+        <#if color.accentColor??>
         .${school.id}-${color.id}-accent {
             color: "${color.accentTextColor}"
             background-color: "${color.accentColor}";
         }
+        </#if>
     </#list>
 </#list>

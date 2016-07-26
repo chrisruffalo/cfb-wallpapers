@@ -5,6 +5,6 @@ conference: 'b1g'
 url: 'http://brand.msu.edu/design-visual/#color'
 colors:
   - id: 'basic'
-    primary: '#18543B'
-    secondary: '#97A2A2'
+    primary: '#18543b'
+    secondary: '#97a2a2'
     accent: '#ffffff'

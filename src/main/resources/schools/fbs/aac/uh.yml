@@ -7,10 +7,6 @@ url: 'https://ssl.uh.edu/marcomm/brand/graphic-standards/style-guidelines/color/
 colors:
   - id: 'basic'
     primary: '#c8102e'
-    secondary: '#c8102e'
-    accent: '#ffffff'
-  - id: 'accent'
-    primary: '#c8102e'
     secondary: '#ffffff'
     accent: '#00b388'
 

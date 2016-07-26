@@ -7,7 +7,7 @@ url: 'http://www.smu.edu/DevelopmentExternalAffairs/PublicAffairs/IntegratedMark
 colors:
   - id: 'basic'
     primary: '#cc0000'
-    secondary: '#cc0000'
-    accent: '#354CA1'
+    secondary: '#354Ca1'
+    accent: null
 
 

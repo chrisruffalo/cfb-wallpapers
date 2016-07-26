@@ -6,6 +6,7 @@ import com.github.chrisruffalo.cfb.wallpapers.load.SchoolYamlLoader;
 import com.github.chrisruffalo.cfb.wallpapers.model.School;
 import com.github.chrisruffalo.cfb.wallpapers.raster.SVGSchoolRasterizer;
 import com.github.chrisruffalo.cfb.wallpapers.util.ResourceLoader;
+import com.github.chrisruffalo.cfb.wallpapers.web.SchoolPageGenerator;
 import com.github.chrisruffalo.cfb.wallpapers.web.StaticResourceGenerator;
 import org.apache.commons.io.FileUtils;
 
@@ -202,6 +203,13 @@ public class Generator {
                 } else {
                     final SVGSchoolRasterizer rasterizer = new SVGSchoolRasterizer(school, outputPath);
                     rasterizer.raster();
+
+                    // generate web resources if required
+                    if(options.isGenerateWeb()) {
+                        final SchoolPageGenerator schoolPageGenerator = new SchoolPageGenerator(school);
+                        schoolPageGenerator.generate();
+                    }
+
                     System.out.printf("[DONE]\n");
                 }
             }

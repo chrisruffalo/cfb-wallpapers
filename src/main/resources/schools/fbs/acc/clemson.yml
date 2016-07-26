@@ -7,10 +7,5 @@ url: 'https://www.clemson.edu/brand/guide/color.html'
 colors:
   - id: 'basic'
     primary: '#f66733'
-    secondary: '#ffffff'
-    accent: '#522d80'
-  - id: 'alternate'
-    primary: '#f66733'
     secondary: '#522d80'
     accent: '#ffffff'
-

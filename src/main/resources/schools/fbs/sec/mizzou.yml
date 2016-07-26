@@ -6,5 +6,5 @@ url: 'http://identity.missouri.edu/graphic-identity-standards/3-color/3.1-offici
 colors:
   - id: 'basic'
     primary: '#f1b82d'
-    secondary: '#f1b82d'
-    accent: '#000000'
+    secondary: '#000000'
+    accent: null

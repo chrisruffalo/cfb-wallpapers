@@ -7,8 +7,8 @@ colors:
   - id: 'basic'
     primary: '#7a0019'
     secondary: '#ffcc33'
-    accent: '#7a0019'
+    accent: null
   - id: 'alternate'
     primary: '#ffcc33'
     secondary: '#7a0019'
-    accent: '#ffcc33'
+    accent: null

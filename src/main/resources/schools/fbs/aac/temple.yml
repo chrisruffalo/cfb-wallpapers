@@ -7,8 +7,8 @@ url: 'https://branding.temple.edu/sites/branding/files/documents/Temple_StyleGui
 colors:
   - id: 'basic'
     primary: '#a41e35'
-    secondary: '#a41e35'
-    accent: '#ffffff'
+    secondary: '#ffffff'
+    accent: null
   - id: 'accent'
     primary: '#a41e35'
     secondary: '#ffffff'

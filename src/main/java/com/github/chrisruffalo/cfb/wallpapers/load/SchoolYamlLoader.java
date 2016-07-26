@@ -4,6 +4,7 @@ import com.github.chrisruffalo.cfb.wallpapers.model.ColorSet;
 import com.github.chrisruffalo.cfb.wallpapers.model.School;
 import org.yaml.snakeyaml.Yaml;
 
+import java.awt.*;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +55,7 @@ public class SchoolYamlLoader {
             school.setColors(this.parseColors(colorDocument));
         } // if it wasn't a list there are no colors defined for the school
 
-        // return school
+        // return parsed school
         return school;
     }
 
@@ -68,14 +69,42 @@ public class SchoolYamlLoader {
 
             final ColorSet colorSet = new ColorSet();
             colorSet.setId((String)singleColor.get(KEY_ID));
-            colorSet.setPrimaryColor((String)singleColor.get(KEY_PRIMARY));
-            colorSet.setSecondaryColor((String)singleColor.get(KEY_SECONDARY));
-            colorSet.setAccentColor((String)singleColor.get(KEY_ACCENT));
+            colorSet.setPrimaryColor(this.parseColorString((String)singleColor.get(KEY_PRIMARY)));
+            colorSet.setSecondaryColor(this.parseColorString((String)singleColor.get(KEY_SECONDARY)));
+
+            if(singleColor.containsKey(KEY_ACCENT)) {
+                colorSet.setAccentColor(this.parseColorString((String)singleColor.get(KEY_ACCENT)));
+            } else {
+                colorSet.setAccentColor(null);
+            }
 
             colorSets.add(colorSet);
         }
 
         return colorSets;
+    }
+
+    private String parseColorString(final String colorStringInput) {
+        // don't do anything with null colors.
+        if(colorStringInput == null) {
+            return null;
+        }
+
+        // if hex, leave as hex
+        if(colorStringInput.startsWith("#")) {
+            return colorStringInput;
+        }
+
+        if(colorStringInput.startsWith("rgb(") && colorStringInput.endsWith(")")) {
+            // convert rgb to integers and make awt color do the work
+            final String[] rgbSplit = colorStringInput.substring(4, colorStringInput.length() - 2).split(",");
+            final Color color = new Color(Integer.parseInt(rgbSplit[0]), Integer.parseInt(rgbSplit[1]), Integer.parseInt(rgbSplit[2]));
+            // get hex color
+            return "#" + Integer.toHexString(color.getRGB()).substring(2);
+        }
+
+        // don't do anything but it will probably fail
+        return colorStringInput;
     }
 
 }
