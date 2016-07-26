@@ -6,6 +6,7 @@ import com.github.chrisruffalo.cfb.wallpapers.load.SchoolYamlLoader;
 import com.github.chrisruffalo.cfb.wallpapers.model.School;
 import com.github.chrisruffalo.cfb.wallpapers.raster.SVGSchoolRasterizer;
 import com.github.chrisruffalo.cfb.wallpapers.util.ResourceLoader;
+import com.github.chrisruffalo.cfb.wallpapers.web.StaticResourceGenerator;
 import org.apache.commons.io.FileUtils;
 
 import java.io.IOException;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -103,6 +105,7 @@ public class Generator {
         final SchoolYamlLoader loader = new SchoolYamlLoader();
 
         // save schools into map by conference / bowl status
+        final LinkedList<School> allSchools = new LinkedList<>();
         final Map<String, List<School>> fbsSchoolsByConference = new HashMap<>();
         final Map<String, List<School>> fcsSchoolsByConference = new HashMap<>();
 
@@ -129,6 +132,7 @@ public class Generator {
                 byConf.put(conference, schools);
             }
             schools.add(school);
+            allSchools.add(school);
         }
 
         // fbs schools
@@ -139,6 +143,13 @@ public class Generator {
         if(!options.isFbsOnly()) {
             System.out.println("===== FCS =====");
             handleSchoolMap(fcsSchoolsByConference, options, outputPath);
+        }
+
+        // if web, tie together with static web content
+        if(options.isGenerateWeb()) {
+            System.out.printf("Generating web resources... ");
+            StaticResourceGenerator.generateCss(outputPath, allSchools);
+            System.out.printf("[DONE]");
         }
     }
 

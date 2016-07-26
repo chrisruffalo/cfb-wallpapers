@@ -29,8 +29,8 @@ public class SchoolYamlLoaderTest {
         Assert.assertFalse(colorSetList.isEmpty());
         final ColorSet primary = colorSetList.get(0);
         Assert.assertEquals("#4d90cd", primary.getPrimaryColor());
-        Assert.assertEquals("#003263", primary.getSecondaryColor());
-        Assert.assertEquals("#ffffff", primary.getAccentColor());
+        Assert.assertEquals("#ffffff", primary.getSecondaryColor());
+        Assert.assertEquals("#003263", primary.getAccentColor());
 
     }
 

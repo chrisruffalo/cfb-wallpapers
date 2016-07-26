@@ -29,7 +29,7 @@ public class SVGSchoolRasterizerTest {
 
         // assert files exist
         Assert.assertTrue(Files.exists(Paths.get("target/test/output/fcs/socon/thecitadel/thecitadel-inset_stripe-basic_1920_1080.png")));
-        Assert.assertTrue(Files.exists(Paths.get("target/test/output/fcs/socon/thecitadel/thecitadel-two_stripes-basic.svg")));
+        Assert.assertTrue(Files.exists(Paths.get("target/test/output/fcs/socon/thecitadel/svg/thecitadel-two_stripes-basic.svg")));
     }
 
 }

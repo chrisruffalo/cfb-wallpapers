@@ -43,6 +43,9 @@ public class GeneratorOptions {
     @Parameter(names = {"--help", "-h", "-?"}, description = "Display the help message")
     private boolean help;
 
+    @Parameter(names = {"--web", "-w"}, description = "Generate web content (html, links, etc) to go with the generated wallpaper. Default: false")
+    private boolean generateWeb;
+
     @Parameter(names = {"--list-schools"}, description = "Instead of doing anything else, list each school.")
     private boolean list;
 
@@ -124,6 +127,14 @@ public class GeneratorOptions {
 
     public void setHelp(boolean help) {
         this.help = help;
+    }
+
+    public boolean isGenerateWeb() {
+        return generateWeb;
+    }
+
+    public void setGenerateWeb(boolean generateWeb) {
+        this.generateWeb = generateWeb;
     }
 
     public boolean isList() {

@@ -1,0 +1,19 @@
+<#list schools as school>
+    // ============= ${school.display()} - ${school.id} =============
+    <#list school.colors as color>
+        .${school.id}-${color.id}-primary {
+            color: "${color.primaryTextColor}";
+            background-color: "${color.primaryColor}";
+        }
+
+        .${school.id}-${color.id}-secondary {
+            color: "${color.secondaryTextColor}";
+            background-color: "${color.secondaryColor}";
+        }
+
+        .${school.id}-${color.id}-accent {
+            color: "${color.accentTextColor}"
+            background-color: "${color.accentColor}";
+        }
+    </#list>
+</#list>

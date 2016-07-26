@@ -1,5 +1,7 @@
 package com.github.chrisruffalo.cfb.wallpapers.model;
 
+import com.github.chrisruffalo.cfb.wallpapers.util.ColorUtil;
+
 /**
  * <p></p>
  *
@@ -43,4 +45,16 @@ public class ColorSet {
     public void setAccentColor(String accentColor) {
         this.accentColor = accentColor;
     }
-}
+
+    public String getPrimaryTextColor() {
+        return ColorUtil.getTextColor(this.getPrimaryColor());
+    }
+
+    public String getSecondaryTextColor() {
+        return ColorUtil.getTextColor(this.getSecondaryColor());
+    }
+
+    public String getAccentTextColor() {
+        return ColorUtil.getTextColor(this.getAccentColor());
+    }
+ }

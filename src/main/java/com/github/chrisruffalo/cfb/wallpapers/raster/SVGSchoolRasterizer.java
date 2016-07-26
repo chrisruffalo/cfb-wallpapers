@@ -14,9 +14,8 @@ import com.kitfox.svg.SVGUniverse;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -72,25 +71,36 @@ public class SVGSchoolRasterizer {
             // create file name
             final String fileNameBase = this.school.getId() + "-" + templateName + "-" + colorSet.getId();
 
+            // path to svg
+            final Path pathToSvg = this.pathToOutput.resolve("svg").resolve(fileNameBase + ".svg");
+            try {
+                if (!Files.isDirectory(pathToSvg.getParent())) {
+                    Files.createDirectories(pathToSvg.getParent());
+                }
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+
             final String output = CHANGER.transform(template, colorSet);
             try {
-                Files.write(this.pathToOutput.resolve(fileNameBase + ".svg"), output.getBytes());
+                Files.write(pathToSvg, output.getBytes());
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
             // only one output size for now
-            this.writeSvgToPng(fileNameBase, BuiltInOutputSize.O_1920_1080, output);
+            this.writeSvgToPng(pathToSvg, fileNameBase, BuiltInOutputSize.O_1920_1080);
         }
     }
 
-    private void writeSvgToPng(final String fileNameBase, final OutputSize size, final String svgContents) {
+    private void writeSvgToPng(final Path svgPath, final String fileNameBase, final OutputSize size) {
         // create universe
         final SVGUniverse universe = SVGCache.getSVGUniverse();
 
-        final Path svgPath = this.pathToOutput.resolve(fileNameBase + ".svg");
+        // output
+        final Path outputFile = this.pathToOutput.resolve(fileNameBase + "_" + size.w_int() + "_" + size.h_int() + ".png");
 
-        try (final InputStream svgInputStream = new ByteArrayInputStream(svgContents.getBytes())) {
+        try (final OutputStream imageOutput = Files.newOutputStream(outputFile)) {
             final SVGDiagram diagram = universe.getDiagram(universe.loadSVG(svgPath.toUri().toURL()));
 
             // transform!
@@ -107,11 +117,8 @@ public class SVGSchoolRasterizer {
             // render diagram
             diagram.render(ig2);
 
-            // output
-            final Path outputFile = this.pathToOutput.resolve(fileNameBase + "_" + size.w_int() + "_" + size.h_int() + ".png");
-
             // write
-            ImageIO.write(bi, "PNG", Files.newOutputStream(outputFile));
+            ImageIO.write(bi, "PNG", imageOutput);
 
             ig2.dispose();
         } catch (IOException | SVGException ex) {
