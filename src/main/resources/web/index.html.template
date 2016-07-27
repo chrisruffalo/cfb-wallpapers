@@ -57,7 +57,7 @@
                 <#list fbsConferences as confKey>
                 <#assign conferenceSchools = fbs[confKey]>
                 <!-- conference -->
-                <div class="row">
+                <div class="row conf-${confKey}">
                     <div class="col s12">
                         <div class="card blue-grey darken-1">
                             <div class="card-content white-text">
@@ -66,19 +66,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row conf-${confKey}">
                     <#list conferenceSchools as school>
                     <#if school.colors[0]??>
-                    <!-- team card -->
+                    <!-- individual school card -->
                     <div class="col s12 m6 l4">
-                        <div class="card    ">
+                        <div class="card school-${school.id} conf-${confKey}">
                             <div class="card-content">
-                                <span class="card-title grey-text text-darken-4">${school.display()}</span>
                                 <div class="row">
-                                    <div class="col s6 ${school.id}-basic-primary">
+                                    <div class="col s10 offset-s1">
+                                        <a href="fbs/${confKey}/${school.id}/${school.id}.html" class="grey-text text-darken-4">${school.display()}</span>
+                                    </div>
+                                </div>
+                                <div class="row swatches">
+                                    <div class="col s5 offset-s1 ${school.id}-0-primary swatch swatch-left center-align">
                                         ${school.colors[0].primaryColor}
                                     </div>
-                                    <div class="col s6 ${school.id}-basic-secondary">
+                                    <div class="col s5 ${school.id}-0-secondary swatch swatch-right center-align">
                                         ${school.colors[0].secondaryColor}
                                     </div>
                                 </div>
@@ -102,7 +106,7 @@
             </div>
             <div class="footer-copyright">
                 <div class="container">
-                    © 2016 Christopher Ruffalo
+                    <p>© 2016 Christopher Ruffalo</p>
                     <a class="grey-text text-lighten-4 right" href="https://github.com/chrisruffalo/cfb-wallpapers"><i class="fa fa-github" aria-hidden="true"></i> On Github</a>
                 </div>
             </div>

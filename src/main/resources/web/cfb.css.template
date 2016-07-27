@@ -11,22 +11,37 @@ main {
 
 /* ============= Core Styling ============= */
 
+.swatch {
+    height: 70px;
+    line-height: 70px;
+    border-color: #6e6e6e;
+}
+
+.swatch-left {
+    border-width: 1px 0px 1px 1px;
+    border-style: solid;
+}
+
+.swatch-right {
+    border-width: 1px 1px 1px 0px;
+    border-style: solid;
+}
 
 <#list schools as school>
 /* ============= ${school.display()} - id:'${school.id}' ============= */
     <#list school.colors as color>
 /* === id: '${color.id}' === */
-.${school.id}-${color.id}-primary {
+.${school.id}-${color.id}-primary, .${school.id}-${color?index}-primary {
     color: ${color.primaryTextColor};
     background-color: ${color.primaryColor};
 }
 
-.${school.id}-${color.id}-secondary {
+.${school.id}-${color.id}-secondary, .${school.id}-${color?index}-secondary {
     color: ${color.secondaryTextColor};
     background-color: ${color.secondaryColor};
 }
 <#if color.accentColor??>
-.${school.id}-${color.id}-accent {
+.${school.id}-${color.id}-accent, .${school.id}-${color?index}-accent {
     color: ${color.accentTextColor}"
     background-color: ${color.accentColor};
 }
