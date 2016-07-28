@@ -4,7 +4,6 @@ import com.github.chrisruffalo.cfb.wallpapers.config.GeneratorOptions;
 import com.github.chrisruffalo.cfb.wallpapers.model.Divisions;
 import com.github.chrisruffalo.cfb.wallpapers.util.ResourceLoader;
 import com.github.chrisruffalo.cfb.wallpapers.util.TemplateCreator;
-import com.yahoo.platform.yui.compressor.YUICompressor;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -34,9 +33,7 @@ public class StaticResourceGenerator {
     // input/resource locations
     private static final String CSS_TEMPLATE_PATH = "web/cfb.css.template";
     private static final String JS_TEMPLATES_PATH = "web/js/";
-    private static final String[] JS_RESOURCES = {
-        "search.js"
-    };
+    private static final String[] JS_RESOURCES = {};
     private static final String HTML_INDEX_TEMPLATE_PATH = "web/index.html.template";
     private static final String CSS_STATIC_PATH = "web/static/css/";
     private static final String[] CSS_RESOURCES = new String[] {
@@ -142,16 +139,8 @@ public class StaticResourceGenerator {
                 final Path jsResource = jsOutputPath.resolve(jsFile).normalize().toAbsolutePath();
                 generateResource(dataModel, JS_TEMPLATES_PATH + jsFile + ".template", jsResource);
 
-                // create min
-                final String jsMin = jsFile.replace(".js", ".min.js");
-                final Path jsMinResource = jsResource.resolveSibling(jsMin);
-
-                // minify
-                YUICompressor.main(new String[]{"-o", jsMinResource.toString(), jsResource.toString()});
-
                 // add output to hash
                 dataModel.put("sha512_" + conditionName(jsFile), hashResource(jsResource));
-                dataModel.put("sha512_" + conditionName(jsMin), hashResource(jsMinResource));
             }
 
         } catch (Exception ex) {

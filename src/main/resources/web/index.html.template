@@ -7,17 +7,20 @@
         <!-- meta info -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- cfb colors -->
-        <link rel="stylesheet" href="resources/css/cfb.css"/>
+        <!-- cfb colors, the cfb.css is also available at 'resources/css/cfb.css' for use outside this page -->
+        <!-- this is mainly done to reduce the number of requests because gzip makes this page very small -->
+        <style>
+        <#include "cfb.css.template">
+        </style>
 
         <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css"/>
 
         <!-- Font-Awesome -->
         <link rel="stylesheet" href="resources/css/font-awesome.min.css" integrity="sha512-${sha512_font_awesome_min_css}" crossorigin="anonymous"/>
 
         <!-- google icons -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     </head>
     <body>
         <!-- header -->
@@ -123,7 +126,7 @@
             </div>
             <div class="footer-copyright">
                 <div class="container">
-                    <p><i class="fa fa-copyright" aria-hidden="true"></i> 2016 Christopher Ruffalo</p>
+                    <i class="fa fa-copyright" aria-hidden="true"></i> 2016 Christopher Ruffalo
                     <a class="grey-text text-lighten-4 right" href="https://github.com/chrisruffalo/cfb-wallpapers"><i class="fa fa-github" aria-hidden="true"></i> On Github</a>
                 </div>
             </div>
@@ -135,7 +138,9 @@
         <!-- supporting highlight thing -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/7.0.2/jquery.mark.min.js"></script>
         <!-- import functionality js -->
-        <script type="text/javascript" src="resources/js/search.min.js"></script>
+        <script type="text/javascript">
+        <#include "js/search.js.template">
+        </script>
     </body>
 
 </html>
