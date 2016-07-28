@@ -1,13 +1,18 @@
 package com.github.chrisruffalo.cfb.wallpapers.raster;
 
 import com.github.chrisruffalo.cfb.wallpapers.load.SchoolYamlLoader;
+import com.github.chrisruffalo.cfb.wallpapers.model.OutputFormat;
+import com.github.chrisruffalo.cfb.wallpapers.model.OutputTarget;
 import com.github.chrisruffalo.cfb.wallpapers.model.School;
+import com.github.chrisruffalo.cfb.wallpapers.model.Template;
 import com.github.chrisruffalo.cfb.wallpapers.util.ResourceLoader;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * <p></p>
@@ -24,12 +29,17 @@ public class SVGSchoolRasterizerTest {
         // create rasterizer for school with base output path in test area
         final SVGSchoolRasterizer rasterizer = new SVGSchoolRasterizer("fcs", "socon", school, Paths.get("target/test/output"));
 
+        // output targets
+        final OutputTarget target = new OutputTarget("desktop", "templates");
+        target.getTemplates().add(new Template(target, "slant", "slant test"));
+        target.getFormats().add(new OutputFormat("small", 200, 200));
+
         // rasterize
-        rasterizer.raster();
+        rasterizer.raster(Collections.singletonList(target));
 
         // assert files exist
-        Assert.assertTrue(Files.exists(Paths.get("target/test/output/fcs/socon/thecitadel/thecitadel-inset_stripe-basic_1920_1080.png")));
-        Assert.assertTrue(Files.exists(Paths.get("target/test/output/fcs/socon/thecitadel/svg/thecitadel-two_stripes-basic.svg")));
+        Assert.assertTrue(Files.exists(Paths.get("target/test/output/fcs/socon/thecitadel/desktop/thecitadel-slant-basic_small.png")));
+        Assert.assertTrue(Files.exists(Paths.get("target/test/output/fcs/socon/thecitadel/svg/thecitadel-slant-basic.svg")));
     }
 
 }

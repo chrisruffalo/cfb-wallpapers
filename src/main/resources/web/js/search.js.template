@@ -6,8 +6,9 @@ var stringsToIds = {};
 // data map
 divisions = {};
 
+// reusable function for clearing the search
 function clearSearch() {
-    $('.searchable').unmark();
+    $('.searchable, .swatch').unmark();
     $('.searchable').show();
 }
 
@@ -85,6 +86,7 @@ function search(searchString) {
 
     // do action to hide elements not found, starting by unmarking and then remarking
     $('.searchable').unmark().mark(searchString).show().not(foundSelector).hide().unmark();
+    $('.swatch').unmark();
 
     // just to keep up with it
     return foundSelector;

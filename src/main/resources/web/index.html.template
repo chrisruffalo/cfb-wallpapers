@@ -89,7 +89,7 @@
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col s10 offset-s1">
-                                        <a href="fbs/${confKey}/${school.id}/${school.id}.html" class="grey-text text-darken-4">${school.display()}</a>
+                                        <a href="${division.id}/${confKey}/${school.id}/${school.id}.html" class="grey-text text-darken-4">${school.display()}</a>
                                     </div>
                                 </div>
                                 <div class="row swatches">
@@ -116,21 +116,8 @@
             </div>
         </main>
 
-        <footer class="page-footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col s12">
-                        <p class="grey-text text-lighten-4">Enjoy!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    <i class="fa fa-copyright" aria-hidden="true"></i> 2016 Christopher Ruffalo
-                    <a class="grey-text text-lighten-4 right" href="https://github.com/chrisruffalo/cfb-wallpapers"><i class="fa fa-github" aria-hidden="true"></i> On Github</a>
-                </div>
-            </div>
-        </footer>
+        <!-- footer -->
+        <#include "footer.html.template">
 
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

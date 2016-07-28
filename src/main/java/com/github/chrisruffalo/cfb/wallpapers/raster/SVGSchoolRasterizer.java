@@ -1,11 +1,11 @@
 package com.github.chrisruffalo.cfb.wallpapers.raster;
 
-import com.github.chrisruffalo.cfb.wallpapers.model.BuiltInOutputSize;
 import com.github.chrisruffalo.cfb.wallpapers.model.ColorSet;
-import com.github.chrisruffalo.cfb.wallpapers.model.OutputSize;
+import com.github.chrisruffalo.cfb.wallpapers.model.OutputFormat;
+import com.github.chrisruffalo.cfb.wallpapers.model.OutputTarget;
 import com.github.chrisruffalo.cfb.wallpapers.model.School;
+import com.github.chrisruffalo.cfb.wallpapers.model.Template;
 import com.github.chrisruffalo.cfb.wallpapers.transform.SVGColorChange;
-import com.github.chrisruffalo.cfb.wallpapers.util.ResourceLoader;
 import com.kitfox.svg.SVGCache;
 import com.kitfox.svg.SVGDiagram;
 import com.kitfox.svg.SVGException;
@@ -16,6 +16,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -45,28 +46,30 @@ public class SVGSchoolRasterizer {
         }
     }
 
-    public void raster() {
-        // load templates
-        final List<String> templates = ResourceLoader.loadResourceLocations("templates/desktop");
-        if(templates.isEmpty()) {
-            return;
-        }
-
-        // raster each template
-        templates.forEach(this::rasterTemplate);
+    public void raster(final List<OutputTarget> targets) {
+        // raster for each target
+        targets.forEach(this::rasterForTarget);
     }
 
-    private void rasterTemplate(final String templateResource) {
-        // load template once
-        final String template = ResourceLoader.loadResourceAsString(templateResource);
+    private void rasterForTarget(final OutputTarget target) {
+        for(final Template template : target.getTemplates()) {
+            if(target.getFormats().isEmpty()) {
+                continue;
+            }
+            this.rasterTemplate(template, target.getFormats());
+        }
+    }
 
+    private void rasterTemplate(final Template template, final List<OutputFormat> formats) {
         // get template name itself
-        final String templateName = templateResource.substring(templateResource.lastIndexOf("/") + 1, templateResource.lastIndexOf("."));
+        final String templateId = template.getId();
+
+        final String templateContents = template.contents();
 
         // rasterize in each color set
         for(final ColorSet colorSet : this.school.getColors()) {
             // create file name
-            final String fileNameBase = this.school.getId() + "-" + templateName + "-" + colorSet.getId();
+            final String fileNameBase = this.school.getId() + "-" + templateId + "-" + colorSet.getId();
 
             // path to svg
             final Path pathToSvg = this.pathToOutput.resolve("svg").resolve(fileNameBase + ".svg");
@@ -78,7 +81,7 @@ public class SVGSchoolRasterizer {
                 throw new RuntimeException(ex);
             }
 
-            final String output = CHANGER.transform(template, colorSet);
+            final String output = CHANGER.transform(templateContents, colorSet);
 
             // if null or empty output is produced then skip this color set because
             // the accent color was missing (color sets for schools with no accent)
@@ -92,26 +95,45 @@ public class SVGSchoolRasterizer {
                 e.printStackTrace();
             }
 
-            // only one output size for now
-            this.writeSvgToPng(pathToSvg, fileNameBase, BuiltInOutputSize.O_1920_1080);
+            // create universe
+            final SVGUniverse universe = SVGCache.getSVGUniverse();
+
+            // load svg diagram for later use
+            final SVGDiagram diagram;
+            try {
+                diagram = universe.getDiagram(universe.loadSVG(pathToSvg.toUri().toURL()));
+
+                // only one output size for now
+                for(final OutputFormat format : formats) {
+                    this.writeSvgToPng(diagram, template.getTarget().getId(), fileNameBase, format);
+                }
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            }
+
+            universe.clear();
         }
     }
 
-    private void writeSvgToPng(final Path svgPath, final String fileNameBase, final OutputSize size) {
-        // create universe
-        final SVGUniverse universe = SVGCache.getSVGUniverse();
+    private void writeSvgToPng(final SVGDiagram diagram, final String targetId, final String fileNameBase, final OutputFormat size) {
 
         // output
-        final Path outputFile = this.pathToOutput.resolve(fileNameBase + "_" + size.w_int() + "_" + size.h_int() + ".png");
+        final Path outputFile = this.pathToOutput.resolve(targetId).resolve(fileNameBase + "_" + size.getId() + ".png");
+        if(!Files.isDirectory(outputFile.getParent())) {
+            try {
+                Files.createDirectories(outputFile.getParent());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
         try (final OutputStream imageOutput = Files.newOutputStream(outputFile)) {
-            final SVGDiagram diagram = universe.getDiagram(universe.loadSVG(svgPath.toUri().toURL()));
 
             // transform!
             final AffineTransform transform = new AffineTransform();
-            transform.setToScale(size.w() / diagram.getWidth(), size.h() / diagram.getHeight());
+            transform.setToScale(size.w_double() / diagram.getWidth(), size.h_double() / diagram.getHeight());
 
-            BufferedImage bi = new BufferedImage(size.w_int(), size.h_int(), BufferedImage.TYPE_INT_ARGB);
+            BufferedImage bi = new BufferedImage(size.getW(), size.getH(), BufferedImage.TYPE_INT_ARGB);
             Graphics2D ig2 = bi.createGraphics();
             ig2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
@@ -126,9 +148,7 @@ public class SVGSchoolRasterizer {
 
             ig2.dispose();
         } catch (IOException | SVGException ex) {
-            ex.printStackTrace();
-        } finally {
-            universe.clear();
+            throw new RuntimeException(ex);
         }
     }
 

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- title and other info -->
+        <title>${school.display()}</title>
+
+        <!-- meta info -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- school colors only -->
+        <style>
+        <#include "core.css.template">
+
+        <#list school.colors as color>
+        /* === id: '${color.id}' === */
+        .${school.id}-${color.id}-primary, .${school.id}-${color?index}-primary {
+            color: ${color.primaryTextColor};
+            background-color: ${color.primaryColor};
+        }
+
+        .${school.id}-${color.id}-secondary, .${school.id}-${color?index}-secondary {
+            color: ${color.secondaryTextColor};
+            background-color: ${color.secondaryColor};
+        }
+
+        <#if color.accentColor??>
+        .${school.id}-${color.id}-accent, .${school.id}-${color?index}-accent {
+            color: ${color.accentTextColor};
+            background-color: ${color.accentColor};
+        }
+        </#if>
+        </#list>
+        </style>
+
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css"/>
+
+        <!-- Font-Awesome -->
+        <link rel="stylesheet" href="/resources/css/font-awesome.min.css"/>
+
+        <!-- google icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    </head>
+    <body>
+
+        <!-- header -->
+        <header>
+            <!-- navigation -->
+            <nav class="${school.id}-0-primary">
+                <div class="nav-wrapper container ${school.id}-0-primary">
+                    <a href="/index.html" class="brand-logo">${school.display()}</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- main -->
+        <main>
+            <!-- todo: information section -->
+
+            <!-- output target section -->
+            <div class="container main-container">
+                <!-- division level -->
+                <#list targets as outputTarget>
+                <!-- division -->
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                              <span class="card-title">${outputTarget.name}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- row container for outputs -->
+                <div class="row">
+                    <#list school.colors as colorSet>
+                    <!-- individual colors set card -->
+                    <div class="col s12">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="row">
+                                    <div class="col s5 offset-s1 valign-wrapper">
+                                        <h5 class="valign">Color Set: ${colorSet.id}</h5>
+                                    </div> <!-- end of title -->
+                                    <div class="col s5">
+                                        <div class="row swatches">
+                                        <#if colorSet.accentColor??>
+                                            <div class="col s4 ${school.id}-${colorSet.id}-primary swatch swatch-left center-align">
+                                                ${colorSet.primaryColor}
+                                            </div>
+                                            <div class="col s4 ${school.id}-${colorSet.id}-accent swatch swatch-center center-align">
+                                                ${colorSet.accentColor}
+                                            </div>
+                                            <div class="col s4 ${school.id}-${colorSet.id}-secondary swatch swatch-right center-align">
+                                                ${colorSet.secondaryColor}
+                                            </div>
+                                        <#else>
+                                            <div class="col s6 ${school.id}-${colorSet.id}-primary swatch swatch-left center-align">
+                                                ${colorSet.primaryColor}
+                                            </div>
+                                            <div class="col s6 ${school.id}-${colorSet.id}-secondary swatch swatch-right center-align">
+                                                ${colorSet.secondaryColor}
+                                            </div>
+                                        </#if>
+                                        </div>
+                                    </div> <!-- end of swatches -->
+                                </div> <!-- end of card inner row -->
+                            </div> <! -- end of card-content -->
+                        </div> <!-- done with template card -->
+                    </div> <!-- done with containing col -->
+                    </#list>
+                </div> <!-- done with row -->
+                <!-- done with individual output target -->
+                </#list>
+            <!-- done with main container -->
+            </div>
+        </main>
+
+        <!-- footer -->
+        <#include "footer.html.template">
+
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    </body>
+</html>

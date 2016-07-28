@@ -1,24 +1,34 @@
 ---
 desktop:
+  name: 'Desktop'
   formats:
+    - id: 'thumb'
+      width: '324'
+      height: '216'
     - id: '1080p'
       width: '1920'
       height: '1080'
   templates:
     - id: 'inset_stripe'
       name: 'Stripe with Accent'
-      accent: true
     - id: 'checker'
       name: 'Checker Stripe'
     - id: 'slant'
       name: 'Two Slanted Lines'
     - id: 'slant_stripe'
       name: 'Slant with Stripe'
-      accent: true
     - id: 'two_stripes'
       name: 'Two Vertical Stripes'
 phone:
+  name: 'Mobile'
   formats:
+    - id: 'thumb'
+      width: '216'
+      height: '324'
     - id: 'iphone6'
-      width: '400'
-      height: '600'
+      width: '750'
+      height: '1334'
+    - id: 'iphone6p'
+      width: '1080'
+      height: '1920'
+

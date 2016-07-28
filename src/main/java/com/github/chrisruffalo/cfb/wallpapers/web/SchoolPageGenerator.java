@@ -1,6 +1,7 @@
 package com.github.chrisruffalo.cfb.wallpapers.web;
 
 import com.github.chrisruffalo.cfb.wallpapers.model.Division;
+import com.github.chrisruffalo.cfb.wallpapers.model.OutputTarget;
 import com.github.chrisruffalo.cfb.wallpapers.model.School;
 import com.github.chrisruffalo.cfb.wallpapers.util.TemplateCreator;
 import freemarker.template.Template;
@@ -11,6 +12,7 @@ import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,7 +31,7 @@ public class SchoolPageGenerator {
         this.school = school;
     }
 
-    public void generate(final Path outputPath) {
+    public void generate(final List<OutputTarget> outputTargets, final Path outputPath) {
         final Path schoolPath = outputPath.resolve(this.division.getId()).resolve(this.conference).resolve(this.school.getId()).normalize().toAbsolutePath();
         if(!Files.isDirectory(schoolPath)) {
             try {
@@ -44,7 +46,8 @@ public class SchoolPageGenerator {
         final Map<String, Object> model = new HashMap<>();
         model.put("division", this.division);
         model.put("conference", this.conference);
-        model.put("school", school);
+        model.put("school", this.school);
+        model.put("targets", outputTargets);
 
         // write template out
         try (final Writer writer = new OutputStreamWriter(Files.newOutputStream(htmlPath))){

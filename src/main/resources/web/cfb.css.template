@@ -1,35 +1,5 @@
-/* ============= HTML ============= */
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-}
 
-main {
-    flex: 1 0 auto;
-}
-
-/* ============= Core Styling ============= */
-
-.division-header {
-    background-color: #000000 !important;
-}
-
-.swatch {
-    height: 70px;
-    line-height: 70px;
-    border-color: #6e6e6e;
-}
-
-.swatch-left {
-    border-width: 1px 0px 1px 1px;
-    border-style: solid;
-}
-
-.swatch-right {
-    border-width: 1px 1px 1px 0px;
-    border-style: solid;
-}
+<#include "core.css.template">
 
 <#list schools as school>
 /* ============= ${school.display()} - id:'${school.id}' ============= */
@@ -44,9 +14,9 @@ main {
     color: ${color.secondaryTextColor};
     background-color: ${color.secondaryColor};
 }
-<#if color.accentColor??>
+        <#if color.accentColor??>
 .${school.id}-${color.id}-accent, .${school.id}-${color?index}-accent {
-    color: ${color.accentTextColor}"
+    color: ${color.accentTextColor};
     background-color: ${color.accentColor};
 }
 

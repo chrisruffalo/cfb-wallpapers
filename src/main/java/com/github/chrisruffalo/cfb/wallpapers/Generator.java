@@ -3,9 +3,11 @@ package com.github.chrisruffalo.cfb.wallpapers;
 import com.beust.jcommander.JCommander;
 import com.github.chrisruffalo.cfb.wallpapers.config.GeneratorOptions;
 import com.github.chrisruffalo.cfb.wallpapers.load.DivisionYamlLoader;
+import com.github.chrisruffalo.cfb.wallpapers.load.OutputDescriptionLoader;
 import com.github.chrisruffalo.cfb.wallpapers.load.SchoolYamlLoader;
 import com.github.chrisruffalo.cfb.wallpapers.model.Division;
 import com.github.chrisruffalo.cfb.wallpapers.model.Divisions;
+import com.github.chrisruffalo.cfb.wallpapers.model.OutputTarget;
 import com.github.chrisruffalo.cfb.wallpapers.model.School;
 import com.github.chrisruffalo.cfb.wallpapers.raster.SVGSchoolRasterizer;
 import com.github.chrisruffalo.cfb.wallpapers.util.ResourceLoader;
@@ -44,6 +46,9 @@ public class Generator {
         // first load sorted and then load schools by division
         final Divisions divisions = DivisionYamlLoader.loadDivisions("schools/divisions.yml");
 
+        // load output targets
+        final List<OutputTarget> targets = OutputDescriptionLoader.load(ResourceLoader.loadResource("outputs.yml"));
+
         // get output dir
         final Path outputPath = Paths.get(options.getOutputPath()).toAbsolutePath().normalize();
         if(Files.isDirectory(outputPath) && options.isClean()) {
@@ -73,7 +78,7 @@ public class Generator {
         // handle output for each division that has content
         for(final Division division : divisions.getSortedDivisions()) {
             System.out.printf("\n===== %s =====\n", division.getName());
-            handleDivisionOutput(division, options, outputPath);
+            handleDivisionOutput(division, targets, options, outputPath);
         }
 
         // if web, tie together with static web content
@@ -139,7 +144,7 @@ public class Generator {
         }
     }
 
-    private static void handleDivisionOutput(Division division, GeneratorOptions options, Path outputPath) {
+    private static void handleDivisionOutput(Division division, List<OutputTarget> outputTargets, GeneratorOptions options, Path outputPath) {
 
         // for each conference get the list of schools and then handle them
         for(final String conference : division.conferences()) {
@@ -172,13 +177,13 @@ public class Generator {
                     // don't generate images if requested
                     if(!options.isNoImages()) {
                         final SVGSchoolRasterizer rasterizer = new SVGSchoolRasterizer(division.getId(), conference, school, outputPath);
-                        rasterizer.raster();
+                        rasterizer.raster(outputTargets);
                     }
 
                     // generate web resources if required
                     if(options.isGenerateWeb()) {
                         final SchoolPageGenerator schoolPageGenerator = new SchoolPageGenerator(division, conference, school);
-                        schoolPageGenerator.generate(outputPath);
+                        schoolPageGenerator.generate(outputTargets, outputPath);
                     }
 
                     System.out.printf("[DONE]\n");
