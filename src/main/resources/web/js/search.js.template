@@ -14,6 +14,7 @@ function clearSearch() {
 // hides everything not found
 function search(searchString) {
     if(searchString == null || "" == searchString.trim()) {
+        clearSearch();
         return;
     }
 
