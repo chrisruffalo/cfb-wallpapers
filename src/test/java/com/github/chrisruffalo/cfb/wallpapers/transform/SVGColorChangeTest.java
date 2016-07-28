@@ -14,7 +14,7 @@ public class SVGColorChangeTest {
     @Test
     public void testChangeSimpleSVGFile() {
         // input
-        final String svgInput = ResourceLoader.loadResourceAsString("templates/inset_stripe.svg");
+        final String svgInput = ResourceLoader.loadResourceAsString("templates/desktop/inset_stripe.svg");
         // colorset
         final ColorSet set = new ColorSet();
         set.setPrimaryColor("#eeeeee");
