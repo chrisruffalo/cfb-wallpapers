@@ -24,8 +24,8 @@
         <header>
             <!-- navigation -->
             <nav>
-                <div class="nav-wrapper">
-                    &nbsp;<a href="#" class="brand-logo">CFB Minimal Wallpapers</a>
+                <div class="nav-wrapper container">
+                    <a href="#" class="brand-logo">CFB Minimal Wallpapers</a>
                 </div>
             </nav>
         </header>
@@ -123,7 +123,7 @@
             </div>
             <div class="footer-copyright">
                 <div class="container">
-                    <p>© 2016 Christopher Ruffalo</p>
+                    <p><i class="fa fa-copyright" aria-hidden="true"></i> 2016 Christopher Ruffalo</p>
                     <a class="grey-text text-lighten-4 right" href="https://github.com/chrisruffalo/cfb-wallpapers"><i class="fa fa-github" aria-hidden="true"></i> On Github</a>
                 </div>
             </div>
@@ -135,7 +135,7 @@
         <!-- supporting highlight thing -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/7.0.2/jquery.mark.min.js"></script>
         <!-- import functionality js -->
-        <script type="text/javascript" src="resources/js/search.js"></script>
+        <script type="text/javascript" src="resources/js/search.min.js"></script>
     </body>
 
 </html>

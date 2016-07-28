@@ -4,6 +4,7 @@ import com.github.chrisruffalo.cfb.wallpapers.config.GeneratorOptions;
 import com.github.chrisruffalo.cfb.wallpapers.model.Divisions;
 import com.github.chrisruffalo.cfb.wallpapers.util.ResourceLoader;
 import com.github.chrisruffalo.cfb.wallpapers.util.TemplateCreator;
+import com.yahoo.platform.yui.compressor.YUICompressor;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -104,7 +105,7 @@ public class StaticResourceGenerator {
     // generate css output for given school, given the root output directory
     private static void generateCss(final Map<String, Object> dataModel, final Path outputDir) {
         // set up expected output path
-        final Path outputCssPath = outputDir.resolve(CSS_RESOURCE_PATH).resolve("cfb.css");
+        final Path outputCssPath = outputDir.resolve(CSS_RESOURCE_PATH).resolve("cfb.css").toAbsolutePath().normalize();
         if (!Files.isDirectory(outputCssPath.getParent())) {
             try {
                 Files.createDirectories(outputCssPath.getParent());
@@ -138,10 +139,19 @@ public class StaticResourceGenerator {
             }
 
             for(final String jsFile : JS_RESOURCES) {
-                final Path jsResource = jsOutputPath.resolve(jsFile);
+                final Path jsResource = jsOutputPath.resolve(jsFile).normalize().toAbsolutePath();
                 generateResource(dataModel, JS_TEMPLATES_PATH + jsFile + ".template", jsResource);
+
+                // create min
+                final String jsMin = jsFile.replace(".js", ".min.js");
+                final Path jsMinResource = jsResource.resolveSibling(jsMin);
+
+                // minify
+                YUICompressor.main(new String[]{"-o", jsMinResource.toString(), jsResource.toString()});
+
                 // add output to hash
                 dataModel.put("sha512_" + conditionName(jsFile), hashResource(jsResource));
+                dataModel.put("sha512_" + conditionName(jsMin), hashResource(jsMinResource));
             }
 
         } catch (Exception ex) {

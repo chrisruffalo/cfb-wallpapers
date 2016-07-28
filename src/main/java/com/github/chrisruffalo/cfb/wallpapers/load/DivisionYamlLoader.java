@@ -3,10 +3,8 @@ package com.github.chrisruffalo.cfb.wallpapers.load;
 import com.github.chrisruffalo.cfb.wallpapers.model.Division;
 import com.github.chrisruffalo.cfb.wallpapers.model.Divisions;
 import com.github.chrisruffalo.cfb.wallpapers.util.ResourceLoader;
-import com.sun.org.apache.xpath.internal.operations.Div;
 import org.yaml.snakeyaml.Yaml;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

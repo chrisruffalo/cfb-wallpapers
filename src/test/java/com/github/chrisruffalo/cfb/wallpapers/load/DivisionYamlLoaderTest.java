@@ -1,11 +1,8 @@
 package com.github.chrisruffalo.cfb.wallpapers.load;
 
-import com.github.chrisruffalo.cfb.wallpapers.model.Division;
 import com.github.chrisruffalo.cfb.wallpapers.model.Divisions;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.Map;
 
 /**
  * <p></p>

@@ -13,7 +13,6 @@ function clearSearch() {
 
 // hides everything not found
 function search(searchString) {
-    console.log('searching...');
     if(searchString == null || "" == searchString.trim()) {
         clearSearch();
         return;
@@ -85,7 +84,7 @@ function search(searchString) {
     var foundSelector = showList.join(', ');
 
     // do action to hide elements not found
-    $('.searchable').mark(searchString).show().not(foundSelector).hide().unmark();
+    $('.searchable').unmark().mark(searchString).show().not(foundSelector).hide().unmark();
     //$(foundSelector).mark(searchString);
 
     // just to keep up with it
@@ -93,7 +92,7 @@ function search(searchString) {
 }
 
 // values
-var timeout = 250;
+var timeout = 150;
 var searchTimer = null;
 
 // function to defer the search for <timeout>ms or so
@@ -103,14 +102,12 @@ var searchTimer = null;
 function doDeferredSearch() {
     // cancel timer
     if(searchTimer != null) {
-        console.log('clearing timeout');
         window.clearTimeout(searchTimer);
     }
 
     // load value from search box
     var value = $('#searchbox').val();
 
-    console.log('creating timeout');
     // defer search
     searchTimer = window.setTimeout(function(){
         search(value);
