@@ -14,7 +14,6 @@ function clearSearch() {
 // hides everything not found
 function search(searchString) {
     if(searchString == null || "" == searchString.trim()) {
-        clearSearch();
         return;
     }
 
@@ -83,9 +82,8 @@ function search(searchString) {
     // not found selector is the jquery compatible join
     var foundSelector = showList.join(', ');
 
-    // do action to hide elements not found
+    // do action to hide elements not found, starting by unmarking and then remarking
     $('.searchable').unmark().mark(searchString).show().not(foundSelector).hide().unmark();
-    //$(foundSelector).mark(searchString);
 
     // just to keep up with it
     return foundSelector;
