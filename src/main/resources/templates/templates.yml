@@ -1,0 +1,24 @@
+---
+desktop:
+  formats:
+    - id: '1080p'
+      width: '1920'
+      height: '1080'
+  templates:
+    - id: 'inset_stripe'
+      name: 'Stripe with Accent'
+      accent: true
+    - id: 'checker'
+      name: 'Checker Stripe'
+    - id: 'slant'
+      name: 'Two Slanted Lines'
+    - id: 'slant_stripe'
+      name: 'Slant with Stripe'
+      accent: true
+    - id: 'two_stripes'
+      name: 'Two Vertical Stripes'
+phone:
+  formats:
+    - id: 'iphone6'
+      width: '400'
+      height: '600'

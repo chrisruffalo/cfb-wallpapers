@@ -47,7 +47,7 @@ public class SVGSchoolRasterizer {
 
     public void raster() {
         // load templates
-        final List<String> templates = ResourceLoader.loadAllSVGTemplates();
+        final List<String> templates = ResourceLoader.loadResourceLocations("templates/desktop");
         if(templates.isEmpty()) {
             return;
         }

@@ -177,8 +177,8 @@ public class Generator {
 
                     // generate web resources if required
                     if(options.isGenerateWeb()) {
-                        final SchoolPageGenerator schoolPageGenerator = new SchoolPageGenerator(school);
-                        schoolPageGenerator.generate();
+                        final SchoolPageGenerator schoolPageGenerator = new SchoolPageGenerator(division, conference, school);
+                        schoolPageGenerator.generate(outputPath);
                     }
 
                     System.out.printf("[DONE]\n");

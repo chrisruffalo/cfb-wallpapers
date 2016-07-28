@@ -46,10 +46,6 @@ public class ResourceLoader {
         }
     }
 
-    public static List<String> loadAllSVGTemplates() {
-        return loadResourceLocations("templates");
-    }
-
     public static List<String> loadResourceLocations(final String startPath) {
         // locations of resources
         final List<String> resourceLocations = new LinkedList<>();
