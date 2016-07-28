@@ -8,7 +8,7 @@ import java.util.Properties;
  * <p></p>
  *
  */
-public enum CfbWallpapersConfig {
+public enum InternalConfig {
     // singleton
     INSTANCE;
 
@@ -20,7 +20,7 @@ public enum CfbWallpapersConfig {
 
     private final Properties properties;
 
-    private CfbWallpapersConfig() {
+    private InternalConfig() {
         try (InputStream stream = this.getClass().getClassLoader().getResourceAsStream(CONFIG_FILE_NAME)) {
             this.properties = new Properties();
             this.properties.load(stream);

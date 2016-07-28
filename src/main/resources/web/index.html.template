@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
 
         <!-- Font-Awesome -->
-        <link rel="stylesheet" href="resources/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="resources/css/font-awesome.min.css" integrity="sha512-${sha512_font_awesome_min_css}" crossorigin="anonymous"/>
 
         <!-- google icons -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -30,52 +30,63 @@
             </nav>
         </header>
 
+        <div class="container">
+            <!-- search -->
+            <div class="row">
+                <form class="col s12" action="javascript:false" >
+                    <div class="row">
+                        <div class="input-field col offset-m8 m4 s12 valign-wrapper">
+                            <i class="material-icons prefix valign">search</i>
+                            <input id="searchbox" type="text" class="valign" autocomplete="off" placeholder="search..."/>
+                            <label for="searchbox"></label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <!-- main segment -->
         <main>
-            <div class="container">
-                <!-- search -->
-                <div class="row">
-                    <form class="col s12">
-                        <div class="row">
-                            <div class="input-field col offset-m8 m4 s12 valign-wrapper">
-                                <i class="material-icons prefix valign">search</i>
-                                <input id="icon_prefix" type="text" class="valign">
-                                <label for="icon_prefix"></label>
+            <div class="container main-container">
+                <!-- division level -->
+                <#list divisions.sortedDivisions as division>
+                <!-- division -->
+                <div class="row searchable div-header-${division.id} div-${division.id}">
+                    <div class="col s12">
+                        <div class="card division-header darken-1">
+                            <div class="card-content white-text">
+                              <span class="card-title">${division.name}</span>
                             </div>
                         </div>
-                    </form>
-                </div>
-
-                <!-- fbs title -->
-                <div class="row">
-                    <div class="col s12">
-                        <h3>FBS</h3>
                     </div>
                 </div>
 
-                <!-- fbs -->
-                <#list fbsConferences as confKey>
-                <#assign conferenceSchools = fbs[confKey]>
+                <!-- conference level -->
+                <#list division.conferences() as confKey>
+                <#assign conferenceName = division.getConferenceName(confKey)>
+                <#assign conferenceSchools = division.schools(confKey)>
                 <!-- conference -->
-                <div class="row conf-${confKey}">
+                <div class="searchable row conf-header-${confKey} conf-${confKey} div-${division.id}">
                     <div class="col s12">
                         <div class="card blue-grey darken-1">
                             <div class="card-content white-text">
-                              <span class="card-title">${CONFERENCE_MAP[confKey]}</span>
+                              <span class="card-title">${conferenceName}</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row conf-${confKey}">
+                <!-- school row -->
+                <div class="searchable row conf-row-${confKey} conf-${confKey} div-${division.id} collapse">
+                    <!-- school -->
                     <#list conferenceSchools as school>
                     <#if school.colors[0]??>
                     <!-- individual school card -->
-                    <div class="col s12 m6 l4">
-                        <div class="card school-${school.id} conf-${confKey}">
+                    <div class="searchable col s12 m6 l4 school-${school.id} conf-${confKey} div-${division.id}">
+                        <div class="card">
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col s10 offset-s1">
-                                        <a href="fbs/${confKey}/${school.id}/${school.id}.html" class="grey-text text-darken-4">${school.display()}</span>
+                                        <a href="fbs/${confKey}/${school.id}/${school.id}.html" class="grey-text text-darken-4">${school.display()}</a>
                                     </div>
                                 </div>
                                 <div class="row swatches">
@@ -90,9 +101,15 @@
                         </div>
                     </div>
                     </#if>
+                    <!-- done with school -->
                     </#list>
+                    <!-- done with schools -->
                 </div>
                 </#list>
+                <!-- done with conference -->
+
+                </#list>
+                <!-- done with division -->
             </div>
         </main>
 
@@ -115,6 +132,10 @@
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+        <!-- supporting highlight thing -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/7.0.2/jquery.mark.min.js"></script>
+        <!-- import functionality js -->
+        <script type="text/javascript" src="resources/js/search.js"></script>
     </body>
 
 </html>

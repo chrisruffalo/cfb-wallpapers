@@ -46,15 +46,11 @@ public class ResourceLoader {
         }
     }
 
-    public static List<String> loadAllSchoolResources() {
-       return loadResourceLocations("schools");
-    }
-
     public static List<String> loadAllSVGTemplates() {
         return loadResourceLocations("templates");
     }
 
-    private static List<String> loadResourceLocations(final String startPath) {
+    public static List<String> loadResourceLocations(final String startPath) {
         // locations of resources
         final List<String> resourceLocations = new LinkedList<>();
 

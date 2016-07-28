@@ -18,11 +18,10 @@ public class SchoolYamlLoaderTest {
     public void testLoadCitadel() {
 
         final SchoolYamlLoader loader = new SchoolYamlLoader();
-        final School cid = loader.load("schools/fcs/socon/thecitadel.yml", ResourceLoader.loadResource("schools/fcs/socon/thecitadel.yml"));
+        final School cid = loader.load(ResourceLoader.loadResource("schools/fcs/socon/thecitadel.yml"));
 
         // basic test
         Assert.assertEquals("Loaded correct id", "thecitadel", cid.getId());
-        Assert.assertFalse(cid.isFbs());
 
         // color test
         final List<ColorSet> colorSetList = cid.getColors();

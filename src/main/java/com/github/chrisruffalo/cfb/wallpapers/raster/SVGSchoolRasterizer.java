@@ -32,13 +32,10 @@ public class SVGSchoolRasterizer {
     private final School school;
     private final Path pathToOutput;
 
-    public SVGSchoolRasterizer(final School school, final Path pathToOutput) {
+    public SVGSchoolRasterizer(final String divisionId, final String conferenceId, final School school, final Path pathToOutput) {
         this.school = school;
 
-        // figure out bowl status
-        final String bowl = school.isFbs() ? "fbs" : "fcs";
-
-        this.pathToOutput = pathToOutput.resolve(bowl).resolve(school.getConference()).resolve(school.getId());
+        this.pathToOutput = pathToOutput.resolve(divisionId).resolve(conferenceId).resolve(school.getId());
         if(!Files.isDirectory(this.pathToOutput)) {
             try {
                 Files.createDirectories(this.pathToOutput);

@@ -27,26 +27,18 @@ public class SchoolYamlLoader {
     private static final String KEY_ACCENT = "accent";
 
     @SuppressWarnings({"unchecked"})
-    public School load(final String pathToYamlResource, final InputStream yamlStream) {
+    public School load(final InputStream yamlStream) {
         // create empty school object
         final School school = new School();
 
         // load yaml document
         final Yaml yaml = new Yaml();
-        Map<String, ?> document = (Map<String, ?>) yaml.load(yamlStream);
+        final Map<String, Object> document = (Map<String, Object>) yaml.load(yamlStream);
 
         // parse basic school details
         school.setId((String)document.get(KEY_ID));
         school.setName((String)document.get(KEY_NAME));
         school.setConference((String)document.get(KEY_CONFERENCE));
-
-        // determine bowl status
-        if(document.containsKey(KEY_BOWL_STATUS)) {
-            school.setFbs(Boolean.parseBoolean((String)document.get(KEY_BOWL_STATUS)));
-        } else {
-            // fbs vs fcs found in path
-            school.setFbs(pathToYamlResource.toLowerCase().contains("fbs"));
-        }
 
         // look for colors
         final Object colorCandidate = document.get(KEY_COLORS);

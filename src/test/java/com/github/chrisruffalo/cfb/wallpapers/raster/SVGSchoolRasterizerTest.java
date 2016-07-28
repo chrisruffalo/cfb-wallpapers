@@ -19,10 +19,10 @@ public class SVGSchoolRasterizerTest {
     public void testRaster() {
         // load school
         final SchoolYamlLoader loader = new SchoolYamlLoader();
-        final School school = loader.load("schools/fcs/socon/thecitadel.yml", ResourceLoader.loadResource("schools/fcs/socon/thecitadel.yml"));
+        final School school = loader.load(ResourceLoader.loadResource("schools/fcs/socon/thecitadel.yml"));
 
         // create rasterizer for school with base output path in test area
-        final SVGSchoolRasterizer rasterizer = new SVGSchoolRasterizer(school, Paths.get("target/test/output"));
+        final SVGSchoolRasterizer rasterizer = new SVGSchoolRasterizer("fcs", "socon", school, Paths.get("target/test/output"));
 
         // rasterize
         rasterizer.raster();

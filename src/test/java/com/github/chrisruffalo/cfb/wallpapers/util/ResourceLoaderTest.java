@@ -14,7 +14,7 @@ public class ResourceLoaderTest {
     @Test
     public void testLoadAllSchools() {
         // load
-        final List<String> locations = ResourceLoader.loadAllSchoolResources();
+        final List<String> locations = ResourceLoader.loadResourceLocations("schools");
 
         // asser that schools were loaded
         Assert.assertFalse(locations.isEmpty());

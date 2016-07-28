@@ -11,6 +11,10 @@ main {
 
 /* ============= Core Styling ============= */
 
+.division-header {
+    background-color: #000000 !important;
+}
+
 .swatch {
     height: 70px;
     line-height: 70px;

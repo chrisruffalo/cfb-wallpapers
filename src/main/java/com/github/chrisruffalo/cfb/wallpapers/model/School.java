@@ -12,8 +12,6 @@ public class School implements Comparable<School> {
     private String name;
     private String conference;
 
-    private boolean fbs = true;
-
     private List<ColorSet> colors;
 
     public String getId() {
@@ -38,14 +36,6 @@ public class School implements Comparable<School> {
 
     public void setConference(String conference) {
         this.conference = conference;
-    }
-
-    public boolean isFbs() {
-        return fbs;
-    }
-
-    public void setFbs(boolean fbs) {
-        this.fbs = fbs;
     }
 
     public List<ColorSet> getColors() {

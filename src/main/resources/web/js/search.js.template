@@ -1,0 +1,145 @@
+// js file for live search data
+
+// strings to ids
+var stringsToIds = {};
+
+// data map
+divisions = {};
+
+function clearSearch() {
+    $('.searchable').unmark();
+    $('.searchable').show();
+}
+
+// hides everything not found
+function search(searchString) {
+    console.log('searching...');
+    if(searchString == null || "" == searchString.trim()) {
+        clearSearch();
+        return;
+    }
+
+    // holding variables for different logic
+    var divs = [];
+    var confs = [];
+    var schools = [];
+
+    // with a simple text search identify all the items that match
+    for (var value in stringsToIds) {
+        if(value.includes(searchString.toLowerCase())) {
+            var found = stringsToIds[value];
+            if(found.type == 'div') {
+                divs.push(found);
+            } else if(found.type == 'conf') {
+                confs.push(found);
+            } else if(found.type == 'school') {
+                schools.push(found);
+            }
+        }
+    }
+
+    // cheap hash set
+    var show = {};
+
+    // if a division is found, so is everything in it
+    for(var div in divs) {
+        show['.div-' + divs[div].id] = true;
+    }
+    // if a conference is found, do the same for the conference but also the division header
+    for(var conf in confs) {
+        show['.conf-' + confs[conf].id] = true;
+        for (var div in divisions) {
+            if(divisions[div][confs[conf].id] != null) {
+                show['.div-header-' + div] = true;
+                break;
+            }
+        }
+    }
+    // if a school is found do the same for the school... that is to say show the division and conference header
+    for(var school in schools) {
+        show['.school-' + schools[school].id] = true;
+        for (var div in divisions) {
+            var done = false;
+            for(var conf in divisions[div]) {
+                if("schools" != conf && "conferences" != conf && divisions[div][conf] != null && divisions[div][conf][schools[school].id] != null) {
+                    show['.div-header-' + div] = true;
+                    show['.conf-header-' + conf] = true;
+                    show['.conf-row-' + conf] = true;
+                    done = true;
+                    break;
+                }
+            }
+            if(done) {
+                break;
+            }
+        }
+    }
+
+    // convert to list
+    var showList = [];
+    for(var key in show) {
+        showList.push(key);
+    }
+
+    // not found selector is the jquery compatible join
+    var foundSelector = showList.join(', ');
+
+    // do action to hide elements not found
+    $('.searchable').mark(searchString).show().not(foundSelector).hide().unmark();
+    //$(foundSelector).mark(searchString);
+
+    // just to keep up with it
+    return foundSelector;
+}
+
+// values
+var timeout = 250;
+var searchTimer = null;
+
+// function to defer the search for <timeout>ms or so
+// to prevent multiple searches and "flashing" while
+// still appearing "live"
+// todo: animation
+function doDeferredSearch() {
+    // cancel timer
+    if(searchTimer != null) {
+        console.log('clearing timeout');
+        window.clearTimeout(searchTimer);
+    }
+
+    // load value from search box
+    var value = $('#searchbox').val();
+
+    console.log('creating timeout');
+    // defer search
+    searchTimer = window.setTimeout(function(){
+        search(value);
+    }, timeout);
+}
+
+// loaded data
+<#list divisions.sortedDivisions as division>
+divisions['${division.id}'] = { conferences: [], schools: [] };
+stringsToIds['${division.name?lower_case}'] = {type: 'div', id: "${division.id}"};
+stringsToIds['${division.id}'] = {type: 'div', id: "${division.id}"};
+<#list division.conferences() as conference>
+divisions['${division.id}'].conferences.push("${conference}")
+divisions['${division.id}']['${conference}'] = { schools: [] };
+stringsToIds['${division.getConferenceName(conference)?lower_case}'] = {type: 'conf', id: "${conference}"};
+stringsToIds['${conference}'] = {type: 'conf', id: "${conference}"};
+<#list division.schools(conference) as school>
+divisions['${division.id}'].schools.push("${school.id}");
+divisions['${division.id}']['${conference}'].schools.push("${school.id}");
+divisions['${division.id}']['${conference}']['${school.id}'] = { id: "${school}"};
+stringsToIds['${school.display()?lower_case}'] = {type: 'school', id: "${school.id}"};
+stringsToIds['${school.id}'] = {type: 'school', id: "${school.id}"};
+</#list>
+</#list>
+</#list>
+
+// after data is loaded bind to search box on load
+$(document).ready(function(){
+    $('#searchbox').change(doDeferredSearch);
+    $('#searchbox').focusout(doDeferredSearch);
+    $('#searchbox').keyup(doDeferredSearch);
+});
