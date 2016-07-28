@@ -112,7 +112,7 @@ function doDeferredSearch() {
     }, timeout);
 }
 
-// loaded data
+// loaded data - search hashes and 'member of' data
 <#list divisions.sortedDivisions as division>
 divisions['${division.id}'] = { conferences: [], schools: [] };
 stringsToIds['${division.name?lower_case}'] = {type: 'div', id: "${division.id}"};
