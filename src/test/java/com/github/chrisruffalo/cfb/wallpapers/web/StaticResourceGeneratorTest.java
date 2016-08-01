@@ -26,8 +26,8 @@ public class StaticResourceGeneratorTest {
         final Divisions divisions = DivisionYamlLoader.loadDivisions("schools/divisions.yml");
 
         // create school(s)
-        final School school1 = new SchoolYamlLoader().load(ResourceLoader.loadResource("schools/fcs/socon/thecitadel.yml"));
-        final School school2 = new SchoolYamlLoader().load(ResourceLoader.loadResource("schools/fcs/socon/vmi.yml"));
+        final School school1 = new SchoolYamlLoader().load(null, "fcs", ResourceLoader.loadResource("schools/fcs/socon/thecitadel.yml"));
+        final School school2 = new SchoolYamlLoader().load(null, "fcs", ResourceLoader.loadResource("schools/fcs/socon/vmi.yml"));
 
         divisions.getDivisions().get("fcs").add("socon", school1);
         divisions.getDivisions().get("fcs").add("socon", school2);

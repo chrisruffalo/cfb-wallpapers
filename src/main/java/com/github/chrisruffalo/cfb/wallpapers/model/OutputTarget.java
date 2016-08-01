@@ -1,5 +1,7 @@
 package com.github.chrisruffalo.cfb.wallpapers.model;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,5 +59,9 @@ public class OutputTarget {
 
     public String getResourceBase() {
         return this.resourceBase;
+    }
+
+    public boolean outputExists(final Path outputPath, final String resourcePath) {
+        return Files.exists(outputPath.resolve(resourcePath));
     }
 }

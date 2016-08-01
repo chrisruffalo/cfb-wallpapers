@@ -28,17 +28,17 @@
             <!-- navigation -->
             <nav>
                 <div class="nav-wrapper container">
-                    <a href="#" class="brand-logo">CFB Minimal Wallpapers</a>
+                    <a href="#" class="brand-logo">Minimal Spirit</a>
                 </div>
             </nav>
         </header>
 
-        <div class="container">
+        <div id="top-point" class="container">
             <!-- search -->
             <div class="row">
-                <form class="col s12" action="javascript:false" >
+                <form class="col s12 l10" action="javascript:false" >
                     <div class="row">
-                        <div class="input-field col offset-m8 m4 s12 valign-wrapper">
+                        <div class="input-field col offset-l8 l4 offset-m6 m6 s12 valign-wrapper">
                             <i class="material-icons prefix valign">search</i>
                             <input id="searchbox" type="text" class="valign" autocomplete="off" placeholder="search..."/>
                             <label for="searchbox"></label>
@@ -50,10 +50,15 @@
 
         <!-- main segment -->
         <main>
-            <div class="container main-container">
+            <div class="container">
+            <div class="row">
+            <div class="col s12 l10">
+
+            <div class="main-container">
                 <!-- division level -->
                 <#list divisions.sortedDivisions as division>
                 <!-- division -->
+                <div id="bookmark-${division.id}" class="section scrollspy">
                 <div class="row searchable div-header-${division.id} div-${division.id}">
                     <div class="col s12">
                         <div class="card division-header darken-1">
@@ -68,6 +73,7 @@
                 <#list division.conferences() as confKey>
                 <#assign conferenceName = division.getConferenceName(confKey)>
                 <#assign conferenceSchools = division.schools(confKey)>
+
                 <!-- conference -->
                 <div class="searchable row conf-header-${confKey} conf-${confKey} div-${division.id}">
                     <div class="col s12">
@@ -93,10 +99,10 @@
                                     </div>
                                 </div>
                                 <div class="row swatches">
-                                    <div class="col s5 offset-s1 ${school.id}-0-primary swatch swatch-left center-align">
+                                    <div class="col s5 offset-s1 ${school.id}-0-primary swatch swatch-left center-align z-depth-1">
                                         ${school.colors[0].primaryColor}
                                     </div>
-                                    <div class="col s5 ${school.id}-0-secondary swatch swatch-right center-align">
+                                    <div class="col s5 ${school.id}-0-secondary swatch swatch-right center-align z-depth-1">
                                         ${school.colors[0].secondaryColor}
                                     </div>
                                 </div>
@@ -111,8 +117,25 @@
                 </#list>
                 <!-- done with conference -->
 
+                </div>
                 </#list>
                 <!-- done with division -->
+            </div>
+
+            </div>
+                <!-- toc -->
+                <div class="col l2 hide-on-med-and-down">
+                    <div class="toc-wrapper">
+                        <div style="height: 1px;">
+                            <ul class="section table-of-contents">
+                                <#list divisions.sortedDivisions as division>
+                                <li class="searchable div-header-${division.id}"><a href="#bookmark-${division.id}">${division.name}</a></li>
+                                </#list>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
         </main>
 
@@ -127,6 +150,14 @@
         <!-- import functionality js -->
         <script type="text/javascript">
         <#include "js/search.js.template">
+
+        $(document).ready(function(){
+            $('.toc-wrapper ul').pushpin({ top: $('#top-point').offset().top });
+        });
+
+         $(document).ready(function(){
+            $('.scrollspy').scrollSpy();
+          });
         </script>
     </body>
 

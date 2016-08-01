@@ -18,7 +18,7 @@ public class SchoolYamlLoaderTest {
     public void testLoadCitadel() {
 
         final SchoolYamlLoader loader = new SchoolYamlLoader();
-        final School cid = loader.load(ResourceLoader.loadResource("schools/fcs/socon/thecitadel.yml"));
+        final School cid = loader.load(null, "fcs", ResourceLoader.loadResource("schools/fcs/socon/thecitadel.yml"));
 
         // basic test
         Assert.assertEquals("Loaded correct id", "thecitadel", cid.getId());
@@ -27,9 +27,9 @@ public class SchoolYamlLoaderTest {
         final List<ColorSet> colorSetList = cid.getColors();
         Assert.assertFalse(colorSetList.isEmpty());
         final ColorSet primary = colorSetList.get(0);
-        Assert.assertEquals("#4d90cd", primary.getPrimaryColor());
-        Assert.assertEquals("#ffffff", primary.getSecondaryColor());
-        Assert.assertEquals("#003263", primary.getAccentColor());
+        Assert.assertEquals("#4d90cd", primary.getPrimaryColor().toString());
+        Assert.assertEquals("#ffffff", primary.getSecondaryColor().toString());
+        Assert.assertEquals("#003263", primary.getAccentColor().toString());
 
     }
 

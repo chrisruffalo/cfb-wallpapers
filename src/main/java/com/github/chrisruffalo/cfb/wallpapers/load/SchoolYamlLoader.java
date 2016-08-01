@@ -2,6 +2,7 @@ package com.github.chrisruffalo.cfb.wallpapers.load;
 
 import com.github.chrisruffalo.cfb.wallpapers.model.Color;
 import com.github.chrisruffalo.cfb.wallpapers.model.ColorSet;
+import com.github.chrisruffalo.cfb.wallpapers.model.Division;
 import com.github.chrisruffalo.cfb.wallpapers.model.School;
 import org.yaml.snakeyaml.Yaml;
 
@@ -20,13 +21,15 @@ public class SchoolYamlLoader {
     private static final String KEY_NAME = "name";
     private static final String KEY_COLORS = "colors";
     private static final String KEY_CONFERENCE = "conference";
+    private static final String KEY_WIKI_URL = "wiki";
+    private static final String KEY_COLOR_URL = "url";
 
     private static final String KEY_PRIMARY = "primary";
     private static final String KEY_SECONDARY = "secondary";
     private static final String KEY_ACCENT = "accent";
 
     @SuppressWarnings({"unchecked"})
-    public School load(final InputStream yamlStream) {
+    public School load(final Division division, final String conference, final InputStream yamlStream) {
         // create empty school object
         final School school = new School();
 
@@ -37,7 +40,10 @@ public class SchoolYamlLoader {
         // parse basic school details
         school.setId((String)document.get(KEY_ID));
         school.setName((String)document.get(KEY_NAME));
-        school.setConference((String)document.get(KEY_CONFERENCE));
+        school.setDivision(division);
+        school.setConference(conference);
+        school.setWikiUrl((String)document.get(KEY_WIKI_URL));
+        school.setColorUrl((String)document.get(KEY_COLOR_URL));
 
         // look for colors
         final Object colorCandidate = document.get(KEY_COLORS);

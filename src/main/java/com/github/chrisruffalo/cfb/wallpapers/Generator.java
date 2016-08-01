@@ -77,6 +77,10 @@ public class Generator {
 
         // handle output for each division that has content
         for(final Division division : divisions.getSortedDivisions()) {
+            if(division.schools().isEmpty()) {
+                continue;
+            }
+
             System.out.printf("\n===== %s =====\n", division.getName());
             handleDivisionOutput(division, targets, options, outputPath);
         }
@@ -129,7 +133,7 @@ public class Generator {
             }
 
             // load yaml
-            final School school = loader.load(stream);
+            final School school = loader.load(division, conference, stream);
             if(school == null || school.getId() == null || school.getId().isEmpty()) {
                 continue;
             }
@@ -149,14 +153,14 @@ public class Generator {
         // for each conference get the list of schools and then handle them
         for(final String conference : division.conferences()) {
 
-            // conference names to readable names
-            System.out.printf("::: %s (id='%s')\n", division.getConferenceName(conference), conference);
-
             // get schools
             final List<School> schools = division.schools(conference);
             if(schools == null || schools.isEmpty()) {
                 continue;
             }
+
+            // conference names to readable names
+            System.out.printf("::: %s (id='%s')\n", division.getConferenceName(conference), conference);
 
             // sort list of schools by name
             Collections.sort(schools);

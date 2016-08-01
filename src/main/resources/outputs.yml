@@ -3,8 +3,8 @@ desktop:
   name: 'Desktop'
   formats:
     - id: 'thumb'
-      width: '324'
-      height: '216'
+      width: '192'
+      height: '108'
     - id: '1080p'
       width: '1920'
       height: '1080'
@@ -23,8 +23,8 @@ phone:
   name: 'Mobile'
   formats:
     - id: 'thumb'
-      width: '216'
-      height: '324'
+      width: '108'
+      height: '192'
     - id: 'iphone6'
       width: '750'
       height: '1334'

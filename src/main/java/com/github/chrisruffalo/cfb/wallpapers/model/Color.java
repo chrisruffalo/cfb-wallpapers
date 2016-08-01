@@ -123,7 +123,7 @@ public class Color {
 
     public static Color parse(final String input) {
         if(input == null || input.isEmpty()) {
-            return new Color();
+            return null;
         }
 
         if(input.startsWith("#")) {

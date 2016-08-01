@@ -48,6 +48,7 @@ public class SchoolPageGenerator {
         model.put("conference", this.conference);
         model.put("school", this.school);
         model.put("targets", outputTargets);
+        model.put("outputPath", outputPath);
 
         // write template out
         try (final Writer writer = new OutputStreamWriter(Files.newOutputStream(htmlPath))){

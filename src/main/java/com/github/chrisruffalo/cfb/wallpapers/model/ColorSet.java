@@ -46,7 +46,7 @@ public class ColorSet {
 
     public Color getBannerColor() {
         // both dark
-        if(this.primaryColor.getLuminance() <= 0.5 && this.secondaryColor.getLuminance() <= 0.5) {
+        if (this.primaryColor.getLuminance() <= 0.5 && this.secondaryColor.getLuminance() <= 0.5) {
             return Color.lighter(this.primaryColor, this.secondaryColor);
         }
         // otherwise just choose the darker color

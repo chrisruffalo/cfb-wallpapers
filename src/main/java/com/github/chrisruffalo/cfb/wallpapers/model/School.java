@@ -1,5 +1,7 @@
 package com.github.chrisruffalo.cfb.wallpapers.model;
 
+import com.sun.org.apache.xpath.internal.operations.Div;
+
 import java.util.List;
 
 /**
@@ -11,6 +13,10 @@ public class School implements Comparable<School> {
     private String id;
     private String name;
     private String conference;
+    private Division division;
+
+    private String wikiUrl;
+    private String colorUrl;
 
     private List<ColorSet> colors;
 
@@ -30,12 +36,36 @@ public class School implements Comparable<School> {
         this.name = name;
     }
 
+    public Division getDivision() {
+        return division;
+    }
+
+    public void setDivision(Division division) {
+        this.division = division;
+    }
+
     public String getConference() {
         return conference;
     }
 
     public void setConference(String conference) {
         this.conference = conference;
+    }
+
+    public String getWikiUrl() {
+        return wikiUrl;
+    }
+
+    public void setWikiUrl(String wikiUrl) {
+        this.wikiUrl = wikiUrl;
+    }
+
+    public String getColorUrl() {
+        return colorUrl;
+    }
+
+    public void setColorUrl(String colorUrl) {
+        this.colorUrl = colorUrl;
     }
 
     public ColorSet getPrimaryColorSet() {

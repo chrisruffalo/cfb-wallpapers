@@ -18,9 +18,9 @@ public class SVGColorChange {
         // and we should move on.
         if(output.contains(InternalConfig.INSTANCE.templateAccent()) && transformTo.getAccentColor() == null) {
             return null;
+        } else if(transformTo.getAccentColor() != null) {
+            output = output.replaceAll(InternalConfig.INSTANCE.templateAccent(), transformTo.getAccentColor().toHex());
         }
-
-        output = output.replaceAll(InternalConfig.INSTANCE.templateAccent(), transformTo.getAccentColor().toHex());
 
         // return
         return output;
