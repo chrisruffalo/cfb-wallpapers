@@ -1,7 +1,5 @@
 package com.github.chrisruffalo.cfb.wallpapers.model;
 
-import com.github.chrisruffalo.cfb.wallpapers.util.ColorUtil;
-
 /**
  * <p></p>
  *
@@ -10,9 +8,9 @@ public class ColorSet {
 
     private String id;
 
-    private String primaryColor;
-    private String secondaryColor;
-    private String accentColor;
+    private Color primaryColor;
+    private Color secondaryColor;
+    private Color accentColor;
 
     public String getId() {
         return id;
@@ -22,39 +20,36 @@ public class ColorSet {
         this.id = id;
     }
 
-    public String getPrimaryColor() {
+    public Color getPrimaryColor() {
         return primaryColor;
     }
 
-    public void setPrimaryColor(String primaryColor) {
+    public void setPrimaryColor(Color primaryColor) {
         this.primaryColor = primaryColor;
     }
 
-    public String getSecondaryColor() {
+    public Color getSecondaryColor() {
         return secondaryColor;
     }
 
-    public void setSecondaryColor(String secondaryColor) {
+    public void setSecondaryColor(Color secondaryColor) {
         this.secondaryColor = secondaryColor;
     }
 
-    public String getAccentColor() {
+    public Color getAccentColor() {
         return accentColor;
     }
 
-    public void setAccentColor(String accentColor) {
+    public void setAccentColor(Color accentColor) {
         this.accentColor = accentColor;
     }
 
-    public String getPrimaryTextColor() {
-        return ColorUtil.getTextColor(this.getPrimaryColor());
+    public Color getBannerColor() {
+        // both dark
+        if(this.primaryColor.getLuminance() <= 0.5 && this.secondaryColor.getLuminance() <= 0.5) {
+            return Color.lighter(this.primaryColor, this.secondaryColor);
+        }
+        // otherwise just choose the darker color
+        return Color.darker(this.primaryColor, this.secondaryColor);
     }
-
-    public String getSecondaryTextColor() {
-        return ColorUtil.getTextColor(this.getSecondaryColor());
-    }
-
-    public String getAccentTextColor() {
-        return ColorUtil.getTextColor(this.getAccentColor());
-    }
- }
+}

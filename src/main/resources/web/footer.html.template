@@ -8,7 +8,7 @@
             </div>
             <div class="footer-copyright">
                 <div class="container">
-                    <i class="fa fa-copyright" aria-hidden="true"></i> 2016 Christopher Ruffalo
+                    <span class="grey-text text-lighten-4"><i class="fa fa-copyright" aria-hidden="true"></i> 2016 Christopher Ruffalo</>
                     <a class="grey-text text-lighten-4 right" href="https://github.com/chrisruffalo/cfb-wallpapers"><i class="fa fa-github" aria-hidden="true"></i> On Github</a>
                 </div>
             </div>

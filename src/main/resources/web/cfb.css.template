@@ -6,17 +6,17 @@
     <#list school.colors as color>
 /* === id: '${color.id}' === */
 .${school.id}-${color.id}-primary, .${school.id}-${color?index}-primary {
-    color: ${color.primaryTextColor};
+    color: ${color.primaryColor.textColor};
     background-color: ${color.primaryColor};
 }
 
 .${school.id}-${color.id}-secondary, .${school.id}-${color?index}-secondary {
-    color: ${color.secondaryTextColor};
+    color: ${color.secondaryColor.textColor};
     background-color: ${color.secondaryColor};
 }
         <#if color.accentColor??>
 .${school.id}-${color.id}-accent, .${school.id}-${color?index}-accent {
-    color: ${color.accentTextColor};
+    color: ${color.accentColor.textColor};
     background-color: ${color.accentColor};
 }
 

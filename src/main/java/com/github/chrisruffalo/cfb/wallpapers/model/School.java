@@ -38,6 +38,14 @@ public class School implements Comparable<School> {
         this.conference = conference;
     }
 
+    public ColorSet getPrimaryColorSet() {
+        if(this.colors.isEmpty()) {
+            return null;
+        }
+        // return first color
+        return this.colors.get(0);
+    }
+
     public List<ColorSet> getColors() {
         return colors;
     }

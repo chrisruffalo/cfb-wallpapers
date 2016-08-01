@@ -85,12 +85,26 @@ public class StaticResourceGenerator {
 
             for(final String cssResource : CSS_RESOURCES) {
                 final Path outputCssResource = cssOutputPath.resolve(cssResource);
+                if (Files.isRegularFile(outputCssResource)) {
+                    try {
+                        Files.delete(outputCssResource);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }
                 Files.copy(ResourceLoader.loadResource(CSS_STATIC_PATH + cssResource), outputCssResource);
                 dataModel.put("sha512_" + conditionName(cssResource), hashResource(outputCssResource));
             }
 
             for(final String fontResource : FONT_RESOURCES) {
                 final Path outputFontResource = fontOutputPath.resolve(fontResource);
+                if (Files.isRegularFile(outputFontResource)) {
+                    try {
+                        Files.delete(outputFontResource);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }
                 Files.copy(ResourceLoader.loadResource(FONT_STATIC_PATH + fontResource), outputFontResource);
                 dataModel.put("sha512_" + conditionName(fontResource), hashResource(outputFontResource));
             }

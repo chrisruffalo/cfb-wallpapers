@@ -1,5 +1,6 @@
 package com.github.chrisruffalo.cfb.wallpapers.transform;
 
+import com.github.chrisruffalo.cfb.wallpapers.model.Color;
 import com.github.chrisruffalo.cfb.wallpapers.model.ColorSet;
 import com.github.chrisruffalo.cfb.wallpapers.util.ResourceLoader;
 import org.junit.Assert;
@@ -17,9 +18,9 @@ public class SVGColorChangeTest {
         final String svgInput = ResourceLoader.loadResourceAsString("templates/desktop/inset_stripe.svg");
         // colorset
         final ColorSet set = new ColorSet();
-        set.setPrimaryColor("#eeeeee");
-        set.setSecondaryColor("#bbbbbb");
-        set.setAccentColor("#dddddd");
+        set.setPrimaryColor(Color.fromHex("#eeeeee"));
+        set.setSecondaryColor(Color.fromHex("#bbbbbb"));
+        set.setAccentColor(Color.fromHex("#dddddd"));
         // convert
         final SVGColorChange changer = new SVGColorChange();
         final String svgOutput = changer.transform(svgInput, set);

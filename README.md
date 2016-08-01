@@ -82,7 +82,14 @@ property will be used in the web UI to generate a link to the school's Wikipedia
 
 The colors section is how the SVG is modified. Right now only a few colors (primary, secondary, alt) are supported. Each color scheme is listed separately with an 
 `id` that determines where and how it will be named under the school's output folder. The color should be given in HEX notation (`#RRGGBB`) but RGB notation 
-(`rgb(int,int,int)`) has basic support for schools that don't list that information.  
+(`rgb(0-255,0-255,0-255)`) and CMYK (`cmyk(0-100,0-100,0-100,0-100)`) are supported as well.
+  
+Examples:
+```
+rgb(255,255,255) = #fffff
+cmyk(0, 0, 0, 0) = #fffff
+cmyk(100, 100, 100, 100) = #000000
+```
 
 ## How to Add a Template
 If you don't like the current design(s) then another can be added easily by creating an SVG file and saving it to `src/main/resources/templates`. The SVG should 
