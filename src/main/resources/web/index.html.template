@@ -115,7 +115,7 @@
                                             <div id="tag-${school.uid}-${tag}" class="chip school-tag searchable" style="display: none;">${tag}</div>
                                         </#list>
                                     </div>
-                                    <div class="col m1 valign-wrapper">
+                                    <div class="col m1 valign-wrapper hide-on-small-only">
                                         <a class="right valign black-text" href="${division.id}/${confKey}/${school.id}/${school.id}.zip"><i class="fa fa-download" aria-hidden="true"></i></a>
                                     </div>
                                 </div>

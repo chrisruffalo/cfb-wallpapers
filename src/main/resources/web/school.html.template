@@ -162,17 +162,17 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <!-- svg -->
                                                 <tr>
-                                                    <td><a href="svg/${school.id}-${template.id}-${color.id}.svg">svg</a></td>
+                                                    <td><a href="svg/${school.id}-${target.id}-${template.id}-${color.id}.svg">svg</a></td>
                                                     <td><i class="fa fa-arrows" aria-hidden="true"></i> scalable</td>
                                                 </tr>
+                                                <!-- each format -->
                                                 <#list target.formats as format>
-                                                <#if "thumb" != format.id >
                                                 <tr>
-                                                    <td><a href="${target.id}/${school.id}-${template.id}-${color.id}_${format.id}.png">${format.id}</a></td>
+                                                    <td><a href="${target.id}/${school.id}-${target.id}-${template.id}-${color.id}_${format.id}.png">${format.id}</a></td>
                                                     <td>#{format.w}x#{format.h}</td>
                                                 </tr>
-                                                </#if>
                                                 </#list>
                                             </tbody>
                                         </table>

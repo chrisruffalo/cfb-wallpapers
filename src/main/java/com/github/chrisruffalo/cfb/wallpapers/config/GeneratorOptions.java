@@ -41,6 +41,9 @@ public class GeneratorOptions {
     @Parameter(names = {"--no-threads", "-N"}, description = "Only generate with a single thread.")
     private boolean singleThreaded = false;
 
+    @Parameter(names = {"--tasks", "-t"}, description = "The number of simultanous tasks to run when single threading (--no-threads) is off. Default is available cores minus one.")
+    private int tasks = -1;
+
     public String getOutputPath() {
         return outputPath;
     }
@@ -119,5 +122,13 @@ public class GeneratorOptions {
 
     public void setSingleThreaded(boolean singleThreaded) {
         this.singleThreaded = singleThreaded;
+    }
+
+    public int getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(int tasks) {
+        this.tasks = tasks;
     }
 }

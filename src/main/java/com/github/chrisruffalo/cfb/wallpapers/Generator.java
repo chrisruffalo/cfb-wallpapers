@@ -34,8 +34,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class Generator {
 
+    // defaults
+    private static final int DEFAULT_EXECUTOR_THREADS = Runtime.getRuntime().availableProcessors() - 1;
+
     // create thread executor if needed
-    private static final ExecutorService EXECUTOR_SERVICE = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() - 1);
+    private static ExecutorService executorService = null;
 
     public static void main(String[] args) {
         // parse arguments
@@ -50,6 +53,13 @@ public class Generator {
 
         // initial log message
         System.out.println("===== Loading =====");
+
+        // if not single threaded create executor now
+        if(!options.isSingleThreaded()) {
+            final int threads = options.getTasks() > 0 ? options.getTasks() : DEFAULT_EXECUTOR_THREADS;
+            System.out.printf("Using %d task threads for processing artifacts\n", threads);
+            executorService = Executors.newFixedThreadPool(threads);
+        }
 
         // first load sorted and then load schools by division
         final Divisions divisions = DivisionYamlLoader.loadDivisions("schools/divisions.yml");
@@ -98,11 +108,11 @@ public class Generator {
             // before archiving wait for executor service to finish jobs
             try {
                 System.out.print("\n===== Multithreading =====\n");
-                System.out.print("\nWaiting for tasks to complete... ");
+                System.out.print("Waiting for tasks to complete... ");
                 // cause shutdown
-                EXECUTOR_SERVICE.shutdown();
+                executorService.shutdown();
                 // wait a loooong time for it to happen
-                EXECUTOR_SERVICE.awaitTermination(60, TimeUnit.MINUTES);
+                executorService.awaitTermination(60, TimeUnit.MINUTES);
                 System.out.print("[DONE]\n");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
@@ -225,16 +235,14 @@ public class Generator {
                             rasterizer.raster(outputTargets);
                         } else {
                             // create raster task
-                            final RasterRunner task = new RasterRunner(outputPath, school, rasterizer, outputTargets);
+                            final RasterRunner task = new RasterRunner(outputPath, school, rasterizer, outputTargets, options);
                             // execute task
-                            EXECUTOR_SERVICE.submit(task);
+                            executorService.submit(task);
                         }
-
                     }
 
-                    // generate web resources if required
-                    if(options.isGenerateWeb()) {
-                        final SchoolPageGenerator schoolPageGenerator = new SchoolPageGenerator(division, conference, school);
+                    if(options.isGenerateWeb() && options.isSingleThreaded()) {
+                        final SchoolPageGenerator schoolPageGenerator = new SchoolPageGenerator(school.getDivision(), school.getConference(), school);
                         schoolPageGenerator.generate(outputTargets, outputPath);
                     }
 

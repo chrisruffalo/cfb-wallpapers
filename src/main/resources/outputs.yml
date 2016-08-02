@@ -2,9 +2,6 @@
 desktop:
   name: 'Desktop'
   formats:
-    - id: 'thumb'
-      width: '192'
-      height: '108'
     - id: '1080p'
       width: '1920'
       height: '1080'
@@ -25,9 +22,6 @@ desktop:
 mobile:
   name: 'Mobile'
   formats:
-    - id: ''
-      width: '108'
-      height: '192'
     - id: 'hd'
       width: '720'
       height: '1280'
