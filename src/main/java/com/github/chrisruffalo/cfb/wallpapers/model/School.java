@@ -38,6 +38,10 @@ public class School implements Comparable<School> {
         this.id = id;
     }
 
+    public String getUid() {
+        return this.getDivision().getId() + "-" + this.conference + "-" + this.getId();
+    }
+
     public String getName() {
         return name;
     }

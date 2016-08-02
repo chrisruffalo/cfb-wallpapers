@@ -8,4 +8,11 @@ colors:
     primary: '#000e2f'
     secondary: '#ffffff'
     accent: '#7c878e'
-
+  - id: 'alternate'
+    primary: '#ffffff'
+    secondary: '#000e2f'
+    accent: '#7c878e'
+  - id: 'accent'
+    primary: '#7c878e'
+    secondary: '#000e2f'
+    accent: '#ffffff'

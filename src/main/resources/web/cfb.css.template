@@ -2,20 +2,20 @@
 <#include "core.css.template">
 
 <#list schools as school>
-/* ============= ${school.display()} - id:'${school.id}' ============= */
+/* ============= ${school.display()} - uid:'${school.uid}' ============= */
     <#list school.colors as color>
 /* === id: '${color.id}' === */
-.${school.id}-${color.id}-primary, .${school.id}-${color?index}-primary {
+.${school.uid}-${color.id}-primary, .${school.uid}-${color?index}-primary {
     color: ${color.primaryColor.textColor};
     background-color: ${color.primaryColor};
 }
 
-.${school.id}-${color.id}-secondary, .${school.id}-${color?index}-secondary {
+.${school.uid}-${color.id}-secondary, .${school.uid}-${color?index}-secondary {
     color: ${color.secondaryColor.textColor};
     background-color: ${color.secondaryColor};
 }
         <#if color.accentColor??>
-.${school.id}-${color.id}-accent, .${school.id}-${color?index}-accent {
+.${school.uid}-${color.id}-accent, .${school.uid}-${color?index}-accent {
     color: ${color.accentColor.textColor};
     background-color: ${color.accentColor};
 }

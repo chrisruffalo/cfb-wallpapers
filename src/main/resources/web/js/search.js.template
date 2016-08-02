@@ -5,11 +5,11 @@ var stringsToIds = {};
 
 // tag support and function to add tags safely
 var tagMap = {}
-function addTag(tag, school) {
+function addTag(tag, schoolId, schoolUid) {
     if(tagMap[tag] == null) {
         tagMap[tag] = [];
     }
-    tagMap[tag].push(school);
+    tagMap[tag].push({type: 'school', id: schoolId, uid: schoolUid});
 }
 
 // data map
@@ -31,12 +31,12 @@ function addConference(divId, confId, confName) {
 }
 
 // data helper for schools
-function addSchool(divId, confId, schoolId, schoolName) {
+function addSchool(divId, confId, schoolId, schoolName, schoolUid) {
     divisions[divId].schools.push(schoolId);
     divisions[divId][confId].schools.push(schoolId);
-    divisions[divId][confId][schoolId] = { id: schoolId};
-    stringsToIds[schoolName] = {type: 'school', id: schoolId};
-    stringsToIds[schoolId] = {type: 'school', id: schoolId};
+    divisions[divId][confId][schoolId] = { id: schoolId, uid: schoolUid };
+    stringsToIds[schoolName] = {type: 'school', id: schoolId, uid: schoolUid };
+    stringsToIds[schoolUid] = {type: 'school', id: schoolId, uid: schoolUid };
 }
 
 // reusable function for clearing the search
@@ -101,28 +101,22 @@ function search(searchString) {
         var tagSchoolList = tagMap[tag];
         for(index in tagSchoolList) {
             // make specific tag-school combo visible
-            show['#tag-' + tagSchoolList[index] + '-' + tag] = true;
+            show['#tag-' + tagSchoolList[index].uid + '-' + tag] = true;
             // add entry to schools map to leverage school/division showing code
-            schools.push({type: 'school', id: tagSchoolList[index]})
+            schools.push({type: 'school', id: tagSchoolList[index].id, uid: tagSchoolList[index].uid});
         }
     }
 
     // if a school is found do the same for the school... that is to say show the division and conference header
     for(var school in schools) {
-        show['.school-' + schools[school].id] = true;
+        show['.school-' + schools[school].uid] = true;
         for (var div in divisions) {
-            var done = false;
             for(var conf in divisions[div]) {
                 if("schools" != conf && "conferences" != conf && divisions[div][conf] != null && divisions[div][conf][schools[school].id] != null) {
                     show['.div-header-' + div] = true;
                     show['.conf-header-' + conf] = true;
                     show['.conf-row-' + conf] = true;
-                    done = true;
-                    break;
                 }
-            }
-            if(done) {
-                break;
             }
         }
     }
@@ -141,8 +135,8 @@ function search(searchString) {
     $('.searchable').unmark().mark(searchString).show().not(foundSelector).hide().unmark();
     $('.swatch').unmark();
 
-    // just to keep up with it
-    return foundSelector;
+    // debugging return useful data
+    return {found: foundSelector, divisions: divs, conferences: confs, schools: schools, show: show};
 }
 
 // values
@@ -173,9 +167,9 @@ addDivision('${division.id}','${division.name?lower_case}');
 <#list division.conferences() as conference>
 addConference('${division.id}', '${conference}', '${division.getConferenceName(conference)?lower_case}');
 <#list division.schools(conference) as school>
-addSchool('${division.id}','${conference}','${school.id}','${school.display()?lower_case}');
+addSchool('${division.id}','${conference}','${school.id}','${school.display()?lower_case}', '${school.uid}');
 <#list school.tags as tag>
-addTag('${tag}','${school.id}');
+addTag('${tag}','${school.id}', '${school.uid}');
 </#list>
 </#list>
 </#list>

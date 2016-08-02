@@ -90,7 +90,7 @@
                     <#list conferenceSchools as school>
                     <#if school.colors[0]??>
                     <!-- individual school card -->
-                    <div class="searchable col s12 m6 l4 school-${school.id} conf-${confKey} div-${division.id}">
+                    <div class="searchable col s12 m6 l4 school-${school.uid} conf-${confKey} div-${division.id}">
                         <div class="card">
                             <div class="card-content">
                                 <div class="row">
@@ -99,10 +99,10 @@
                                     </div>
                                 </div>
                                 <div class="row swatches">
-                                    <div class="col s5 offset-s1 ${school.id}-0-primary swatch swatch-left center-align z-depth-1">
+                                    <div class="col s5 offset-s1 ${school.uid}-0-primary swatch swatch-left center-align z-depth-1">
                                         ${school.colors[0].primaryColor}
                                     </div>
-                                    <div class="col s5 ${school.id}-0-secondary swatch swatch-right center-align z-depth-1">
+                                    <div class="col s5 ${school.uid}-0-secondary swatch swatch-right center-align z-depth-1">
                                         ${school.colors[0].secondaryColor}
                                     </div>
                                 </div>
@@ -110,7 +110,7 @@
                                     <div class="col s12">
                                         <!-- tags -->
                                         <#list school.tags as tag>
-                                            <div id="tag-${school.id}-${tag}" class="chip school-tag searchable" style="display: none;">${tag}</div>
+                                            <div id="tag-${school.uid}-${tag}" class="chip school-tag searchable" style="display: none;">${tag}</div>
                                         </#list>
                                     </div>
                                 </div>
