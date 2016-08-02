@@ -56,11 +56,11 @@ public class SVGSchoolRasterizer {
             if(target.getFormats().isEmpty()) {
                 continue;
             }
-            this.rasterTemplate(template, target.getFormats());
+            this.rasterTemplate(target, template, target.getFormats());
         }
     }
 
-    private void rasterTemplate(final Template template, final List<OutputFormat> formats) {
+    private void rasterTemplate(final OutputTarget target, final Template template, final List<OutputFormat> formats) {
         // get template name itself
         final String templateId = template.getId();
 
@@ -69,7 +69,7 @@ public class SVGSchoolRasterizer {
         // rasterize in each color set
         for(final ColorSet colorSet : this.school.getColors()) {
             // create file name
-            final String fileNameBase = this.school.getId() + "-" + templateId + "-" + colorSet.getId();
+            final String fileNameBase = this.school.getId() + "-" + target.getId() + "-" + templateId + "-" + colorSet.getId();
 
             // path to svg
             final Path pathToSvg = this.pathToOutput.resolve("svg").resolve(fileNameBase + ".svg");

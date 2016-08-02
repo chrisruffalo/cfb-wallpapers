@@ -2,10 +2,10 @@
 <html lang="en">
     <head>
         <!-- title and other info -->
-        <title>${school.display()}</title>
+        <title>Minimal Spirit - ${school.display()}</title>
 
         <!-- meta info -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
         <!-- school colors only -->
         <style>
@@ -137,13 +137,17 @@
                             <div class="row">
 
                             <#list target.templates as template>
-                                <#assign svgPath="${division.id}/${conference}/${school.id}/svg/${school.id}-${template.id}-${color.id}.svg">
+                                <#assign svgPath="${division.id}/${conference}/${school.id}/svg/${school.id}-${target.id}-${template.id}-${color.id}.svg">
                                 <#if target.outputExists(outputPath, svgPath) >
-                                <div class="col s12 m6 l4">
+                                <#assign colClass = "s12 m6 l4">
+                                <#if "mobile" == target.id>
+                                    <#assign colClass = "s6 m3 l2">
+                                </#if>
+                                <div class="col ${colClass}">
 
                                 <div id="${target.id}-${template.id}-${color.id}" class="card">
                                     <div class="card-image waves-effect waves-block waves-light">
-                                      <img class="activator svg-can-error" src="svg/${school.id}-${template.id}-${color.id}.svg">
+                                      <img class="activator svg-can-error" src="svg/${school.id}-${target.id}-${template.id}-${color.id}.svg">
                                     </div>
                                     <div class="card-content">
                                         <span class="card-title activator grey-text text-darken-4">${template.name}</span>

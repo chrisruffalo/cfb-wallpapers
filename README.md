@@ -14,15 +14,30 @@ I used Java and YAML to do this. So... probably?
 The output of this tool is hosted at http://cfb.ruffalo.org
 
 ## FAQ
+**Q** Why isn't my school listed?
+
+*A* The goal is to have all schools listed but it just hasn't been done yet. You can add your own if you want!
+
+**Q** I don't like something about the way my school is listed/named/portrayed. How can I fix it?
+
+*A* Please open an issue so we can address it. Most of the data comes from official school sources and wikipedia. That doesn't make it correct.
+
+**Q** The accent color(s) for my school are terrible, why?
+
+*A* I suck at colors. Submit an issue and it can get fixed.
+
 **Q** Why did you do this with (YAML|Java)?
+
 *A* Didn't you read above? I'm probably a little crazy to do something this way that Ruby, Python, or many other languages could do better. Truth is 
 I'm more fluent in Java and don't have to think too hard to do it this way.
 
 **Q** How do I add a school?
+
 *A* You can open an issue or create a pull request. See the section called "How to Add A School" for more information on doing it yourself. We will be 
 glad to help you. The most important thing to have is official documentation from the school on the colors in use, if it is available.
 
 **Q** How do I add a template?
+
 *A* You need to create an SVG file and a pull request or create an issue with the artifact. See the section "How to Add a Template" for more 
 information. If you have a cool graphic idea but aren't familiar with SVG files then creating an issue is a great way to get help.
 
@@ -62,9 +77,9 @@ Each YAML file looks like this:
 ---
 id: 'thecitadel'
 name: 'The Citadel'
-conference: 'socon'
 wiki: 'https://en.wikipedia.org/wiki/The_Citadel,_The_Military_College_of_South_Carolina'
 url: 'http://www.citadel.edu/root/brandtoolbox-colors'
+tags: ['bulldogs']
 colors:
   - id: 'basic'
     primary: '#4d90cd'
@@ -76,13 +91,17 @@ colors:
     accent: '#ffffff'
 ```
 
-The `id` is unique to the school and is the short-name identifier of the school. The full `name` is used for printing status messages. The `conference` title is to 
-organize the schools. The `url` is a helpful property so that other can come and find the same information and so that it can be checked for accuracy. The `wiki` 
-property will be used in the web UI to generate a link to the school's Wikipedia page.
+The `id` is unique to the school and is the short-name identifier of the school. The full `name` is used for printing status messages. The `url` is a helpful 
+property so that other can come and find the same information and so that it can be checked for accuracy. The `wiki` property will be used in the web UI 
+to generate a link to the school's Wikipedia page.
+
+The tags list is a bit special and it uses single words (no spaces) to further enable the school to be searched for. In this case adding the mascot allows people 
+to search just based on that (or other location or identifying words) instead of the name of the school.
 
 The colors section is how the SVG is modified. Right now only a few colors (primary, secondary, alt) are supported. Each color scheme is listed separately with an 
 `id` that determines where and how it will be named under the school's output folder. The color should be given in HEX notation (`#RRGGBB`) but RGB notation 
 (`rgb(0-255,0-255,0-255)`) and CMYK (`cmyk(0-100,0-100,0-100,0-100)`) are supported as well.
+
   
 Examples:
 ```
@@ -92,7 +111,7 @@ cmyk(100, 100, 100, 100) = #000000
 ```
 
 ## How to Add a Template
-If you don't like the current design(s) then another can be added easily by creating an SVG file and saving it to `src/main/resources/templates`. The SVG should 
+If you don't like the current design(s) then another can be added easily by creating an SVG file and saving it to `src/main/resources/templates/<target>`. The SVG should 
 follow certain conventions:
 
 * The primary color should be the hex color code `#61ed61`.
@@ -100,4 +119,7 @@ follow certain conventions:
 * The accent color should be the hex color code `#6f6f6f`.
 
 It is important to note that these colors must match exactly and that other colors, if introduced, will not be modified in any way. Templates will be scaled to the 
-size of the output. It is recommended that templates be 4096x2160.
+size of the output. It is recommended that desktop templates be 4096x2160 and mobile templates be 2160x4096.
+
+The two types of template output targets (mobile, desktop) are supported separately of one another.
+

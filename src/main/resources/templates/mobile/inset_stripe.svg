@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="2160"
+   height="4096"
+   viewBox="0 0 2160 4096"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="inset_stripe.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.23"
+     inkscape:cx="900.57818"
+     inkscape:cy="1905.0085"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:showpageshadow="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1043"
+     inkscape:window-x="2560"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,3043.6378)">
+    <g
+       id="g4136"
+       transform="matrix(0,-1,1,0,1107.6378,1052.3622)">
+      <rect
+         y="-1107.6378"
+         x="0"
+         height="2160"
+         width="4096"
+         id="rect4707"
+         style="fill:#61ed61;fill-opacity:1;stroke:none;stroke-opacity:0" />
+      <rect
+         y="-1107.6377"
+         x="2808"
+         height="2160"
+         width="814"
+         id="rect4703"
+         style="fill:#6f6f6f;fill-opacity:1;stroke:none;stroke-opacity:0" />
+      <rect
+         y="-1107.6378"
+         x="3048"
+         height="2160"
+         width="334"
+         id="rect4705"
+         style="fill:#b1b1b1;fill-opacity:1;stroke:none;stroke-opacity:0" />
+    </g>
+  </g>
+</svg>

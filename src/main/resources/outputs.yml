@@ -19,7 +19,7 @@ desktop:
       name: 'Slant with Stripe'
     - id: 'two_stripes'
       name: 'Two Vertical Stripes'
-phone:
+mobile:
   name: 'Mobile'
   formats:
     - id: 'thumb'
@@ -31,4 +31,9 @@ phone:
     - id: 'iphone6p'
       width: '1080'
       height: '1920'
+  templates:
+    - id: 'inset_stripe'
+      name: 'Stripes'
+    - id: 'two_stripes'
+      name: 'Horizontal'
 
