@@ -1,6 +1,7 @@
 package com.github.chrisruffalo.cfb.wallpapers;
 
 import com.beust.jcommander.JCommander;
+import com.github.chrisruffalo.cfb.wallpapers.archive.Archiver;
 import com.github.chrisruffalo.cfb.wallpapers.config.GeneratorOptions;
 import com.github.chrisruffalo.cfb.wallpapers.load.DivisionYamlLoader;
 import com.github.chrisruffalo.cfb.wallpapers.load.OutputDescriptionLoader;
@@ -9,6 +10,7 @@ import com.github.chrisruffalo.cfb.wallpapers.model.Division;
 import com.github.chrisruffalo.cfb.wallpapers.model.Divisions;
 import com.github.chrisruffalo.cfb.wallpapers.model.OutputTarget;
 import com.github.chrisruffalo.cfb.wallpapers.model.School;
+import com.github.chrisruffalo.cfb.wallpapers.raster.RasterRunner;
 import com.github.chrisruffalo.cfb.wallpapers.raster.SVGSchoolRasterizer;
 import com.github.chrisruffalo.cfb.wallpapers.util.ResourceLoader;
 import com.github.chrisruffalo.cfb.wallpapers.web.SchoolPageGenerator;
@@ -22,12 +24,18 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * <p></p>
  *
  */
 public class Generator {
+
+    // create thread executor if needed
+    private static final ExecutorService EXECUTOR_SERVICE = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() - 1);
 
     public static void main(String[] args) {
         // parse arguments
@@ -85,9 +93,39 @@ public class Generator {
             handleDivisionOutput(division, targets, options, outputPath);
         }
 
+        // if not single-threaded wait for the executor to finish
+        if(!options.isSingleThreaded()) {
+            // before archiving wait for executor service to finish jobs
+            try {
+                System.out.print("\n===== Multithreading =====\n");
+                System.out.print("\nWaiting for tasks to complete... ");
+                // cause shutdown
+                EXECUTOR_SERVICE.shutdown();
+                // wait a loooong time for it to happen
+                EXECUTOR_SERVICE.awaitTermination(60, TimeUnit.MINUTES);
+                System.out.print("[DONE]\n");
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        // archive all the things!
+        if(!options.isNoImages()) {
+            System.out.print("\n===== Archiving =====\n");
+            System.out.print("Creating division and conference archives... ");
+            for(final Division division : divisions.getSortedDivisions()) {
+                for(final String conference : division.conferences()) {
+                    Archiver.archiveConference(outputPath, division, conference);
+                }
+                Archiver.archiveDivision(outputPath, division);
+            }
+            Archiver.archiveAll(outputPath);
+            System.out.print("[DONE]\n");
+        }
+
         // if web, tie together with static web content
         if(options.isGenerateWeb()) {
-            System.out.println("\n===== Web =====");
+            System.out.print("\n===== Web =====\n");
             System.out.printf("Generating web resources... ");
             StaticResourceGenerator.generateStaticResources(outputPath, divisions, options);
             System.out.printf("[DONE]\n");
@@ -180,8 +218,18 @@ public class Generator {
                 } else {
                     // don't generate images if requested
                     if(!options.isNoImages()) {
+                        // create SVG output and raster images
                         final SVGSchoolRasterizer rasterizer = new SVGSchoolRasterizer(division.getId(), conference, school, outputPath);
-                        rasterizer.raster(outputTargets);
+
+                        if(options.isSingleThreaded()) {
+                            rasterizer.raster(outputTargets);
+                        } else {
+                            // create raster task
+                            final RasterRunner task = new RasterRunner(outputPath, school, rasterizer, outputTargets);
+                            // execute task
+                            EXECUTOR_SERVICE.submit(task);
+                        }
+
                     }
 
                     // generate web resources if required
@@ -190,9 +238,13 @@ public class Generator {
                         schoolPageGenerator.generate(outputTargets, outputPath);
                     }
 
-                    System.out.printf("[DONE]\n");
+                    if(options.isSingleThreaded()) {
+                        System.out.printf("[DONE]\n");
+                    } else {
+                        System.out.printf("[SUBMITTED]\n");
+                    }
                 }
-            }
+            } // done with school
         }
     }
 }

@@ -64,6 +64,7 @@
                         <div class="card division-header darken-1">
                             <div class="card-content white-text">
                               <span class="card-title">${division.name}</span>
+                              <h5 class="right hide-on-small-only"><a class="white-text" href="${division.id}/${division.id}.zip"><i class="fa fa-download" aria-hidden="true"></i></a></h5>
                             </div>
                         </div>
                     </div>
@@ -80,6 +81,7 @@
                         <div class="card blue-grey darken-1">
                             <div class="card-content white-text">
                               <span class="card-title">${conferenceName}</span>
+                              <h5 class="right hide-on-small-only"><a class="white-text" href="${division.id}/${confKey}/${confKey}.zip"><i class="fa fa-download" aria-hidden="true"></i></a></h5>
                             </div>
                         </div>
                     </div>
@@ -95,7 +97,7 @@
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col s10 offset-s1">
-                                        <a href="${division.id}/${confKey}/${school.id}/${school.id}.html" class="grey-text text-darken-4">${school.display()}</a>
+                                        <strong><a href="${division.id}/${confKey}/${school.id}/${school.id}.html" class="grey-text text-darken-4">${school.display()}</a></strong>
                                     </div>
                                 </div>
                                 <div class="row swatches">
@@ -107,11 +109,14 @@
                                     </div>
                                 </div>
                                 <div class="row tags">
-                                    <div class="col s12">
+                                    <div class="col s11 m9 offset-s1 offset-m1">
                                         <!-- tags -->
                                         <#list school.tags as tag>
                                             <div id="tag-${school.uid}-${tag}" class="chip school-tag searchable" style="display: none;">${tag}</div>
                                         </#list>
+                                    </div>
+                                    <div class="col m1 valign-wrapper">
+                                        <a class="right valign black-text" href="${division.id}/${confKey}/${school.id}/${school.id}.zip"><i class="fa fa-download" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>

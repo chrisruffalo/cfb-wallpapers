@@ -96,7 +96,7 @@ public class SVGSchoolRasterizer {
             }
 
             // create universe
-            final SVGUniverse universe = SVGCache.getSVGUniverse();
+            final SVGUniverse universe = new SVGUniverse();
 
             // load svg diagram for later use
             final SVGDiagram diagram;

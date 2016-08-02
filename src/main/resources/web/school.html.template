@@ -162,6 +162,10 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <tr>
+                                                    <td><a href="svg/${school.id}-${template.id}-${color.id}.svg">svg</a></td>
+                                                    <td><i class="fa fa-arrows" aria-hidden="true"></i> scalable</td>
+                                                </tr>
                                                 <#list target.formats as format>
                                                 <#if "thumb" != format.id >
                                                 <tr>

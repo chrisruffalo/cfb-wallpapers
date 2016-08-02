@@ -8,6 +8,9 @@ desktop:
     - id: '1080p'
       width: '1920'
       height: '1080'
+    - id: '1440p'
+      width: '2560'
+      height: '1440'
   templates:
     - id: 'inset_stripe'
       name: 'Stripe with Accent'
@@ -22,13 +25,13 @@ desktop:
 mobile:
   name: 'Mobile'
   formats:
-    - id: 'thumb'
+    - id: ''
       width: '108'
       height: '192'
-    - id: 'iphone6'
-      width: '750'
-      height: '1334'
-    - id: 'iphone6p'
+    - id: 'hd'
+      width: '720'
+      height: '1280'
+    - id: 'fullhd'
       width: '1080'
       height: '1920'
   templates:

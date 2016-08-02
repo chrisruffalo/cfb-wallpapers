@@ -3,6 +3,7 @@ package com.github.chrisruffalo.cfb.wallpapers.web;
 import com.github.chrisruffalo.cfb.wallpapers.config.GeneratorOptions;
 import com.github.chrisruffalo.cfb.wallpapers.load.DivisionYamlLoader;
 import com.github.chrisruffalo.cfb.wallpapers.load.SchoolYamlLoader;
+import com.github.chrisruffalo.cfb.wallpapers.model.Division;
 import com.github.chrisruffalo.cfb.wallpapers.model.Divisions;
 import com.github.chrisruffalo.cfb.wallpapers.model.School;
 import com.github.chrisruffalo.cfb.wallpapers.util.ResourceLoader;
@@ -24,10 +25,14 @@ public class StaticResourceGeneratorTest {
     @Test
     public void testResourceGeneration() {
         final Divisions divisions = DivisionYamlLoader.loadDivisions("schools/divisions.yml");
+        final Division division = new Division();
+        division.setId("fcs");
+        division.setName("d1aa");
+        divisions.getDivisions().put("fcs", division);
 
         // create school(s)
-        final School school1 = new SchoolYamlLoader().load(null, "fcs", ResourceLoader.loadResource("schools/fcs/socon/thecitadel.yml"));
-        final School school2 = new SchoolYamlLoader().load(null, "fcs", ResourceLoader.loadResource("schools/fcs/socon/vmi.yml"));
+        final School school1 = new SchoolYamlLoader().load(division, "fcs", ResourceLoader.loadResource("schools/fcs/socon/thecitadel.yml"));
+        final School school2 = new SchoolYamlLoader().load(division, "fcs", ResourceLoader.loadResource("schools/fcs/socon/vmi.yml"));
 
         divisions.getDivisions().get("fcs").add("socon", school1);
         divisions.getDivisions().get("fcs").add("socon", school2);

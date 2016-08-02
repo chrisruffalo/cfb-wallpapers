@@ -38,6 +38,9 @@ public class GeneratorOptions {
     @Parameter(names = {"--list", "-l"}, description = "List the structure of sorted, conferences, and schools.")
     private boolean list;
 
+    @Parameter(names = {"--no-threads", "-N"}, description = "Only generate with a single thread.")
+    private boolean singleThreaded = false;
+
     public String getOutputPath() {
         return outputPath;
     }
@@ -108,5 +111,13 @@ public class GeneratorOptions {
 
     public void setNoImages(boolean noImages) {
         this.noImages = noImages;
+    }
+
+    public boolean isSingleThreaded() {
+        return singleThreaded;
+    }
+
+    public void setSingleThreaded(boolean singleThreaded) {
+        this.singleThreaded = singleThreaded;
     }
 }
