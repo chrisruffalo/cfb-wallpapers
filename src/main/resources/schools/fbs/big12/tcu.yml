@@ -9,7 +9,7 @@ colors:
     secondary: '#ffffff'
     accent: '#a3a9ac'
   - id: 'accent-black'
-    primary: '#fd1979'
+    primary: '#4d1979'
     secondary: '#ffffff'
     accent: '#000000'
 
