@@ -1,0 +1,16 @@
+---
+id: 'uk'
+name: 'University of Kansas'
+wiki: 'https://en.wikipedia.org/wiki/University_of_Kansas'
+url: 'https://identity.ku.edu/color'
+colors:
+  - id: 'basic'
+    primary: '#0051ba'
+    secondary: '#e8000d'
+    accent: '#ffc82d'
+  - id: 'alternate'
+    primary: '#0051ba'
+    secondary: '#e8000d'
+    accent: '#85898a'
+
+

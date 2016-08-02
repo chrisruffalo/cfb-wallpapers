@@ -1,0 +1,15 @@
+---
+id: 'wfu'
+name: 'Wake Forest University'
+wiki: 'https://en.wikipedia.org/wiki/Wake_Forest_University'
+url: 'http://identitystandards.wfu.edu/colors-and-paper-stock/'
+colors:
+  - id: 'basic'
+    primary: '#9e7e38'
+    secondary: '#000000'
+    accent: '#625750'
+  - id: 'cream'
+    primary: '#9e7e38'
+    secondary: '#000000'
+    accent: '#fffde8'
+

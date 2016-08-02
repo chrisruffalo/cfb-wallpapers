@@ -1,7 +1,6 @@
 ---
 id: 'psu'
 name: 'Penn State'
-conference: 'b1g'
 url: 'http://www.personal.psu.edu/staff/d/r/drs18/2000/blue/'
 colors:
   - id: 'basic'

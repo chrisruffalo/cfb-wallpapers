@@ -1,7 +1,6 @@
 ---
 id: 'osu'
 name: 'The Ohio State University'
-conference: 'b1g'
 url: 'https://brand.osu.edu/color/'
 colors:
   - id: 'basic'

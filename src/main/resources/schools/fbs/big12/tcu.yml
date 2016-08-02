@@ -1,0 +1,16 @@
+---
+id: 'tcu'
+name: 'Texas Christian University'
+wiki: 'https://en.wikipedia.org/wiki/Texas_Christian_University'
+url: 'http://www.mkc.tcu.edu/pdf/TCU_brandstandards.pdf'
+colors:
+  - id: 'basic'
+    primary: '#4d1979'
+    secondary: '#ffffff'
+    accent: '#a3a9ac'
+  - id: 'accent-black'
+    primary: '#fd1979'
+    secondary: '#ffffff'
+    accent: '#000000'
+
+

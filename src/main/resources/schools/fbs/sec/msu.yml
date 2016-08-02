@@ -1,7 +1,6 @@
 ---
 id: 'msu'
 name: 'Mississippi State University'
-conference: 'sec'
 url: 'http://www.opa.msstate.edu/identity/assets.php#color'
 colors:
   - id: 'basic'

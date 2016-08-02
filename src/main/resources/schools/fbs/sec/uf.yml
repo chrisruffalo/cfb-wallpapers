@@ -1,7 +1,6 @@
 ---
 id: 'uf'
 name: 'University of Florida'
-conference: 'sec'
 url: 'http://identity.ufl.edu/color/'
 colors:
   - id: 'basic'

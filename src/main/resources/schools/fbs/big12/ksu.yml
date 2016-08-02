@@ -1,0 +1,13 @@
+---
+id: 'ksu'
+name: 'Kansas State University'
+wiki: 'https://en.wikipedia.org/wiki/Kansas_State_University'
+url: 'https://www.k-state.edu/vpcm/branding/'
+colors:
+  - id: 'basic'
+    primary: 'rgb(81,40,136)' # stupid brand standards using a five digit hex code! will not work with color parser at current
+    secondary: '#ffffff'
+    accent: '#d1d1d1'
+
+
+

@@ -1,7 +1,6 @@
 ---
 id: 'lsu'
 name: 'Louisiana State University'
-conference: 'sec'
 url: 'http://www.lsu.edu/stratcomm/online-brand-guide/lsu-colors.php'
 colors:
   - id: 'basic'

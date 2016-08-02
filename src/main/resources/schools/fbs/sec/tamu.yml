@@ -1,8 +1,9 @@
 ---
 id: 'tamu'
 name: 'Texas A&M'
-conference: 'sec'
+wiki: 'https://en.wikipedia.org/wiki/Texas_A%26M_University'
 url: 'http://brandguide.tamu.edu/colors.html'
+tags: ['military','aggies']
 colors:
   - id: 'basic'
     primary: '#500000'

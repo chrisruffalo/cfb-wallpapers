@@ -1,0 +1,19 @@
+---
+id: 'syracuse'
+name: 'Syracuse University'
+wiki: 'https://en.wikipedia.org/wiki/Syracuse_University'
+url: 'http://styleguide.syr.edu/brand-identity/colors/'
+colors:
+  - id: 'basic'
+    primary: '#d44500'
+    secondary: '#3e3d3c'
+    accent: null
+  - id: 'alternate-light-gray'
+    primary: '#d44500'
+    secondary: '#6f777d'
+    accent: null
+  - id: 'alternate-white'
+    primary: '#d44500'
+    secondary: '#ffffff'
+    accent: null
+

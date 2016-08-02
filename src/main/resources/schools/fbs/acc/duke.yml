@@ -1,0 +1,10 @@
+---
+id: 'duke'
+name: 'Duke University'
+wiki: 'https://en.wikipedia.org/wiki/Duke_University'
+url: 'https://styleguide.duke.edu/color-palette/'
+colors:
+  - id: 'basic'
+    primary: '#001a57'
+    secondary: '#ffffff'
+    accent: null

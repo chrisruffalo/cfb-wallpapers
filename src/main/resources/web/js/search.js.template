@@ -3,13 +3,23 @@
 // strings to ids
 var stringsToIds = {};
 
+// tag support and function to add tags safely
+var tagMap = {}
+function addTag(tag, school) {
+    if(tagMap[tag] == null) {
+        tagMap[tag] = [];
+    }
+    tagMap[tag].push(school);
+}
+
 // data map
-divisions = {};
+var divisions = {};
 
 // reusable function for clearing the search
 function clearSearch() {
     $('.searchable, .swatch').unmark();
     $('.searchable').show();
+    $('.school-tag').hide();
 }
 
 // hides everything not found
@@ -32,7 +42,7 @@ function search(searchString) {
                 divs.push(found);
             } else if(found.type == 'conf') {
                 confs.push(found);
-            } else if(found.type == 'school') {
+            } else if(found.type == 'school' || found.type == 'tag') {
                 schools.push(found);
             }
         }
@@ -55,6 +65,24 @@ function search(searchString) {
             }
         }
     }
+
+    // for each tag, if that tag is found, add the tags and schools to the visibility list
+    for(var tag in tagMap) {
+        // no result found, go to next tag
+        if(!tag.includes(searchString)) {
+            continue;
+        }
+
+        // otherwise results are found
+        var tagSchoolList = tagMap[tag];
+        for(index in tagSchoolList) {
+            // make specific tag-school combo visible
+            show['#tag-' + tagSchoolList[index] + '-' + tag] = true;
+            // add entry to schools map to leverage school/division showing code
+            schools.push({type: 'school', id: tagSchoolList[index]})
+        }
+    }
+
     // if a school is found do the same for the school... that is to say show the division and conference header
     for(var school in schools) {
         show['.school-' + schools[school].id] = true;
@@ -85,6 +113,7 @@ function search(searchString) {
     var foundSelector = showList.join(', ');
 
     // do action to hide elements not found, starting by unmarking and then remarking
+    $('.school-tag').hide();
     $('.searchable').unmark().mark(searchString).show().not(foundSelector).hide().unmark();
     $('.swatch').unmark();
 
@@ -93,13 +122,12 @@ function search(searchString) {
 }
 
 // values
-var timeout = 150;
+var timeout = 100;
 var searchTimer = null;
 
 // function to defer the search for <timeout>ms or so
 // to prevent multiple searches and "flashing" while
 // still appearing "live"
-// todo: animation
 function doDeferredSearch() {
     // cancel timer
     if(searchTimer != null) {
@@ -126,11 +154,14 @@ divisions['${division.id}']['${conference}'] = { schools: [] };
 stringsToIds['${division.getConferenceName(conference)?lower_case}'] = {type: 'conf', id: "${conference}"};
 stringsToIds['${conference}'] = {type: 'conf', id: "${conference}"};
 <#list division.schools(conference) as school>
-divisions['${division.id}'].schools.push("${school.id}");
-divisions['${division.id}']['${conference}'].schools.push("${school.id}");
+divisions['${division.id}'].schools.push('${school.id}');
+divisions['${division.id}']['${conference}'].schools.push('${school.id}');
 divisions['${division.id}']['${conference}']['${school.id}'] = { id: "${school}"};
-stringsToIds['${school.display()?lower_case}'] = {type: 'school', id: "${school.id}"};
-stringsToIds['${school.id}'] = {type: 'school', id: "${school.id}"};
+stringsToIds['${school.display()?lower_case}'] = {type: 'school', id: '${school.id}'};
+stringsToIds['${school.id}'] = {type: 'school', id: '${school.id}'};
+<#list school.tags as tag>
+addTag('${tag}','${school.id}');
+</#list>
 </#list>
 </#list>
 </#list>

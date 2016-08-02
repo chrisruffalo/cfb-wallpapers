@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <!-- title and other info -->
-        <title>Minimal College Football Wallpapers</title>
+        <title>Minimal Spirit</title>
 
         <!-- meta info -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -104,6 +104,14 @@
                                     </div>
                                     <div class="col s5 ${school.id}-0-secondary swatch swatch-right center-align z-depth-1">
                                         ${school.colors[0].secondaryColor}
+                                    </div>
+                                </div>
+                                <div class="row tags">
+                                    <div class="col s12">
+                                        <!-- tags -->
+                                        <#list school.tags as tag>
+                                            <div id="tag-${school.id}-${tag}" class="chip school-tag searchable" style="display: none;">${tag}</div>
+                                        </#list>
                                     </div>
                                 </div>
                             </div>

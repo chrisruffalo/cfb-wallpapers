@@ -1,7 +1,6 @@
 ---
 id: 'unl'
 name: 'University of Nebraska'
-conference: 'b1g'
 url: 'http://ucomm.unl.edu/toolbox/colors'
 colors:
   - id: 'basic'

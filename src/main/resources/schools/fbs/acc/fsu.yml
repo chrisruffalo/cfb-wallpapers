@@ -1,0 +1,10 @@
+---
+id: 'fsu'
+name: 'Florida State University'
+wiki: 'https://en.wikipedia.org/wiki/Florida_State_University'
+url: 'http://unicomm.fsu.edu/brand/applying/colors/'
+colors:
+  - id: 'basic'
+    primary: '#782f40'
+    secondary: '#ceb888'
+    accent: '#2C2a29'

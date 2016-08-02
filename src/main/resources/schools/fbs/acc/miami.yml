@@ -1,0 +1,11 @@
+---
+id: 'miami'
+name: 'University of Miami'
+wiki: 'https://en.wikipedia.org/wiki/University_of_Miami'
+url: 'http://www6.miami.edu/umidentity/manual.html'
+colors:
+  - id: 'basic'
+    primary: '#005030'
+    secondary: '#f47321'
+    accent: null
+

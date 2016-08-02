@@ -1,8 +1,9 @@
 ---
 id: 'usc'
 name: 'University of South Carolina'
-conference: 'sec'
+wiki: 'https://en.wikipedia.org/wiki/University_of_South_Carolina'
 url: 'https://www.sc.edu/toolbox/officialColors.php'
+tags: ['USC','gamecocks','columbia']
 colors:
   - id: 'basic'
     primary: '#73000A'

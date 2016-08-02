@@ -1,0 +1,11 @@
+---
+id: 'pitt'
+name: 'University of Pittsburgh'
+wiki: 'https://en.wikipedia.org/wiki/University_of_Pittsburgh'
+url: 'http://www.communications.pitt.edu/Graphic-Standards.pdf'
+colors:
+  - id: 'basic'
+    primary: '#1c2957'
+    secondary: '#cdb87d'
+    accent: null
+

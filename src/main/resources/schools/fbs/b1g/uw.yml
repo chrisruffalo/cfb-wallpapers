@@ -1,7 +1,6 @@
 ---
 id: 'uw'
 name: 'University of Wisconsin-Madison'
-conference: 'b1g'
 url: 'https://umark.wisc.edu/brand/web/colors.php'
 colors:
   - id: 'basic'

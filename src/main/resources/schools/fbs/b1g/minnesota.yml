@@ -1,7 +1,6 @@
 ---
 id: 'minnesota'
 name: 'University of Minnesota'
-conference: 'b1g'
 url: 'https://ur.umn.edu/brand/requirements-and-guidelines/color-and-type/index.php'
 colors:
   - id: 'basic'

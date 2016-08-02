@@ -1,7 +1,6 @@
 ---
 id: 'vanderbilt'
 name: 'Vanderbilt University'
-conference: 'sec'
 url: 'https://www4.vanderbilt.edu/graphicstandards/colors/primary.php'
 colors:
   - id: 'basic'

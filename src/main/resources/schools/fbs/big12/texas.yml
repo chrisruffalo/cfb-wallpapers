@@ -1,0 +1,12 @@
+---
+id: 'texas'
+name: 'University of Texas'
+wiki: 'https://en.wikipedia.org/wiki/University_of_Texas_at_Austin'
+url: 'http://brand.utexas.edu/visual-identity/colors'
+colors:
+  - id: 'basic'
+    primary: '#bf5700'
+    secondary: '#ffffff'
+    accent: '#333f48'
+
+

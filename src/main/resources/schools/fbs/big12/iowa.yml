@@ -1,0 +1,10 @@
+---
+id: 'iowa'
+name: 'Iowa State University'
+wiki: 'https://en.wikipedia.org/wiki/Iowa_State_University'
+url: 'http://www.brandmarketing.iastate.edu/brand-elements/color-palette/'
+colors:
+  - id: 'basic'
+    primary: 'cmyk(2,100,85,6)'
+    secondary: '#f1b348'
+    accent: '#cac7a7'

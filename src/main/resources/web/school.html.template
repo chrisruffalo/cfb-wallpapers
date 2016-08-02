@@ -96,6 +96,7 @@
                         <div class="card blue-grey darken-1">
                             <div class="card-content white-text">
                                 <span class="card-title">${school.display()}</span>
+                                <#if school.tags?? && school.tags?size gt 0><p><#list school.tags as tag><div class="chip">${tag}</div></#list></p></#if>
                             </div>
                             <div class="card-action">
                                 <#if school.wikiUrl??><a href="${school.wikiUrl}">WIKI</a></#if>
@@ -112,10 +113,10 @@
                     <li>
                         <div class="collapsible-header <#if school.colors?size == 1>active</#if>">
                             <div class="row">
-                                <div class="col s5">
+                                <div class="col hide-on-small-only m5">
                                     <p><i class="material-icons">label_outline</i>${color.id}</p>
                                 </div>
-                                <div class="col s7 right">
+                                <div class="col s12 m7 right">
                                     <p>
                                     <div class="valign right blot blot-main ${school.id}-${color.id}-secondary z-depth-1">&nbsp</div>
                                     <#if color.accentColor??>

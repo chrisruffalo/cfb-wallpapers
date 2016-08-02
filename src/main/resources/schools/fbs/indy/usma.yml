@@ -1,8 +1,9 @@
 ---
 id: 'usma'
 name: 'West Point'
-conference: 'independent'
+wiki: 'https://en.wikipedia.org/wiki/United_States_Military_Academy'
 url: 'http://www.usma.edu/dsi/SiteAssets/USMA_styleguide(10-02-2014)-WEB.pdf'
+tags: ['military','blackknights','army']
 colors:
   - id: 'basic'
     primary: '#000000'

@@ -1,0 +1,12 @@
+---
+id: 'vt'
+name: 'Virginia Tech'
+wiki: 'https://en.wikipedia.org/wiki/Virginia_Tech'
+url: 'http://branding.unirel.vt.edu/brand/brand-platform.html'
+tags: ['military']
+colors:
+  - id: 'basic'
+    primary: '#660000'
+    secondary: '#ff6600'
+    accent: '#2c21ba'
+

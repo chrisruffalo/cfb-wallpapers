@@ -1,0 +1,15 @@
+---
+id: 'ncstate'
+name: 'North Carolina State University'
+wiki: 'https://en.wikipedia.org/wiki/North_Carolina_State_University'
+url: 'https://brand.ncsu.edu/color/'
+colors:
+  - id: 'basic'
+    primary: 'cmyk(0,100,81,4)'
+    secondary: '#000000'
+    accent: '#ffffff'
+  - id: 'alternate'
+    primary: 'cmyk(0,100,81,4)'
+    secondary: '#ffffff'
+    accent: '#000000'
+

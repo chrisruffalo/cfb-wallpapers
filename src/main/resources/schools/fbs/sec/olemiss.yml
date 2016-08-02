@@ -1,7 +1,6 @@
 ---
 id: 'olemiss'
 name: 'University of Mississippi'
-conference: 'sec'
 # Ole Miss sucks at this. Best reference is wikipedia, 'Yale Blue' and 'Harvard Crimson' which have hex codes
 url: 'https://en.wikipedia.org/wiki/University_of_Mississippi'
 colors:

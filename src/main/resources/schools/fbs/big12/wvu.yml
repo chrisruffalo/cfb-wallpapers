@@ -1,0 +1,13 @@
+---
+id: 'wvu'
+name: 'West Virginia University'
+wiki: 'https://en.wikipedia.org/wiki/West_Virginia_University'
+url: 'https://brand.wvu.edu/downloads-toolkit/color-palette'
+colors:
+  - id: 'basic'
+    primary: '#002855'
+    secondary: '#eaaa00'
+    accent: '#6e6259'
+
+
+

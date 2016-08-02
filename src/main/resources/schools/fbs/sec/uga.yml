@@ -1,7 +1,6 @@
 ---
 id: 'uga'
 name: 'University of Georgia'
-conference: 'sec'
 url: 'http://grfx.cstv.com/photos/schools/geo/genrel/auto_pdf/2012-13/misc_non_event/athletic-brand-manual.pdf'
 colors:
   - id: 'basic'

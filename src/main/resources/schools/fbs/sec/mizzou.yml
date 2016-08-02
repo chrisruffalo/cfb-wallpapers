@@ -1,7 +1,6 @@
 ---
 id: 'mizzou'
 name: 'University of Missouri'
-conference: 'sec'
 url: 'http://identity.missouri.edu/graphic-identity-standards/3-color/3.1-official-mu-colors.php'
 colors:
   - id: 'basic'

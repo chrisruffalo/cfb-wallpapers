@@ -8,8 +8,12 @@ import org.yaml.snakeyaml.Yaml;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * <p></p>
@@ -20,7 +24,7 @@ public class SchoolYamlLoader {
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
     private static final String KEY_COLORS = "colors";
-    private static final String KEY_CONFERENCE = "conference";
+    private static final String KEY_TAGS = "tags";
     private static final String KEY_WIKI_URL = "wiki";
     private static final String KEY_COLOR_URL = "url";
 
@@ -52,6 +56,10 @@ public class SchoolYamlLoader {
             school.setColors(this.parseColors(colorDocument));
         } // if it wasn't a list there are no colors defined for the school
 
+        // and for tags
+        final Object tagCandidate = document.get(KEY_TAGS);
+        school.setTags(this.parseTags(tagCandidate));
+
         // return parsed school
         return school;
     }
@@ -81,6 +89,20 @@ public class SchoolYamlLoader {
         return colorSets;
     }
 
+    @SuppressWarnings("unchecked")
+    private Set<String> parseTags(final Object tags) {
+        final Set<String> tagSet = new TreeSet<>();
+
+        // parse out yaml document
+        if(tags != null && tags instanceof Collection) {
+            final Collection<String> tagCollection = (Collection<String>)tags;
+            if(!tagCollection.isEmpty()) {
+                tagSet.addAll(tagCollection);
+            }
+        }
+
+        return tagSet;
+    }
 
 }
 

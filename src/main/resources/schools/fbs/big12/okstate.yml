@@ -1,0 +1,16 @@
+---
+id: 'okstate'
+name: 'Oklahoma State University'
+wiki: 'https://en.wikipedia.org/wiki/Oklahoma_State_University%E2%80%93Stillwater'
+url: 'http://www.osuokc.edu/communications/colors.aspx'
+colors:
+  - id: 'basic'
+    primary: 'rgb(217,89,0)'
+    secondary: '#000000'
+    accent: 'rgb(184,179,173)'
+  - id: 'light'
+    primary: 'rgb(242,125,0)'
+    secondary: '#000000'
+    accent: 'rgb(184,179,173)'
+
+

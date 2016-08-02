@@ -1,7 +1,6 @@
 ---
 id: 'northwestern'
 name: 'Northwestern University'
-conference: 'b1g'
 url: 'http://www.northwestern.edu/brand/visual-identity/color/index.html'
 colors:
   - id: 'basic'

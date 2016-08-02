@@ -1,0 +1,11 @@
+---
+id: 'uva'
+name: 'University of Virginia'
+wiki: 'https://en.wikipedia.org/wiki/University_of_Virginia'
+# c'mon uva... it was easier to find the business school and WVU's standards...
+url: 'http://brand.darden.virginia.edu/color/'
+colors:
+  - id: 'basic'
+    primary: '#235281'
+    secondary: '#cf7800'
+    accent: '#a2aaad'

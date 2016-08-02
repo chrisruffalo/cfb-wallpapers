@@ -1,7 +1,6 @@
 ---
 id: 'michigan'
 name: 'University of Michigan'
-conference: 'b1g'
 url: 'http://vpcomm.umich.edu/brand/style-guide/design-principles/colors'
 colors:
   - id: 'basic'

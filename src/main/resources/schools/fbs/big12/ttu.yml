@@ -1,0 +1,13 @@
+---
+id: 'ttu'
+name: 'Texas Tech University'
+wiki: 'https://en.wikipedia.org/wiki/Texas_Tech_University'
+url: 'https://www.depts.ttu.edu/communications/identityguidelines/idguidelines/ttu/elements/color.php'
+colors:
+  - id: 'basic'
+    primary: '#cc0000'
+    secondary: '#000000'
+    accent: '#cccccc'
+
+
+

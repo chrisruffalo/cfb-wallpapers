@@ -1,0 +1,15 @@
+---
+id: 'uofl'
+name: 'University of Louisville'
+wiki: 'https://en.wikipedia.org/wiki/University_of_Louisville'
+url: 'https://louisville.edu/brand/color/primary'
+colors:
+  - id: 'basic'
+    primary: '#ad0000'
+    secondary: '#000000'
+    accent: '#fdb913'
+  - id: 'alternate'
+    primary: '#ad0000'
+    secondary: '#000000'
+    accent: '#cccccc'
+

@@ -1,7 +1,6 @@
 ---
 id: 'arkansas'
 name: 'University of Arkansas'
-conference: 'sec'
 url: 'http://logo.uark.edu/web/colors.php'
 colors:
   - id: 'basic'

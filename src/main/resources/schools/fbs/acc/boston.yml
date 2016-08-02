@@ -1,0 +1,14 @@
+---
+id: 'boston'
+name: 'Boston College'
+wiki: 'https://en.wikipedia.org/wiki/Boston_College'
+url: 'https://www.bc.edu/offices/omc/identity/colors.html'
+colors:
+  - id: 'basic'
+    primary: 'cmyk(0,100,61,43)'
+    secondary: 'cmyk(0,20,50,30)'
+    accent: 'cmyk(0,17,34,62)'
+  - id: 'alternate'
+    primary: 'cmyk(0,100,61,43)'
+    secondary: 'cmyk(0,20,50,30)'
+    accent: '#000000'

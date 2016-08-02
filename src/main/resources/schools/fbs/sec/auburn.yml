@@ -1,7 +1,6 @@
 ---
 id: 'auburn'
 name: 'Auburn University'
-conference: 'sec'
 url: 'http://www.auburn.edu/communications_marketing/styleguide/'
 colors:
   - id: 'basic'

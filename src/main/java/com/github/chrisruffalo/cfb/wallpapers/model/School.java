@@ -1,8 +1,10 @@
 package com.github.chrisruffalo.cfb.wallpapers.model;
 
-import com.sun.org.apache.xpath.internal.operations.Div;
-
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * <p></p>
@@ -12,6 +14,9 @@ public class School implements Comparable<School> {
 
     private String id;
     private String name;
+
+    private Set<String> tags;
+
     private String conference;
     private Division division;
 
@@ -19,6 +24,11 @@ public class School implements Comparable<School> {
     private String colorUrl;
 
     private List<ColorSet> colors;
+
+    public School() {
+        this.tags = new TreeSet<>();
+        this.colors = new ArrayList<>(0);
+    }
 
     public String getId() {
         return id;
@@ -34,6 +44,14 @@ public class School implements Comparable<School> {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<String> tags) {
+        this.tags = tags;
     }
 
     public Division getDivision() {

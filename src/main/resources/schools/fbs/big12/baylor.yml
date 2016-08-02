@@ -1,0 +1,16 @@
+---
+id: 'baylor'
+name: 'Baylor University'
+wiki: 'https://en.wikipedia.org/wiki/Baylor_University'
+url: 'https://www.baylor.edu/graphics/index.php?id=82352'
+colors:
+  - id: 'basic'
+    primary: '#003015'
+    secondary: '#fecb00'
+    accent: null
+  - id: 'alternate'
+    primary: '#fecb00'
+    secondary: '#003015'
+    accent: null
+
+

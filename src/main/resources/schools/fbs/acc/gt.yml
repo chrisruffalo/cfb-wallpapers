@@ -1,0 +1,14 @@
+---
+id: 'gt'
+name: 'Georgia Tech'
+wiki: 'https://en.wikipedia.org/wiki/Georgia_Institute_of_Technology'
+url: 'http://www.comm.gatech.edu/resources/web/development/styles/fonts-colors'
+colors:
+  - id: 'basic'
+    primary: '#ffffff'
+    secondary: '#eeb211'
+    accent: '#00254c'
+  - id: 'blue-and-gold'
+    primary: '#00254c'
+    secondary: '#eeb211'
+    accent: '#ffffff'

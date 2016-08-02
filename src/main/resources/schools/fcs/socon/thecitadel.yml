@@ -1,8 +1,9 @@
 ---
 id: 'thecitadel'
 name: 'The Citadel'
-conference: 'socon'
+wiki: 'https://en.wikipedia.org/wiki/The_Citadel,_The_Military_College_of_South_Carolina'
 url: 'http://www.citadel.edu/root/brandtoolbox-colors'
+tags: ['bulldogs','military','charleston']
 colors:
   - id: 'basic'
     primary: '#4d90cd'

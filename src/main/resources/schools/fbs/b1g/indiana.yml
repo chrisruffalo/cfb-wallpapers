@@ -1,7 +1,6 @@
 ---
 id: 'indiana'
 name: 'Indiana University'
-conference: 'b1g'
 url: 'http://brand.iu.edu/apply/color.shtml'
 colors:
   - id: 'basic'

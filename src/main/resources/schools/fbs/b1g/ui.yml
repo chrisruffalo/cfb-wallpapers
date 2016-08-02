@@ -1,7 +1,6 @@
 ---
 id: 'ui'
 name: 'University of Iowa'
-conference: 'b1g'
 url: 'http://vpsc.uiowa.edu/brand/graphic-identity/colors.html'
 colors:
   - id: 'basic'

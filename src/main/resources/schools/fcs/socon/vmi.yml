@@ -1,8 +1,9 @@
 ---
 id: 'vmi'
 name: 'Virginia Military Institute'
-conference: 'socon'
+wiki: 'https://en.wikipedia.org/wiki/Virginia_Military_Institute'
 url: 'http://www.vmi.edu/media/content-assets/documents/communications-and-marketing/VMIIdentityStandards2016.pdf'
+tags: ['military', 'keydets', 'lexington']
 colors:
   - id: 'basic'
     primary: '#ae122a'

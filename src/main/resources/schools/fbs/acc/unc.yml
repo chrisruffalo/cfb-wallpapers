@@ -1,0 +1,10 @@
+---
+id: 'unc'
+name: 'Chapel Hill'
+wiki: 'https://en.wikipedia.org/wiki/University_of_North_Carolina_at_Chapel_Hill'
+url: 'http://goheels.com/fls/3350/15athgen/CarolinaAthletics_BrandingGuidelines-Final.pdf'
+colors:
+  - id: 'basic'
+    primary: '#7bafd4'
+    secondary: '#ffffff'
+    accent: '#a2aaad'

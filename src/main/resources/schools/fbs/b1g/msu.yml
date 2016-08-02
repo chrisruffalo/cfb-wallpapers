@@ -1,7 +1,6 @@
 ---
 id: 'msu'
 name: 'Michigan State'
-conference: 'b1g'
 url: 'http://brand.msu.edu/design-visual/#color'
 colors:
   - id: 'basic'
