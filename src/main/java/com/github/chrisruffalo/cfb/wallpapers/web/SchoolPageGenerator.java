@@ -6,7 +6,6 @@ import com.github.chrisruffalo.cfb.wallpapers.model.School;
 import com.github.chrisruffalo.cfb.wallpapers.util.TemplateCreator;
 import freemarker.template.Template;
 
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.file.Files;

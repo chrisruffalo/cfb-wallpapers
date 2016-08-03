@@ -44,6 +44,9 @@ public class GeneratorOptions {
     @Parameter(names = {"--tasks", "-t"}, description = "The number of simultanous tasks to run when single threading (--no-threads) is off. Default is available cores minus one.")
     private int tasks = -1;
 
+    @Parameter(names = {"--optimize", "-O"}, description = "Set this option to optimize PNG sizes when the generation is complete.")
+    private boolean optimizePng;
+
     public String getOutputPath() {
         return outputPath;
     }
@@ -130,5 +133,13 @@ public class GeneratorOptions {
 
     public void setTasks(int tasks) {
         this.tasks = tasks;
+    }
+
+    public boolean isOptimizePng() {
+        return optimizePng;
+    }
+
+    public void setOptimizePng(boolean optimizePng) {
+        this.optimizePng = optimizePng;
     }
 }

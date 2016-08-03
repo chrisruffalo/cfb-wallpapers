@@ -3,7 +3,7 @@ package com.github.chrisruffalo.cfb.wallpapers.archive;
 import com.github.chrisruffalo.cfb.wallpapers.model.Division;
 import com.github.chrisruffalo.cfb.wallpapers.model.School;
 
-import java.io.FileOutputStream;
+import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.FileVisitResult;
@@ -90,7 +90,7 @@ public class Archiver {
     private static Path pack(final Path folder, final Path zipFilePath) {
         // archive picture bits
         try(
-                final OutputStream outputStream = Files.newOutputStream(zipFilePath);
+                final OutputStream outputStream = new BufferedOutputStream(Files.newOutputStream(zipFilePath));
                 final ZipOutputStream zipOutputStream = new ZipOutputStream(outputStream);
         ) {
             Files.walkFileTree(folder, new SimpleFileVisitor<Path>(){

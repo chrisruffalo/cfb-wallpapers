@@ -1,12 +1,12 @@
 package com.github.chrisruffalo.cfb.wallpapers.raster;
 
+import com.github.chrisruffalo.cfb.wallpapers.config.GeneratorOptions;
 import com.github.chrisruffalo.cfb.wallpapers.model.ColorSet;
 import com.github.chrisruffalo.cfb.wallpapers.model.OutputFormat;
 import com.github.chrisruffalo.cfb.wallpapers.model.OutputTarget;
 import com.github.chrisruffalo.cfb.wallpapers.model.School;
 import com.github.chrisruffalo.cfb.wallpapers.model.Template;
 import com.github.chrisruffalo.cfb.wallpapers.transform.SVGColorChange;
-import com.kitfox.svg.SVGCache;
 import com.kitfox.svg.SVGDiagram;
 import com.kitfox.svg.SVGException;
 import com.kitfox.svg.SVGUniverse;
@@ -15,12 +15,10 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
-import javax.imageio.ImageIO;
 
 /**
  * <p></p>
@@ -30,11 +28,15 @@ public class SVGSchoolRasterizer {
 
     private static final SVGColorChange CHANGER = new SVGColorChange();
 
+    private final ThreadLocal<SVGUniverse> universeThreadLocal = new ThreadLocal<>();
+
     private final School school;
     private final Path pathToOutput;
+    private final GeneratorOptions options;
 
-    public SVGSchoolRasterizer(final String divisionId, final String conferenceId, final School school, final Path pathToOutput) {
+    public SVGSchoolRasterizer(final String divisionId, final String conferenceId, final School school, final Path pathToOutput, final GeneratorOptions options) {
         this.school = school;
+        this.options = options;
 
         this.pathToOutput = pathToOutput.resolve(divisionId).resolve(conferenceId).resolve(school.getId());
         if(!Files.isDirectory(this.pathToOutput)) {
@@ -95,8 +97,12 @@ public class SVGSchoolRasterizer {
                 e.printStackTrace();
             }
 
-            // create universe
-            final SVGUniverse universe = new SVGUniverse();
+            // create universe and cache for use by later instances in this thread
+            SVGUniverse universe = this.universeThreadLocal.get();
+            if(universe == null) {
+                universe = new SVGUniverse();
+                this.universeThreadLocal.set(universe);
+            }
 
             // load svg diagram for later use
             final SVGDiagram diagram;
@@ -118,36 +124,42 @@ public class SVGSchoolRasterizer {
     private void writeSvgToPng(final SVGDiagram diagram, final String targetId, final String fileNameBase, final OutputFormat size) {
 
         // output
-        final Path outputFile = this.pathToOutput.resolve(targetId).resolve(fileNameBase + "_" + size.getId() + ".png");
-        if(!Files.isDirectory(outputFile.getParent())) {
+        final Path pngOutputFile = this.pathToOutput.resolve(targetId).resolve(fileNameBase + "_" + size.getId() + ".png");
+        //final Path jpegOutputFile = this.pathToOutput.resolve(targetId).resolve(fileNameBase + "_" + size.getId() + ".jpg");
+
+        if(!Files.isDirectory(pngOutputFile.getParent())) {
             try {
-                Files.createDirectories(outputFile.getParent());
+                Files.createDirectories(pngOutputFile.getParent());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        try (final OutputStream imageOutput = Files.newOutputStream(outputFile)) {
-
-            // transform!
+        try {
+            // transform so that the svg is the size of the output
             final AffineTransform transform = new AffineTransform();
             transform.setToScale(size.w_double() / diagram.getWidth(), size.h_double() / diagram.getHeight());
 
-            BufferedImage bi = new BufferedImage(size.getW(), size.getH(), BufferedImage.TYPE_INT_ARGB);
-            Graphics2D ig2 = bi.createGraphics();
+            // create buffered image
+            final BufferedImage bi = new BufferedImage(size.getW(), size.getH(), BufferedImage.TYPE_INT_ARGB);
+
+            // use awt 2d graphics engine to render
+            final Graphics2D ig2 = bi.createGraphics();
+
+            // turn on anti-aliasing
             ig2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-            // do transform
+            // do transform to make fit
             ig2.transform(transform);
 
-            // render diagram
+            // render diagram into image
             diagram.render(ig2);
 
-            // write
-            ImageIO.write(bi, "PNG", imageOutput);
+            // write PNG
+            BufferedImagePNGWriter.write(pngOutputFile, bi, this.options);
 
             ig2.dispose();
-        } catch (IOException | SVGException ex) {
+        } catch (SVGException ex) {
             throw new RuntimeException(ex);
         }
     }

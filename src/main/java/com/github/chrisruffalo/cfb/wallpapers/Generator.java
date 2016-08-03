@@ -55,7 +55,7 @@ public class Generator {
         System.out.println("===== Loading =====");
 
         // if not single threaded create executor now
-        if(!options.isSingleThreaded()) {
+        if(!options.isSingleThreaded() && !options.isList()) {
             final int threads = options.getTasks() > 0 ? options.getTasks() : DEFAULT_EXECUTOR_THREADS;
             System.out.printf("Using %d task threads for processing artifacts\n", threads);
             executorService = Executors.newFixedThreadPool(threads);
@@ -78,6 +78,7 @@ public class Generator {
                 throw new RuntimeException("Could not delete output directory but `--clean` was specified.", e);
             }
         }
+
         if(!Files.isDirectory(outputPath)) {
             try {
                 Files.createDirectories(outputPath);
@@ -103,17 +104,22 @@ public class Generator {
             handleDivisionOutput(division, targets, options, outputPath);
         }
 
+        // return when done listing
+        if(options.isList()) {
+            System.out.println();
+            return;
+        }
+
         // if not single-threaded wait for the executor to finish
         if(!options.isSingleThreaded()) {
             // before archiving wait for executor service to finish jobs
             try {
                 System.out.print("\n===== Multithreading =====\n");
-                System.out.print("Waiting for tasks to complete... ");
+                System.out.print("Waiting for tasks to complete... \n");
                 // cause shutdown
                 executorService.shutdown();
                 // wait a loooong time for it to happen
                 executorService.awaitTermination(60, TimeUnit.MINUTES);
-                System.out.print("[DONE]\n");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -229,7 +235,7 @@ public class Generator {
                     // don't generate images if requested
                     if(!options.isNoImages()) {
                         // create SVG output and raster images
-                        final SVGSchoolRasterizer rasterizer = new SVGSchoolRasterizer(division.getId(), conference, school, outputPath);
+                        final SVGSchoolRasterizer rasterizer = new SVGSchoolRasterizer(division.getId(), conference, school, outputPath, options);
 
                         if(options.isSingleThreaded()) {
                             rasterizer.raster(outputTargets);
@@ -237,7 +243,7 @@ public class Generator {
                             // create raster task
                             final RasterRunner task = new RasterRunner(outputPath, school, rasterizer, outputTargets, options);
                             // execute task
-                            executorService.submit(task);
+                            executorService.execute(task);
                         }
                     }
 

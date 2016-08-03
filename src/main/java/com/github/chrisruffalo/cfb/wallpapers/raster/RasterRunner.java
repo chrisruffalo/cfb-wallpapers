@@ -1,6 +1,5 @@
 package com.github.chrisruffalo.cfb.wallpapers.raster;
 
-import com.github.chrisruffalo.cfb.wallpapers.Generator;
 import com.github.chrisruffalo.cfb.wallpapers.archive.Archiver;
 import com.github.chrisruffalo.cfb.wallpapers.config.GeneratorOptions;
 import com.github.chrisruffalo.cfb.wallpapers.model.OutputTarget;
@@ -43,5 +42,8 @@ public class RasterRunner implements Runnable {
 
         // archive
         Archiver.archiveSchool(this.outputPath, this.school);
+
+        // output
+        System.out.printf("%s... [DONE]\n", this.school.display());
     }
 }
