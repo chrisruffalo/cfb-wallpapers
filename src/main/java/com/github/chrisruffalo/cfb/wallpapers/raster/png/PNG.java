@@ -6,8 +6,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.nio.channels.Channel;
 import java.nio.channels.Channels;
 import java.nio.channels.WritableByteChannel;
 import java.util.zip.Deflater;
@@ -49,16 +47,25 @@ public class PNG {
 
     private static byte[] createDataChunk(int width, int height, int[] argbBytes, final GeneratorOptions options) throws IOException {
 
-        // since the source data is ARGB we can rotate it to RGBA pretty easily
-        for(int sourceIndex = 0; sourceIndex < argbBytes.length; sourceIndex++) {
-            argbBytes[sourceIndex] = Integer.rotateLeft(argbBytes[sourceIndex], 8);
+        // each height line has a filter
+        final ByteBuffer buffer = ByteBuffer.allocateDirect((width * height * 4) + height);
+
+        // the index in the source
+        int sourceIndex = 0;
+
+        // go each width then go height. this allows the byte for filter at the start of each line
+        for (int y = 0; y < height; y++) {
+            buffer.put((byte)0); // no filter
+            for (int x = 0; x < width; x++) {
+                // just converting ARGB to RGBA
+                buffer.putInt(Integer.rotateLeft(argbBytes[sourceIndex++], 8));
+            }
         }
 
-        return toChunk("IDAT", toZLIB(argbBytes,options));
-    }
+        // start at beginning of buffer
+        buffer.rewind();
 
-    private static int rotate(int bits, int distance) {
-        return (bits >>> distance) | (bits << (Integer.SIZE - distance));
+        return toChunk("IDAT", toZLIB(buffer, options));
     }
 
     private static byte[] createTrailerChunk() throws IOException {
@@ -123,14 +130,10 @@ public class PNG {
        with a minimal ZLIB encoder which uses uncompressed deflate
        blocks (fast, short, easy, but no compression). If you want
        compression, call another encoder (such as JZLib?) here. */
-    private static byte[] toZLIB(int[] raw, final GeneratorOptions options) throws IOException {
+    private static byte[] toZLIB(final ByteBuffer buffer, final GeneratorOptions options) throws IOException {
 
         // handle optimization of outputs based on the option set by the user
         final int compression = options.isOptimizePng() ? Deflater.BEST_COMPRESSION : Deflater.BEST_SPEED;
-
-        // allocate output buffer and put integer array in it
-        final ByteBuffer buffer = ByteBuffer.allocateDirect(raw.length * 4);
-        buffer.asIntBuffer().put(raw);
 
         try (
             final ByteArrayOutputStream out = new ByteArrayOutputStream();
