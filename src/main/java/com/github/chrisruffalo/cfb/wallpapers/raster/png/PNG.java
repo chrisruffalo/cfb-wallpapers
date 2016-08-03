@@ -5,6 +5,11 @@ import com.github.chrisruffalo.cfb.wallpapers.config.GeneratorOptions;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import java.nio.channels.Channel;
+import java.nio.channels.Channels;
+import java.nio.channels.WritableByteChannel;
 import java.util.zip.Deflater;
 import java.util.zip.DeflaterOutputStream;
 
@@ -43,22 +48,17 @@ public class PNG {
     }
 
     private static byte[] createDataChunk(int width, int height, int[] argbBytes, final GeneratorOptions options) throws IOException {
-        int source = 0;
-        int dest = 0;
-        byte[] raw = new byte[4*(width*height) + height];
-        for (int y = 0; y < height; y++)
-        {
-            raw[dest++] = 0; // No filter
-            for (int x = 0; x < width; x++)
-            {
-                // order is RGBA swapped from ARGB input
-                raw[dest++] = (byte)((argbBytes[source] & 0x00FF0000) >> 16);
-                raw[dest++] = (byte)((argbBytes[source] & 0x0000FF00) >> 8);
-                raw[dest++] = (byte)((argbBytes[source] & 0x000000FF));
-                raw[dest++] = (byte)((argbBytes[source++] & 0xFF000000) >> 24);
-            }
+
+        // since the source data is ARGB we can rotate it to RGBA pretty easily
+        for(int sourceIndex = 0; sourceIndex < argbBytes.length; sourceIndex++) {
+            argbBytes[sourceIndex] = Integer.rotateLeft(argbBytes[sourceIndex], 8);
         }
-        return toChunk("IDAT", toZLIB(raw,options));
+
+        return toChunk("IDAT", toZLIB(argbBytes,options));
+    }
+
+    private static int rotate(int bits, int distance) {
+        return (bits >>> distance) | (bits << (Integer.SIZE - distance));
     }
 
     private static byte[] createTrailerChunk() throws IOException {
@@ -123,20 +123,28 @@ public class PNG {
        with a minimal ZLIB encoder which uses uncompressed deflate
        blocks (fast, short, easy, but no compression). If you want
        compression, call another encoder (such as JZLib?) here. */
-    private static byte[] toZLIB(byte[] raw, final GeneratorOptions options) throws IOException {
+    private static byte[] toZLIB(int[] raw, final GeneratorOptions options) throws IOException {
 
         // handle optimization of outputs based on the option set by the user
         final int compression = options.isOptimizePng() ? Deflater.BEST_COMPRESSION : Deflater.BEST_SPEED;
 
+        // allocate output buffer and put integer array in it
+        final ByteBuffer buffer = ByteBuffer.allocateDirect(raw.length * 4);
+        buffer.asIntBuffer().put(raw);
+
         try (
             final ByteArrayOutputStream out = new ByteArrayOutputStream();
             final DeflaterOutputStream dout = new DeflaterOutputStream(out, new Deflater(compression));
+            final WritableByteChannel channel = Channels.newChannel(dout);
         ) {
-            dout.write(raw);
+            // write buffer
+            channel.write(buffer);
 
+            // write
             dout.flush();
             dout.finish();
 
+            // final output flush
             out.flush();
 
             return out.toByteArray();
