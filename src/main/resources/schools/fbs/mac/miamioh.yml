@@ -1,0 +1,11 @@
+---
+id: 'miamioh'
+name: 'Miami University'
+wiki: 'https://en.wikipedia.org/wiki/Miami_University'
+url: 'https://www.miamioh.edu/_files/documents/ucm/resources/MU_Style_Guide_508.pdf'
+tags: ['redhawks']
+colors:
+  - id: 'basic'
+    primary: 'cmyk(0,97,80,30)'
+    secondary: '#ffffff'
+    accent: null

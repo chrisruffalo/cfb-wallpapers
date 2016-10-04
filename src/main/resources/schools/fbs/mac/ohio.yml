@@ -1,0 +1,11 @@
+---
+id: 'ohio'
+name: 'Ohio University'
+wiki: 'https://en.wikipedia.org/wiki/Ohio_University'
+url: 'https://www.ohio.edu/ucm/brand-center/toolkit/colors.cfm'
+tags: ['bobcats']
+colors:
+  - id: 'basic'
+    primary: '#00694e'
+    secondary: '#776f67'
+    accent: null

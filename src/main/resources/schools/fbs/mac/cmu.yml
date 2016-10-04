@@ -1,0 +1,11 @@
+---
+id: 'cmu'
+name: 'Central Michigan University'
+wiki: 'https://en.wikipedia.org/wiki/Central_Michigan_University'
+url: 'https://www.cmich.edu/office_president/university_communications/Documents/CMU_Brand_Identity_2014_v1.pdf#search=office%20president%20university%20communications%20Documents%20Graphic%20Identity%20Standards'
+tags: ['chippewas']
+colors:
+  - id: 'basic'
+    primary: '#6a0032'
+    secondary: '#ffc82e'
+    accent: null

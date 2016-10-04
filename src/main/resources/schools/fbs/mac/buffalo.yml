@@ -1,0 +1,11 @@
+---
+id: 'buffalo'
+name: 'The State University of New York at Buffalo'
+wiki: 'https://en.wikipedia.org/wiki/University_at_Buffalo'
+url: 'http://www.buffalo.edu/brand/creative/color/color-palette.html'
+tags: ['bulls']
+colors:
+  - id: 'basic'
+    primary: '#005bbb'
+    secondary: '#ffffff'
+    accent: null

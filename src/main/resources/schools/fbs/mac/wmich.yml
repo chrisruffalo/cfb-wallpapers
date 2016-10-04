@@ -1,0 +1,11 @@
+---
+id: 'wmich'
+name: 'Western Michigan University'
+wiki: 'https://en.wikipedia.org/wiki/Western_Michigan_University'
+url: 'http://www.wmich.edu/sites/default/files/attachments/VIP-1-18-13-web.pdf'
+tags: ['broncos']
+colors:
+  - id: 'basic'
+    primary: 'cmyk(0,60,100,79)'
+    secondary: 'cmyk(0,28,100,6)'
+    accent: null

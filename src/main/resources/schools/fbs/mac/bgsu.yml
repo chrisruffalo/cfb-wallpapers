@@ -1,0 +1,11 @@
+---
+id: 'bgsu'
+name: 'Bowling Green State University'
+wiki: 'https://en.wikipedia.org/wiki/Bowling_Green_State_University'
+url: 'http://www.bgsu.edu/marketing-and-communications/bgsu-graphic-standards-manual/the-official-identity-colors.html'
+tags: ['falcons']
+colors:
+  - id: 'basic'
+    primary: '#ff7300'
+    secondary: '#4f2c1d'
+    accent: null

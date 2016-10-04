@@ -1,0 +1,11 @@
+---
+id: 'akron'
+name: 'University of Akron'
+wiki: 'https://en.wikipedia.org/wiki/University_of_Akron'
+url: 'https://www.uakron.edu/dotAsset/1769446.pdf'
+tags: ['zips']
+colors:
+  - id: 'basic'
+    primary: '#00285e'
+    secondary: '#deb408'
+    accent: null

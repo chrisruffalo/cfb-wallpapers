@@ -1,0 +1,11 @@
+---
+id: 'bsu'
+name: 'Ball State University'
+wiki: 'https://en.wikipedia.org/wiki/Ball_State_University'
+url: 'http://cms.bsu.edu/about/administrativeoffices/strategic-communications/branding-tool-box/colors'
+tags: ['cardinals']
+colors:
+  - id: 'basic'
+    primary: '#ba0c2f'
+    secondary: '#ffffff'
+    accent: null

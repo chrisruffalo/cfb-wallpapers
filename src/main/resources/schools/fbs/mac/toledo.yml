@@ -1,0 +1,15 @@
+---
+id: 'toledo'
+name: 'University of Toledo'
+wiki: 'https://en.wikipedia.org/wiki/University_of_Toledo'
+url: 'https://www.utoledo.edu/offices/marketing/licensing/pdfs/toledo1.pdf'
+tags: ['rockets']
+colors:
+  - id: 'basic'
+    primary: '#15397f'
+    secondary: '#000000'
+    accent: '#ffda00'
+  - id: 'inverse'
+    primary: '#15397f'
+    secondary: '#ffda00'
+    accent: '#000000'

@@ -1,0 +1,11 @@
+---
+id: 'kent'
+name: 'Kent State University'
+wiki: 'https://en.wikipedia.org/wiki/Kent_State_University'
+url: 'https://www.kent.edu/ucm/color-palettes-primary-palette'
+tags: ['golden flashes']
+colors:
+  - id: 'basic'
+    primary: '#002664'
+    secondary: '#eaab00'
+    accent: null

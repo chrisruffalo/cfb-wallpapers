@@ -1,0 +1,11 @@
+---
+id: 'niu'
+name: 'Northern Illinois University'
+wiki: 'https://en.wikipedia.org/wiki/Northern_Illinois_University'
+url: 'http://grfx.cstv.com/photos/schools/niu/genrel/auto_pdf/2015-16/misc_non_event/NIU_Standards_Guide_2015.pdf'
+tags: ['huskies']
+colors:
+  - id: 'basic'
+    primary: 'cmyk(3,100,70,12)'
+    secondary: 'cmyk(0,0,0,100)'
+    accent: 'cmyk(19,12,13,34)'

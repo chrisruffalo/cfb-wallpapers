@@ -20,7 +20,7 @@ divisions:
       sky: 'Big Sky Conference'
       south: 'Big South Conference'
       caa: 'Colonial Athletic Association'
-      # fcs independents goes here
+      inde: 'Independent Conference'
       ivy: 'Ivy League'
       meac: 'Mid-Eastern Athletic Conference'
       mvfc: 'Missouri Valley Football Conference'
