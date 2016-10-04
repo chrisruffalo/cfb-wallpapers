@@ -1,0 +1,11 @@
+---
+id: 'uncc'
+name: 'UNC Charlotte'
+wiki: 'https://en.wikipedia.org/wiki/University_of_North_Carolina_at_Charlotte'
+url: 'http://advancement.uncc.edu/sites/advancement.uncc.edu/files/media/identity-standards-guide.pdf'
+tags: ['49ers']
+colors:
+  - id: 'basic'
+    primary: 'cmyk(100,0,91,41)'
+    secondary: '#ffffff'
+    accent: null

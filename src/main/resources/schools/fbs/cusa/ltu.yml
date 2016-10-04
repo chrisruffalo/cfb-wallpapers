@@ -1,0 +1,11 @@
+---
+id: 'ltu'
+name: 'Louisiana Tech University'
+wiki: 'https://en.wikipedia.org/wiki/Louisiana_Tech_University'
+url: 'http://grfx.cstv.com/photos/schools/latc/genrel/auto_pdf/2013-14/misc_non_event/identity-standards.pdf'
+tags: ['bulldogs']
+colors:
+  - id: 'basic'
+    primary: '#e31b23'
+    secondary: '#002f8b'
+    accent: '#ffffff'

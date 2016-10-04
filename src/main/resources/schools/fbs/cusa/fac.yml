@@ -1,0 +1,19 @@
+---
+id: 'fac'
+name: 'Florida Atlantic University'
+wiki: 'https://en.wikipedia.org/wiki/Florida_Atlantic_University'
+url: 'http://www.fau.edu/branding/FAU_VSM.pdf'
+tags: ['owls']
+colors:
+  - id: 'basic'
+    primary: 'cmyk(100,78,26,28)'
+    secondary: 'cmyk(20,100,81,10)'
+    accent: null
+  - id: 'grey'
+    primary: 'cmyk(100,78,26,28)'
+    secondary: 'cmyk(20,100,81,10)'
+    accent: 'cmyk(23,16,14,0)'
+  - id: 'silver'
+    primary: 'cmyk(100,78,26,28)'
+    secondary: 'cmyk(20,100,81,10)'
+    accent: 'cmyk(45,34,34,0)'

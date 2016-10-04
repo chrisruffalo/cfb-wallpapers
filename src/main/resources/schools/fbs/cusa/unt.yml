@@ -1,0 +1,11 @@
+---
+id: 'unt'
+name: 'University of North Texas'
+wiki: 'https://en.wikipedia.org/wiki/University_of_North_Texas'
+url: 'https://identityguide.unt.edu/create-our-look/color'
+tags: ['mean green']
+colors:
+  - id: 'basic'
+    primary: '#00853e'
+    secondary: '#ffffff'
+    accent: null

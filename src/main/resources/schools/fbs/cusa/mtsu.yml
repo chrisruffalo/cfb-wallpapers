@@ -1,0 +1,11 @@
+---
+id: 'mtsu'
+name: 'Middle Tennessee State University'
+wiki: 'https://en.wikipedia.org/wiki/Middle_Tennessee_State_University'
+url: 'http://mtsu.edu/creativeservices/docs/MTSUBrandingGuide.pdf'
+tags: ['blue raiders']
+colors:
+  - id: 'basic'
+    primary: 'cmyk(100,44,0,0)'
+    secondary: 'cmyk(0,0,0,100)'
+    accent: null

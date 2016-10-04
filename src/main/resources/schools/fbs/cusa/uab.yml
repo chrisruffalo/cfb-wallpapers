@@ -1,0 +1,15 @@
+---
+id: 'uab'
+name: 'University of Alabama at Birmingham'
+wiki: 'https://en.wikipedia.org/wiki/University_of_Alabama_at_Birmingham'
+url: 'http://www.uab.edu/brand/home/standards/colors'
+tags: ['blazers']
+colors:
+  - id: 'basic'
+    primary: '#1e6b52'
+    secondary: '#ffffff'
+    accent: '#f4c300'
+  - id: 'muted'
+    primary: '#1e6b52'
+    secondary: '#ffffff'
+    accent: '#d2c780'

@@ -1,0 +1,16 @@
+---
+id: 'wku'
+name: 'Western Kentucky University'
+wiki: 'https://en.wikipedia.org/wiki/Western_Kentucky_University'
+url: 'https://www.wku.edu/marketingandcommunications/documents/communication_branding_manual.pdf'
+tags: ['hilltoppers']
+colors:
+  - id: 'white'
+    primary: '#b01e24'
+    secondary: '#ffffff'
+    accent: '#333333'
+  - id: 'black'
+    primary: '#b01e24'
+    secondary: '#000000'
+    accent: '#333333'
+

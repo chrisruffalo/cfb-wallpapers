@@ -1,0 +1,11 @@
+---
+id: 'rice'
+name: 'Rice University'
+wiki: 'https://en.wikipedia.org/wiki/Rice_University'
+url: 'https://staff.rice.edu/Template_RiceBrand.aspx?id=4718'
+tags: ['owls']
+colors:
+  - id: 'basic'
+    primary: 'cmyk(100,93,28,22)'
+    secondary: 'cmyk(0,0,0,77)'
+    accent: null

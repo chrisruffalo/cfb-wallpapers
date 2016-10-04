@@ -1,0 +1,11 @@
+---
+id: 'odu'
+name: 'Old Dominion University'
+wiki: 'https://en.wikipedia.org/wiki/Old_Dominion_University'
+url: 'https://www.odu.edu/facultystaff/communication/toolkit/identity-standards/palette-fonts'
+tags: ['monarchs']
+colors:
+  - id: 'basic'
+    primary: 'cmyk(100,77,38,36)'
+    secondary: 'cmyk(38,11,0,0)'
+    accent: 'cmyk(52,40,37,3)'

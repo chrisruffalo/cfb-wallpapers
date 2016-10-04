@@ -15,7 +15,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <!-- software versions -->
-        <batik.version>1.6-1</batik.version>
     </properties>
 
     <dependencies>

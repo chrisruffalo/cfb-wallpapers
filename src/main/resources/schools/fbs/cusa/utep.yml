@@ -1,0 +1,16 @@
+---
+id: 'utep'
+name: 'University of Texas El Paso'
+wiki: 'https://en.wikipedia.org/wiki/University_of_Texas_at_El_Paso'
+url: 'http://universitycommunications.utep.edu/identityguide/download/utepgraphicidentityguide.pdf'
+tags: ['miners']
+colors:
+  - id: 'basic'
+    primary: '#ff5600'
+    secondary: '#002147'
+    accent: '#b2b4b3'
+  - id: 'inverse'
+    primary: '#002147'
+    secondary: '#ff5600'
+    accent: '#b2b4b3'
+

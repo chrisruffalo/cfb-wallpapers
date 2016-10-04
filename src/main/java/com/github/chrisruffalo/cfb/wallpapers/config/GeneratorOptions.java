@@ -42,7 +42,7 @@ public class GeneratorOptions {
     private boolean singleThreaded = false;
 
     @Parameter(names = {"--tasks", "-t"}, description = "The number of simultanous tasks to run when single threading (--no-threads) is off. Default is available cores minus one.")
-    private int tasks = -1;
+    private int tasks = Runtime.getRuntime().availableProcessors() - 1;
 
     @Parameter(names = {"--optimize", "-O"}, description = "Set this option to optimize PNG sizes when the generation is complete.")
     private boolean optimizePng;

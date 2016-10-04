@@ -1,0 +1,15 @@
+---
+id: 'usm'
+name: 'University of Southern Mississippi'
+wiki: 'https://en.wikipedia.org/wiki/University_of_Southern_Mississippi'
+url: 'http://www.southernmiss.com/licensing/style-guide.html'
+tags: ['golden eagles']
+colors:
+  - id: 'basic'
+    primary: '#fdc737'
+    secondary: '#000000'
+    accent: null
+  - id: 'matte'
+    primary: '#ffC73b'
+    secondary: '#000000'
+    accent: null

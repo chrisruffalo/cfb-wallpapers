@@ -1,0 +1,16 @@
+---
+id: 'utsa'
+name: 'University of Texas San Antonio'
+wiki: 'https://en.wikipedia.org/wiki/University_of_Texas_at_San_Antonio'
+url: 'http://www.utsa.edu/ucm/assets/pdf/utsa-brand-identity.pdf'
+tags: ['roadrunners']
+colors:
+  - id: 'basic'
+    primary: '#0c2340'
+    secondary: '#f15a22'
+    accent: '#ffffff'
+  - id: 'inverse'
+    primary: '#f15a22'
+    secondary: '#0c2340'
+    accent: '#ffffff'
+

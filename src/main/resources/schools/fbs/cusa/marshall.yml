@@ -1,0 +1,11 @@
+---
+id: 'marshall'
+name: 'Marshall University'
+wiki: 'https://en.wikipedia.org/wiki/Marshall_University'
+url: 'http://www.marshall.edu/webguide/files/downloads/2013/01/Electronic-Branding-Guide-v4.pdf'
+tags: ['thundering herd']
+colors:
+  - id: 'basic'
+    primary: '#04954a'
+    secondary: '#ffffff'
+    accent: '#be854c'

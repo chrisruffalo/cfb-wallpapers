@@ -153,29 +153,11 @@
                                         <span class="card-title activator grey-text text-darken-4">${template.name}</span>
                                     </div>
                                     <div class="card-reveal">
-                                        <span class="card-title grey-text text-darken-4">${template.name}<i class="material-icons right">close</i></span>
-                                        <table class="responsive-table">
-                                            <thead>
-                                                <tr>
-                                                    <th data-field="id">ID</th>
-                                                    <th data-field="name">Dimensions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <!-- svg -->
-                                                <tr>
-                                                    <td><a href="svg/${school.id}-${target.id}-${template.id}-${color.id}.svg">svg</a></td>
-                                                    <td><i class="fa fa-arrows" aria-hidden="true"></i> scalable</td>
-                                                </tr>
-                                                <!-- each format -->
-                                                <#list target.formats as format>
-                                                <tr>
-                                                    <td><a href="${target.id}/${school.id}-${target.id}-${template.id}-${color.id}_${format.id}.png">${format.id}</a></td>
-                                                    <td>#{format.w}x#{format.h}</td>
-                                                </tr>
-                                                </#list>
-                                            </tbody>
-                                        </table>
+                                        <div class="card-title grey-text text-darken-4">&nbsp;<i class="material-icons right">close</i></div>
+                                        <div>scalable <a class="right" href="svg/${school.id}-${target.id}-${template.id}-${color.id}.svg">SVG</a></div>
+                                        <#list target.formats as format>
+                                        <div>#{format.w}x#{format.h} <a class="right" href="${target.id}/${school.id}-${target.id}-${template.id}-${color.id}_${format.id}.png">PNG</a></div>
+                                        </#list>
                                     </div>
                                 </div> <!-- card -->
 

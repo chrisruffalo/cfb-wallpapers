@@ -1,0 +1,11 @@
+---
+id: 'fiu'
+name: 'Florida International University'
+wiki: 'https://en.wikipedia.org/wiki/Florida_International_University'
+url: 'http://www.fiu.edu/brand/logo-standards/'
+tags: ['panthers']
+colors:
+  - id: 'basic'
+    primary: '#081e3f'
+    secondary: '#b6862c'
+    accent: '#ffffff'
