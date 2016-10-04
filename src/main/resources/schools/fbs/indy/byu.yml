@@ -1,0 +1,11 @@
+---
+id: 'byu'
+name: 'Brigham Young University'
+wiki: 'https://en.wikipedia.org/wiki/Brigham_Young_University'
+url: 'https://web.byu.edu/wiki/styleguide/colors'
+tags: ['cougars']
+colors:
+  - id: 'basic'
+    primary: '#002255'
+    secondary: '#a7a9ac'
+    accent: null

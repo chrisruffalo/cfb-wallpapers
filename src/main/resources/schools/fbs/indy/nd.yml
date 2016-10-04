@@ -1,0 +1,15 @@
+---
+id: 'nd'
+name: 'University of Notre Dame'
+wiki: 'https://en.wikipedia.org/wiki/University_of_Notre_Dame'
+url: 'http://onmessage.nd.edu/university-branding/colors/'
+tags: ['fighting irish']
+colors:
+  - id: 'basic'
+    primary: '#0c2340'
+    secondary: '#c99700'
+    accent: null
+  - id: 'metallic'
+    primary: '#0c2340'
+    secondary: '#ae9142'
+    accent: null

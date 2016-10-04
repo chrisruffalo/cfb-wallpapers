@@ -1,0 +1,15 @@
+---
+id: 'umass'
+name: 'University of Massachusetts'
+wiki: 'https://en.wikipedia.org/wiki/University_of_Massachusetts_Amherst'
+url: 'https://www.umass.edu/brand/elements/color'
+tags: ['minutemen']
+colors:
+  - id: 'basic'
+    primary: '#881c1c'
+    secondary: '#000000'
+    accent: '#ffffff'
+  - id: 'inverse'
+    primary: '#881c1c'
+    secondary: '#ffffff'
+    accent: '#000000'
