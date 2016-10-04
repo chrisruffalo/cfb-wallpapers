@@ -1,0 +1,11 @@
+---
+id: 'bsu'
+name: 'Boise State University'
+wiki: 'https://en.wikipedia.org/wiki/Boise_State_University'
+url: 'https://brandstandards.boisestate.edu/official-colors/'
+tags: ['broncos']
+colors:
+  - id: 'basic'
+    primary: '#09347a'
+    secondary: '#f1632a'
+    accent: '#464646'

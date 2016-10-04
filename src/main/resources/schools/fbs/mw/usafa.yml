@@ -1,0 +1,11 @@
+---
+id: 'usafa'
+name: 'United States Air Force Academy'
+wiki: 'https://en.wikipedia.org/wiki/United_States_Air_Force_Academy'
+url: '' # bad airforce! bad! no cookie!
+tags: ['military','air force', 'falcons']
+colors:
+  - id: 'basic'
+    primary: '#000000'
+    secondary: '#eeeeee'
+    accent: null
